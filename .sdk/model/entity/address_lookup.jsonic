@@ -1,0 +1,188 @@
+# Entity: address_lookup
+
+main: kit: entity: address_lookup: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "boundingbox"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "class"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "display_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "importance"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "lat"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "licence"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "osm_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "osm_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "address_lookup"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "accept_language"
+                orig: "accept_language"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "addressdetail"
+                orig: "addressdetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "extratag"
+                orig: "extratag"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "jsonv2"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "namedetail"
+                orig: "namedetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "osm_id"
+                orig: "osm_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_geojson"
+                orig: "polygon_geojson"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_kml"
+                orig: "polygon_kml"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_svg"
+                orig: "polygon_svg"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_text"
+                orig: "polygon_text"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/lookup"
+          parts: [
+            "lookup"
+          ]
+          select: {
+            exist: [
+              "accept_language"
+              "addressdetail"
+              "extratag"
+              "format"
+              "namedetail"
+              "osm_id"
+              "polygon_geojson"
+              "polygon_kml"
+              "polygon_svg"
+              "polygon_text"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

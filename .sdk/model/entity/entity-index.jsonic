@@ -1,0 +1,8 @@
+# Entity Models
+
+@"address_lookup.jsonic"
+@"administrative.jsonic"
+@"debug.jsonic"
+@"reverse.jsonic"
+@"search.jsonic"
+@"server_status.jsonic"

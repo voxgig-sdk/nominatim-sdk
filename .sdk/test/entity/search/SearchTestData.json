@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "search": {
+      "SEARCH00": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s84",
+        "display_name": "s85",
+        "icon": "s86",
+        "importance": 135,
+        "lat": "s88",
+        "licence": "s89",
+        "lon": "s8a",
+        "osm_id": "OSM01",
+        "osm_type": "s8c",
+        "place_id": "PLACE01",
+        "type": "s8e"
+      },
+      "SEARCH01": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s106",
+        "display_name": "s107",
+        "icon": "s108",
+        "importance": 265,
+        "lat": "s10a",
+        "licence": "s10b",
+        "lon": "s10c",
+        "osm_id": "OSM01",
+        "osm_type": "s10e",
+        "place_id": "PLACE01",
+        "type": "s110"
+      },
+      "SEARCH02": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s188",
+        "display_name": "s189",
+        "icon": "s18a",
+        "importance": 395,
+        "lat": "s18c",
+        "licence": "s18d",
+        "lon": "s18e",
+        "osm_id": "OSM01",
+        "osm_type": "s190",
+        "place_id": "PLACE01",
+        "type": "s192"
+      }
+    }
+  },
+  "new": {
+    "search": {
+      "search_ref01": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s20a",
+        "display_name": "s20b",
+        "icon": "s20c",
+        "importance": 525,
+        "lat": "s20e",
+        "licence": "s20f",
+        "lon": "s210",
+        "osm_id": "OSM01",
+        "osm_type": "s212",
+        "place_id": "PLACE01",
+        "type": "s214"
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "administrative": {
+      "ADMINISTRATIVE00": {
+        "class": "s5a",
+        "country_code": "s5b",
+        "errormessage": "s5c",
+        "name": "s5d",
+        "osm_id": "OSM01",
+        "osm_type": "s5f",
+        "place_id": "PLACE01",
+        "type": "s61",
+        "updated": "s62"
+      },
+      "ADMINISTRATIVE01": {
+        "class": "sb4",
+        "country_code": "sb5",
+        "errormessage": "sb6",
+        "name": "sb7",
+        "osm_id": "OSM01",
+        "osm_type": "sb9",
+        "place_id": "PLACE01",
+        "type": "sbb",
+        "updated": "sbc"
+      },
+      "ADMINISTRATIVE02": {
+        "class": "s10e",
+        "country_code": "s10f",
+        "errormessage": "s110",
+        "name": "s111",
+        "osm_id": "OSM01",
+        "osm_type": "s113",
+        "place_id": "PLACE01",
+        "type": "s115",
+        "updated": "s116"
+      }
+    }
+  },
+  "new": {
+    "administrative": {
+      "administrative_ref01": {
+        "class": "s168",
+        "country_code": "s169",
+        "errormessage": "s16a",
+        "name": "s16b",
+        "osm_id": "OSM01",
+        "osm_type": "s16d",
+        "place_id": "PLACE01",
+        "type": "s16f",
+        "updated": "s170"
+      }
+    }
+  }
+}

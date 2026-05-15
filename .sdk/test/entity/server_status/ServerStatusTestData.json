@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "server_status": {
+      "SERVER_STATUS00": {
+        "data_updated": "s32",
+        "database_version": "s33",
+        "message": "s34",
+        "software_version": "s35",
+        "status": "s36"
+      },
+      "SERVER_STATUS01": {
+        "data_updated": "s64",
+        "database_version": "s65",
+        "message": "s66",
+        "software_version": "s67",
+        "status": "s68"
+      },
+      "SERVER_STATUS02": {
+        "data_updated": "s96",
+        "database_version": "s97",
+        "message": "s98",
+        "software_version": "s99",
+        "status": "s9a"
+      }
+    }
+  },
+  "new": {
+    "server_status": {
+      "server_status_ref01": {
+        "data_updated": "sc8",
+        "database_version": "sc9",
+        "message": "sca",
+        "software_version": "scb",
+        "status": "scc"
+      }
+    }
+  }
+}

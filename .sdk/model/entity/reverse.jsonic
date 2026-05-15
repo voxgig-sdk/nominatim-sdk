@@ -1,0 +1,190 @@
+# Entity: reverse
+
+main: kit: entity: reverse: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "boundingbox"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "display_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lat"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "licence"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "osm_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "osm_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "reverse"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "accept_language"
+                orig: "accept_language"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "addressdetail"
+                orig: "addressdetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "extratag"
+                orig: "extratag"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "jsonv2"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "lat"
+                orig: "lat"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "lon"
+                orig: "lon"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "namedetail"
+                orig: "namedetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_geojson"
+                orig: "polygon_geojson"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_kml"
+                orig: "polygon_kml"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_svg"
+                orig: "polygon_svg"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_text"
+                orig: "polygon_text"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 18
+                kind: "query"
+                name: "zoom"
+                orig: "zoom"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/reverse"
+          parts: [
+            "reverse"
+          ]
+          select: {
+            exist: [
+              "accept_language"
+              "addressdetail"
+              "extratag"
+              "format"
+              "lat"
+              "lon"
+              "namedetail"
+              "polygon_geojson"
+              "polygon_kml"
+              "polygon_svg"
+              "polygon_text"
+              "zoom"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

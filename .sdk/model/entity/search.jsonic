@@ -1,0 +1,284 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "address"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "boundingbox"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "class"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "display_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "icon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "importance"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "lat"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "licence"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "osm_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "osm_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "accept_language"
+                orig: "accept_language"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "addressdetail"
+                orig: "addressdetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "bounded"
+                orig: "bounded"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "city"
+                orig: "city"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "country"
+                orig: "country"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "countrycode"
+                orig: "countrycode"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "county"
+                orig: "county"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "dedupe"
+                orig: "dedupe"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "extratag"
+                orig: "extratag"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "jsonv2"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "namedetail"
+                orig: "namedetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_geojson"
+                orig: "polygon_geojson"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_kml"
+                orig: "polygon_kml"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_svg"
+                orig: "polygon_svg"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_text"
+                orig: "polygon_text"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "postalcode"
+                orig: "postalcode"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "state"
+                orig: "state"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "street"
+                orig: "street"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "viewbox"
+                orig: "viewbox"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/search"
+          parts: [
+            "search"
+          ]
+          select: {
+            exist: [
+              "accept_language"
+              "addressdetail"
+              "bounded"
+              "city"
+              "country"
+              "countrycode"
+              "county"
+              "dedupe"
+              "extratag"
+              "format"
+              "limit"
+              "namedetail"
+              "polygon_geojson"
+              "polygon_kml"
+              "polygon_svg"
+              "polygon_text"
+              "postalcode"
+              "q"
+              "state"
+              "street"
+              "viewbox"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

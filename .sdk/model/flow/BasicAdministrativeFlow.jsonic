@@ -1,0 +1,22 @@
+# BasicAdministrativeFlow
+
+main: kit: flow: BasicAdministrativeFlow:
+{
+  entity: "administrative",
+  kind: "basic",
+  name: "BasicAdministrativeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "administrative_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAdministrativeFlow"
+}

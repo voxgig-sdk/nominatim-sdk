@@ -1,0 +1,47 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 7
+  metrics: count: method: 7
+
+  entity: address_lookup: {
+    path: "/lookup": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: administrative: {
+    path: "/deletable": {
+      op: list: method: *GET
+    }
+    path: "/polygons": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: debug: {
+    path: "/details": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: reverse: {
+    path: "/reverse": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/search": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: server_status: {
+    path: "/status": {
+      op: load: method: *GET
+    }
+  }
+
+}

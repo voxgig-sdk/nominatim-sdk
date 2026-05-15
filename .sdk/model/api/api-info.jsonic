@@ -1,0 +1,28 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Nominatim Developer Community"
+        url: "https://nominatim.org"
+      }
+      description: "The Nominatim API is a web service for searching OpenStreetMap (OSM) objects based on their name or type. It provides various endpoints for searching, reverse geocoding, address lookup, and server status inquiries, catering to different needs of developers and users."
+      license: {
+        name: "Nominatim License"
+        url: "https://nominatim.org"
+      }
+      servers: [
+        {
+          description: "Production server"
+          url: "https://nominatim.openstreetmap.org"
+        }
+      ]
+      title: "Nominatim API"
+      version: "5.2.0"
+    }
+  }
+}
+
+}

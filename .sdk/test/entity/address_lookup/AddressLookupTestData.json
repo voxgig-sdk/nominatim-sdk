@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "address_lookup": {
+      "ADDRESS_LOOKUP00": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s7a",
+        "display_name": "s7b",
+        "importance": 124,
+        "lat": "s7d",
+        "licence": "s7e",
+        "lon": "s7f",
+        "osm_id": "OSM01",
+        "osm_type": "s81",
+        "place_id": "PLACE01",
+        "type": "s83"
+      },
+      "ADDRESS_LOOKUP01": {
+        "address": {},
+        "boundingbox": [],
+        "class": "sf2",
+        "display_name": "sf3",
+        "importance": 244,
+        "lat": "sf5",
+        "licence": "sf6",
+        "lon": "sf7",
+        "osm_id": "OSM01",
+        "osm_type": "sf9",
+        "place_id": "PLACE01",
+        "type": "sfb"
+      },
+      "ADDRESS_LOOKUP02": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s16a",
+        "display_name": "s16b",
+        "importance": 364,
+        "lat": "s16d",
+        "licence": "s16e",
+        "lon": "s16f",
+        "osm_id": "OSM01",
+        "osm_type": "s171",
+        "place_id": "PLACE01",
+        "type": "s173"
+      }
+    }
+  },
+  "new": {
+    "address_lookup": {
+      "address_lookup_ref01": {
+        "address": {},
+        "boundingbox": [],
+        "class": "s1e2",
+        "display_name": "s1e3",
+        "importance": 484,
+        "lat": "s1e5",
+        "licence": "s1e6",
+        "lon": "s1e7",
+        "osm_id": "OSM01",
+        "osm_type": "s1e9",
+        "place_id": "PLACE01",
+        "type": "s1eb"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicAddressLookupFlow
+
+main: kit: flow: BasicAddressLookupFlow:
+{
+  entity: "address_lookup",
+  kind: "basic",
+  name: "BasicAddressLookupFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "address_lookup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddressLookupFlow"
+}

@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "reverse": {
+      "REVERSE00": {
+        "address": {},
+        "boundingbox": [],
+        "display_name": "s5c",
+        "lat": "s5d",
+        "licence": "s5e",
+        "lon": "s5f",
+        "osm_id": "OSM01",
+        "osm_type": "s61",
+        "place_id": "PLACE01"
+      },
+      "REVERSE01": {
+        "address": {},
+        "boundingbox": [],
+        "display_name": "sb6",
+        "lat": "sb7",
+        "licence": "sb8",
+        "lon": "sb9",
+        "osm_id": "OSM01",
+        "osm_type": "sbb",
+        "place_id": "PLACE01"
+      },
+      "REVERSE02": {
+        "address": {},
+        "boundingbox": [],
+        "display_name": "s110",
+        "lat": "s111",
+        "licence": "s112",
+        "lon": "s113",
+        "osm_id": "OSM01",
+        "osm_type": "s115",
+        "place_id": "PLACE01"
+      }
+    }
+  },
+  "new": {
+    "reverse": {
+      "reverse_ref01": {
+        "address": {},
+        "boundingbox": [],
+        "display_name": "s16a",
+        "lat": "s16b",
+        "licence": "s16c",
+        "lon": "s16d",
+        "osm_id": "OSM01",
+        "osm_type": "s16f",
+        "place_id": "PLACE01"
+      }
+    }
+  }
+}

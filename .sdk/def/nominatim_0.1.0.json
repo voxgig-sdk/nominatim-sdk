@@ -1,0 +1,1329 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Nominatim API",
+    "description": "The Nominatim API is a web service for searching OpenStreetMap (OSM) objects based on their name or type. It provides various endpoints for searching, reverse geocoding, address lookup, and server status inquiries, catering to different needs of developers and users.",
+    "version": "5.2.0",
+    "contact": {
+      "name": "Nominatim Developer Community",
+      "url": "https://nominatim.org"
+    },
+    "license": {
+      "name": "Nominatim License",
+      "url": "https://nominatim.org"
+    }
+  },
+  "externalDocs": {
+    "description": "Official Nominatim API Documentation",
+    "url": "https://nominatim.org/release-docs/latest/api/Overview/"
+  },
+  "servers": [
+    {
+      "url": "https://nominatim.openstreetmap.org",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/search": {
+      "get": {
+        "summary": "Search OSM objects by name or type",
+        "description": "Search for OpenStreetMap objects by their name or type. Returns a list of matching locations with their coordinates and details.",
+        "operationId": "search",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Free-form query string to search for",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "street",
+            "in": "query",
+            "description": "Street name to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "description": "City name to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "county",
+            "in": "query",
+            "description": "County name to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "State name to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Country name to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "postalcode",
+            "in": "query",
+            "description": "Postal code to search for (structured query)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "jsonv2",
+                "geojson",
+                "geocodejson",
+                "xml"
+              ],
+              "default": "jsonv2"
+            }
+          },
+          {
+            "name": "addressdetails",
+            "in": "query",
+            "description": "Include a breakdown of the address into elements",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of returned results",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 10
+            }
+          },
+          {
+            "name": "countrycodes",
+            "in": "query",
+            "description": "Limit search results to specific countries (comma-separated ISO 3166-1alpha2 codes)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "viewbox",
+            "in": "query",
+            "description": "Preferred area to find search results (format: x1,y1,x2,y2)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bounded",
+            "in": "query",
+            "description": "Restrict results to viewbox",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_geojson",
+            "in": "query",
+            "description": "Output geometry of results in GeoJSON format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_kml",
+            "in": "query",
+            "description": "Output geometry of results in KML format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_svg",
+            "in": "query",
+            "description": "Output geometry of results in SVG format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_text",
+            "in": "query",
+            "description": "Output geometry of results as WKT",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "extratags",
+            "in": "query",
+            "description": "Include additional information in the result if available",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "namedetails",
+            "in": "query",
+            "description": "Include a list of alternative names in the results",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "query",
+            "description": "Preferred language order for showing search results",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dedupe",
+            "in": "query",
+            "description": "Remove duplicate results",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with search results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "place_id": {
+                        "type": "integer",
+                        "description": "Unique identifier for the place"
+                      },
+                      "licence": {
+                        "type": "string",
+                        "description": "License information"
+                      },
+                      "osm_type": {
+                        "type": "string",
+                        "description": "OSM type (node, way, relation)"
+                      },
+                      "osm_id": {
+                        "type": "integer",
+                        "description": "OSM object ID"
+                      },
+                      "boundingbox": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Bounding box coordinates"
+                      },
+                      "lat": {
+                        "type": "string",
+                        "description": "Latitude"
+                      },
+                      "lon": {
+                        "type": "string",
+                        "description": "Longitude"
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "description": "Full comma-separated address"
+                      },
+                      "class": {
+                        "type": "string",
+                        "description": "Main OSM tag key"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Main OSM tag value"
+                      },
+                      "importance": {
+                        "type": "number",
+                        "description": "Computed importance rank"
+                      },
+                      "icon": {
+                        "type": "string",
+                        "description": "URL of icon representing the place"
+                      },
+                      "address": {
+                        "type": "object",
+                        "description": "Address breakdown"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/reverse": {
+      "get": {
+        "summary": "Reverse geocoding - search OSM object by location",
+        "description": "Generate an address from a latitude and longitude. Returns the closest matching OSM object for the given coordinates.",
+        "operationId": "reverse",
+        "tags": [
+          "Reverse Geocoding"
+        ],
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "description": "Latitude",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "minimum": -90,
+              "maximum": 90
+            }
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "description": "Longitude",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "double",
+              "minimum": -180,
+              "maximum": 180
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "jsonv2",
+                "geojson",
+                "geocodejson",
+                "xml"
+              ],
+              "default": "jsonv2"
+            }
+          },
+          {
+            "name": "addressdetails",
+            "in": "query",
+            "description": "Include a breakdown of the address into elements",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "zoom",
+            "in": "query",
+            "description": "Level of detail required (0-18)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 18,
+              "default": 18
+            }
+          },
+          {
+            "name": "polygon_geojson",
+            "in": "query",
+            "description": "Output geometry of results in GeoJSON format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_kml",
+            "in": "query",
+            "description": "Output geometry of results in KML format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_svg",
+            "in": "query",
+            "description": "Output geometry of results in SVG format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_text",
+            "in": "query",
+            "description": "Output geometry of results as WKT",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "extratags",
+            "in": "query",
+            "description": "Include additional information in the result if available",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "namedetails",
+            "in": "query",
+            "description": "Include a list of alternative names in the results",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "query",
+            "description": "Preferred language order for showing search results",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with reverse geocoding result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "place_id": {
+                      "type": "integer",
+                      "description": "Unique identifier for the place"
+                    },
+                    "licence": {
+                      "type": "string",
+                      "description": "License information"
+                    },
+                    "osm_type": {
+                      "type": "string",
+                      "description": "OSM type (node, way, relation)"
+                    },
+                    "osm_id": {
+                      "type": "integer",
+                      "description": "OSM object ID"
+                    },
+                    "lat": {
+                      "type": "string",
+                      "description": "Latitude"
+                    },
+                    "lon": {
+                      "type": "string",
+                      "description": "Longitude"
+                    },
+                    "display_name": {
+                      "type": "string",
+                      "description": "Full comma-separated address"
+                    },
+                    "address": {
+                      "type": "object",
+                      "description": "Address breakdown"
+                    },
+                    "boundingbox": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Bounding box coordinates"
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "404": {
+            "description": "No result found for the given coordinates"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/lookup": {
+      "get": {
+        "summary": "Look up address details for OSM objects by their ID",
+        "description": "Look up address details for one or more OSM objects by their OSM ID. Returns address information for the specified objects.",
+        "operationId": "lookup",
+        "tags": [
+          "Address Lookup"
+        ],
+        "parameters": [
+          {
+            "name": "osm_ids",
+            "in": "query",
+            "description": "Comma-separated list of OSM IDs with type prefix (N for node, W for way, R for relation). Example: R146656,W104393803,N240109189",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "jsonv2",
+                "geojson",
+                "geocodejson",
+                "xml"
+              ],
+              "default": "jsonv2"
+            }
+          },
+          {
+            "name": "addressdetails",
+            "in": "query",
+            "description": "Include a breakdown of the address into elements",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_geojson",
+            "in": "query",
+            "description": "Output geometry of results in GeoJSON format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_kml",
+            "in": "query",
+            "description": "Output geometry of results in KML format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_svg",
+            "in": "query",
+            "description": "Output geometry of results in SVG format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_text",
+            "in": "query",
+            "description": "Output geometry of results as WKT",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "extratags",
+            "in": "query",
+            "description": "Include additional information in the result if available",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "namedetails",
+            "in": "query",
+            "description": "Include a list of alternative names in the results",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "query",
+            "description": "Preferred language order for showing search results",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with address details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "place_id": {
+                        "type": "integer",
+                        "description": "Unique identifier for the place"
+                      },
+                      "licence": {
+                        "type": "string",
+                        "description": "License information"
+                      },
+                      "osm_type": {
+                        "type": "string",
+                        "description": "OSM type (node, way, relation)"
+                      },
+                      "osm_id": {
+                        "type": "integer",
+                        "description": "OSM object ID"
+                      },
+                      "boundingbox": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Bounding box coordinates"
+                      },
+                      "lat": {
+                        "type": "string",
+                        "description": "Latitude"
+                      },
+                      "lon": {
+                        "type": "string",
+                        "description": "Longitude"
+                      },
+                      "display_name": {
+                        "type": "string",
+                        "description": "Full comma-separated address"
+                      },
+                      "class": {
+                        "type": "string",
+                        "description": "Main OSM tag key"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Main OSM tag value"
+                      },
+                      "importance": {
+                        "type": "number",
+                        "description": "Computed importance rank"
+                      },
+                      "address": {
+                        "type": "object",
+                        "description": "Address breakdown"
+                      }
+                    }
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Query the status of the server",
+        "description": "Check the operational status of the Nominatim server. Returns information about the database connection and version.",
+        "operationId": "status",
+        "tags": [
+          "Server Status"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "text"
+              ],
+              "default": "text"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with server status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "Status code (0 = OK)"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Status message"
+                    },
+                    "data_updated": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Timestamp when the database was last updated"
+                    },
+                    "software_version": {
+                      "type": "string",
+                      "description": "Nominatim software version"
+                    },
+                    "database_version": {
+                      "type": "string",
+                      "description": "Database version"
+                    }
+                  }
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/deletable": {
+      "get": {
+        "summary": "List objects that have been deleted in OSM",
+        "description": "Returns a list of OSM objects that have been deleted in OpenStreetMap but are held back in Nominatim in case the deletion was accidental.",
+        "operationId": "deletable",
+        "tags": [
+          "Administrative"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ],
+              "default": "json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of deletable objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "place_id": {
+                        "type": "integer",
+                        "description": "Unique identifier for the place"
+                      },
+                      "osm_type": {
+                        "type": "string",
+                        "description": "OSM type (node, way, relation)"
+                      },
+                      "osm_id": {
+                        "type": "integer",
+                        "description": "OSM object ID"
+                      },
+                      "class": {
+                        "type": "string",
+                        "description": "Main OSM tag key"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Main OSM tag value"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/polygons": {
+      "get": {
+        "summary": "List of broken polygons detected by Nominatim",
+        "description": "Returns a list of broken polygons that have been detected by Nominatim during processing.",
+        "operationId": "polygons",
+        "tags": [
+          "Administrative"
+        ],
+        "parameters": [
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "xml"
+              ],
+              "default": "json"
+            }
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "description": "Number of days to look back for broken polygons",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 7
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of broken polygons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "osm_type": {
+                        "type": "string",
+                        "description": "OSM type (way, relation)"
+                      },
+                      "osm_id": {
+                        "type": "integer",
+                        "description": "OSM object ID"
+                      },
+                      "class": {
+                        "type": "string",
+                        "description": "Main OSM tag key"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "Main OSM tag value"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the object"
+                      },
+                      "country_code": {
+                        "type": "string",
+                        "description": "Country code"
+                      },
+                      "updated": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last update timestamp"
+                      },
+                      "errormessage": {
+                        "type": "string",
+                        "description": "Error message describing the polygon issue"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/details": {
+      "get": {
+        "summary": "Show internal details for an object (debugging)",
+        "description": "Returns detailed internal information about a specific OSM object. This endpoint is primarily intended for debugging purposes.",
+        "operationId": "details",
+        "tags": [
+          "Debug"
+        ],
+        "parameters": [
+          {
+            "name": "place_id",
+            "in": "query",
+            "description": "Internal place ID",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "osmtype",
+            "in": "query",
+            "description": "OSM type (N for node, W for way, R for relation)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "N",
+                "W",
+                "R"
+              ]
+            }
+          },
+          {
+            "name": "osmid",
+            "in": "query",
+            "description": "OSM ID",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "class",
+            "in": "query",
+            "description": "OSM tag key",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "Output format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "json",
+                "html"
+              ],
+              "default": "html"
+            }
+          },
+          {
+            "name": "addressdetails",
+            "in": "query",
+            "description": "Include a breakdown of the address into elements",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 1
+            }
+          },
+          {
+            "name": "keywords",
+            "in": "query",
+            "description": "Include keyword information",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "polygon_geojson",
+            "in": "query",
+            "description": "Output geometry of results in GeoJSON format",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          },
+          {
+            "name": "group_hierarchy",
+            "in": "query",
+            "description": "Include hierarchy information",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with object details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "place_id": {
+                      "type": "integer",
+                      "description": "Unique identifier for the place"
+                    },
+                    "parent_place_id": {
+                      "type": "integer",
+                      "description": "Parent place ID"
+                    },
+                    "osm_type": {
+                      "type": "string",
+                      "description": "OSM type (node, way, relation)"
+                    },
+                    "osm_id": {
+                      "type": "integer",
+                      "description": "OSM object ID"
+                    },
+                    "category": {
+                      "type": "string",
+                      "description": "Main OSM tag key"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "Main OSM tag value"
+                    },
+                    "admin_level": {
+                      "type": "integer",
+                      "description": "Administrative level"
+                    },
+                    "localname": {
+                      "type": "string",
+                      "description": "Local name"
+                    },
+                    "names": {
+                      "type": "object",
+                      "description": "All available names"
+                    },
+                    "addresstags": {
+                      "type": "object",
+                      "description": "Address tags"
+                    },
+                    "housenumber": {
+                      "type": "string",
+                      "description": "House number"
+                    },
+                    "calculated_postcode": {
+                      "type": "string",
+                      "description": "Calculated postcode"
+                    },
+                    "country_code": {
+                      "type": "string",
+                      "description": "Country code"
+                    },
+                    "indexed_date": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Date when the object was indexed"
+                    },
+                    "importance": {
+                      "type": "number",
+                      "description": "Computed importance rank"
+                    },
+                    "calculated_importance": {
+                      "type": "number",
+                      "description": "Calculated importance"
+                    },
+                    "extratags": {
+                      "type": "object",
+                      "description": "Extra OSM tags"
+                    },
+                    "calculated_wikipedia": {
+                      "type": "string",
+                      "description": "Wikipedia reference"
+                    },
+                    "rank_address": {
+                      "type": "integer",
+                      "description": "Address rank"
+                    },
+                    "rank_search": {
+                      "type": "integer",
+                      "description": "Search rank"
+                    },
+                    "isarea": {
+                      "type": "boolean",
+                      "description": "Whether the object is an area"
+                    },
+                    "centroid": {
+                      "type": "object",
+                      "description": "Centroid coordinates"
+                    },
+                    "geometry": {
+                      "type": "object",
+                      "description": "Geometry information"
+                    }
+                  }
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid or missing parameters"
+          },
+          "404": {
+            "description": "Object not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Search",
+      "description": "Search for OSM objects by name or type"
+    },
+    {
+      "name": "Reverse Geocoding",
+      "description": "Find addresses from coordinates"
+    },
+    {
+      "name": "Address Lookup",
+      "description": "Look up address details for OSM objects"
+    },
+    {
+      "name": "Server Status",
+      "description": "Server status and health checks"
+    },
+    {
+      "name": "Administrative",
+      "description": "Administrative endpoints for monitoring"
+    },
+    {
+      "name": "Debug",
+      "description": "Debugging endpoints for detailed object information"
+    }
+  ]
+}
