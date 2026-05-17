@@ -6,21 +6,24 @@
         "database_version": "s33",
         "message": "s34",
         "software_version": "s35",
-        "status": "s36"
+        "status": "s36",
+        "id": "SERVER_STATUS00"
       },
       "SERVER_STATUS01": {
         "data_updated": "s64",
         "database_version": "s65",
         "message": "s66",
         "software_version": "s67",
-        "status": "s68"
+        "status": "s68",
+        "id": "SERVER_STATUS01"
       },
       "SERVER_STATUS02": {
         "data_updated": "s96",
         "database_version": "s97",
         "message": "s98",
         "software_version": "s99",
-        "status": "s9a"
+        "status": "s9a",
+        "id": "SERVER_STATUS02"
       }
     }
   },

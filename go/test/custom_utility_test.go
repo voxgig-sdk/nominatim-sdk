@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/nominatim-sdk"
+	sdk "github.com/voxgig-sdk/nominatim-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

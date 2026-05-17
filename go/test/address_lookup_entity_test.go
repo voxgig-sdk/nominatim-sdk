@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/nominatim-sdk"
-	"github.com/voxgig-sdk/nominatim-sdk/core"
+	sdk "github.com/voxgig-sdk/nominatim-sdk/go"
+	"github.com/voxgig-sdk/nominatim-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/nominatim-sdk/go/utility/struct"
 )
 
 func TestAddressLookupEntity(t *testing.T) {

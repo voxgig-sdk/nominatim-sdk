@@ -5,14 +5,14 @@ The Golang SDK for the Nominatim API. Provides an entity-oriented interface usin
 
 ## Install
 ```bash
-go get github.com/voxgig-sdk/nominatim-sdk
+go get github.com/voxgig-sdk/nominatim-sdk/go
 ```
 
 If the module is not yet published to a registry, use a `replace` directive
 in your `go.mod` to point to a local checkout:
 
 ```bash
-go mod edit -replace github.com/voxgig-sdk/nominatim-sdk=../path/to/github.com/voxgig-sdk/nominatim-sdk
+go mod edit -replace github.com/voxgig-sdk/nominatim-sdk/go=../path/to/github.com/voxgig-sdk/nominatim-sdk/go
 ```
 
 
@@ -30,8 +30,8 @@ import (
     "fmt"
     "os"
 
-    sdk "github.com/voxgig-sdk/nominatim-sdk"
-    "github.com/voxgig-sdk/nominatim-sdk/core"
+    sdk "github.com/voxgig-sdk/nominatim-sdk/go"
+    "github.com/voxgig-sdk/nominatim-sdk/go/core"
 )
 
 func main() {
@@ -608,7 +608,7 @@ Use `core.ToMapAny()` to safely cast results and nested data.
 ### Package structure
 
 ```
-github.com/voxgig-sdk/nominatim-sdk/
+github.com/voxgig-sdk/nominatim-sdk/go/
 ├── nominatim.go        # Root package — type aliases and constructors
 ├── core/               # SDK core — client, types, pipeline
 ├── entity/             # Entity implementations
@@ -617,7 +617,7 @@ github.com/voxgig-sdk/nominatim-sdk/
 └── test/               # Test suites
 ```
 
-The root package (`github.com/voxgig-sdk/nominatim-sdk`) re-exports everything needed
+The root package (`github.com/voxgig-sdk/nominatim-sdk/go`) re-exports everything needed
 for normal use. Import sub-packages only when you need specific types
 like `core.ToMapAny`.
 

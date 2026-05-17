@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/nominatim-sdk"
-	"github.com/voxgig-sdk/nominatim-sdk/core"
+	sdk "github.com/voxgig-sdk/nominatim-sdk/go"
+	"github.com/voxgig-sdk/nominatim-sdk/go/core"
 )
 
 func TestServerStatusDirect(t *testing.T) {

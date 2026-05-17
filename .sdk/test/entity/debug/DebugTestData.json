@@ -24,7 +24,8 @@
         "place_id": "PLACE01",
         "rank_address": "sfa",
         "rank_search": "sfb",
-        "type": "sfc"
+        "type": "sfc",
+        "id": "DEBUG00"
       },
       "DEBUG01": {
         "addresstag": {},
@@ -49,7 +50,8 @@
         "place_id": "PLACE01",
         "rank_address": "s1e0",
         "rank_search": "s1e1",
-        "type": "s1e2"
+        "type": "s1e2",
+        "id": "DEBUG01"
       },
       "DEBUG02": {
         "addresstag": {},
@@ -74,7 +76,8 @@
         "place_id": "PLACE01",
         "rank_address": "s2c6",
         "rank_search": "s2c7",
-        "type": "s2c8"
+        "type": "s2c8",
+        "id": "DEBUG02"
       }
     }
   },

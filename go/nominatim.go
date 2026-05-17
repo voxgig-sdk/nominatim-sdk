@@ -1,10 +1,10 @@
 package voxgignominatimsdk
 
 import (
-	"github.com/voxgig-sdk/nominatim-sdk/core"
-	"github.com/voxgig-sdk/nominatim-sdk/entity"
-	"github.com/voxgig-sdk/nominatim-sdk/feature"
-	_ "github.com/voxgig-sdk/nominatim-sdk/utility"
+	"github.com/voxgig-sdk/nominatim-sdk/go/core"
+	"github.com/voxgig-sdk/nominatim-sdk/go/entity"
+	"github.com/voxgig-sdk/nominatim-sdk/go/feature"
+	_ "github.com/voxgig-sdk/nominatim-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

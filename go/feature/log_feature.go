@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/nominatim-sdk/core"
+	"github.com/voxgig-sdk/nominatim-sdk/go/core"
 )
 
 type LogFeature struct {

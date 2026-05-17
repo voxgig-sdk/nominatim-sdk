@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/nominatim-sdk/core"
+	"github.com/voxgig-sdk/nominatim-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/nominatim-sdk/go/utility/struct"
 )
 
 type ReverseEntity struct {
