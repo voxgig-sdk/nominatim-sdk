@@ -91,7 +91,6 @@ def _server_status_basic_setup(extra):
         "NOMINATIM_TEST_SERVER_STATUS_ENTID": idmap,
         "NOMINATIM_TEST_LIVE": "FALSE",
         "NOMINATIM_TEST_EXPLAIN": "FALSE",
-        "NOMINATIM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _server_status_basic_setup(extra):
     if env.get("NOMINATIM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOMINATIM_APIKEY"),
             },
             extra or {},
         ])

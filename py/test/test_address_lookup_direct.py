@@ -61,14 +61,12 @@ def _address_lookup_direct_setup(mockres):
     env = runner.env_override({
         "NOMINATIM_TEST_ADDRESS_LOOKUP_ENTID": {},
         "NOMINATIM_TEST_LIVE": "FALSE",
-        "NOMINATIM_APIKEY": "NONE",
     })
 
     live = env.get("NOMINATIM_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("NOMINATIM_APIKEY"),
         }
         client = NominatimSDK(merged_opts)
         return {

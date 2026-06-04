@@ -21,8 +21,34 @@ main: {
       ]
       title: "Nominatim API"
       version: "5.2.0"
+      tagline: "Geocode and reverse-geocode addresses using OpenStreetMap data"
+      homepage: "https://nominatim.openstreetmap.org"
+      docs_url: "https://nominatim.org/release-docs/latest/api/Overview/"
+      license_short: "Data under ODbL (OpenStreetMap); software under GPLv2"
+      license_md: `- Geocoding results are derived from OpenStreetMap data, licensed under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/).
+- Attribution to OpenStreetMap contributors is required when displaying results.
+- The Nominatim software itself is licensed under the GPLv2.
+- The public instance at \`nominatim.openstreetmap.org\` is governed by the [OSM Foundation Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/).`
+      about_md: `[Nominatim](https://nominatim.openstreetmap.org) is the geocoding service maintained by the [OpenStreetMap](https://www.openstreetmap.org) community. It indexes OSM data to let you turn place names and addresses into coordinates (forward geocoding) and turn coordinates back into addresses (reverse geocoding).
+
+What you get from the API:
+
+- \`search\` — find OSM objects by name, address fragments, or structured query parameters.
+- \`reverse\` — find the nearest OSM object to a given latitude/longitude.
+- \`lookup\` — fetch address details for one or more known OSM object IDs.
+- \`details\` — internal object details, intended for debugging.
+- \`status\` — report on the health and freshness of the server.
+
+Responses are returned as JSON (XML and other formats are also supported by the upstream service). The public instance at \`https://nominatim.openstreetmap.org\` is operated by the OpenStreetMap Foundation and is subject to a strict usage policy: a maximum of 1 request per second, a valid \`User-Agent\` or \`Referer\` identifying the application, and visible attribution to OpenStreetMap contributors. For heavier workloads, self-host Nominatim or use a commercial provider.`
+      entity_desc: {
+        address_lookup: "Fetch address details for one or more known OSM object IDs via `/lookup`."
+        administrative: "Administrative boundaries and related metadata exposed through the search and lookup endpoints."
+        debug: "Internal object details intended for debugging via `/details`."
+        reverse: "Reverse geocoding: find the OSM object closest to a given latitude/longitude via `/reverse`."
+        search: "Forward geocoding: find OSM places by free-form query or structured address fields via `/search`."
+        server_status: "Server health and data freshness via `/status`."
+      }
+      auth: false
     }
   }
-}
-
 }

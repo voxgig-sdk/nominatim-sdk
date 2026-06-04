@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { NominatimSDK } from 'nominatim'
 
-const client = new NominatimSDK({
-  apikey: process.env.NOMINATIM_APIKEY,
-})
+const client = new NominatimSDK({})
 ```
 
 ### 2. List addresslookups
@@ -84,7 +82,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NominatimSDK({ apikey: '...' })
+const client = new NominatimSDK()
 const testClient = client.tester()
 ```
 
@@ -120,7 +118,6 @@ const logger = {
 }
 
 const client = new NominatimSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -131,7 +128,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOMINATIM_TEST_LIVE=TRUE
-NOMINATIM_APIKEY=<your-key>
 ```
 
 Then run:
@@ -149,7 +145,6 @@ cd ts && npm test
 
 ```ts
 new NominatimSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -160,7 +155,6 @@ new NominatimSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
