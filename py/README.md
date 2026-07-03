@@ -10,7 +10,7 @@ The Python SDK for the Nominatim API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install nominatim-sdk
+pip install voxgig-sdk-nominatim
 ```
 
 Or install from source:

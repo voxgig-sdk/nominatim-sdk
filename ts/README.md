@@ -10,7 +10,7 @@ The TypeScript SDK for the Nominatim API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install nominatim
+npm install @voxgig-sdk/nominatim
 ```
 ## Tutorial: your first API call
 

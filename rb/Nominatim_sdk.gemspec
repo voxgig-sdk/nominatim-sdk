@@ -2,9 +2,17 @@ Gem::Specification.new do |spec|
   spec.name          = "voxgig-sdk-nominatim"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
-  spec.summary       = "Nominatim SDK for Ruby"
+  spec.summary       = "Unofficial generated Ruby SDK for the Nominatim public API. Not affiliated with or endorsed by the upstream API provider."
+  spec.description   = "Unofficial generated Ruby SDK for the Nominatim public API. Not affiliated with or endorsed by the upstream API provider."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/voxgig-sdk/nominatim-sdk"
+  spec.metadata      = {
+    "homepage_uri"          => "https://github.com/voxgig-sdk/nominatim-sdk",
+    "source_code_uri"       => "https://github.com/voxgig-sdk/nominatim-sdk",
+    "bug_tracker_uri"       => "https://github.com/voxgig-sdk/nominatim-sdk/issues",
+    "changelog_uri"         => "https://github.com/voxgig-sdk/nominatim-sdk/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]

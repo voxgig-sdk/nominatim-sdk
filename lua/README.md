@@ -10,7 +10,7 @@ The Lua SDK for the Nominatim API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install nominatim-sdk
+luarocks install voxgig-sdk-nominatim
 ```
 
 If the module is not yet published, add the source directory to

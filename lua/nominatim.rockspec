@@ -8,12 +8,14 @@ source = {
   dir = "nominatim-sdk/lua"
 }
 description = {
-  summary = "Nominatim SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Nominatim public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/nominatim-sdk",
+  issues_url = "https://github.com/voxgig-sdk/nominatim-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "nominatim" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

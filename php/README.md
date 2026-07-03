@@ -10,7 +10,7 @@ The PHP SDK for the Nominatim API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/nominatim-sdk
+composer require voxgig-sdk/nominatim
 ```
 
 
