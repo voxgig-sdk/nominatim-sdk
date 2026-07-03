@@ -1,22 +1,8 @@
 # Nominatim SDK
 
-Geocode and reverse-geocode addresses using OpenStreetMap data
+Nominatim API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Nominatim API
-
-[Nominatim](https://nominatim.openstreetmap.org) is the geocoding service maintained by the [OpenStreetMap](https://www.openstreetmap.org) community. It indexes OSM data to let you turn place names and addresses into coordinates (forward geocoding) and turn coordinates back into addresses (reverse geocoding).
-
-What you get from the API:
-
-- `search` — find OSM objects by name, address fragments, or structured query parameters.
-- `reverse` — find the nearest OSM object to a given latitude/longitude.
-- `lookup` — fetch address details for one or more known OSM object IDs.
-- `details` — internal object details, intended for debugging.
-- `status` — report on the health and freshness of the server.
-
-Responses are returned as JSON (XML and other formats are also supported by the upstream service). The public instance at `https://nominatim.openstreetmap.org` is operated by the OpenStreetMap Foundation and is subject to a strict usage policy: a maximum of 1 request per second, a valid `User-Agent` or `Referer` identifying the application, and visible attribution to OpenStreetMap contributors. For heavier workloads, self-host Nominatim or use a commercial provider.
 
 ## Try it
 
@@ -50,29 +36,31 @@ gem install nominatim-sdk
 luarocks install nominatim-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { NominatimSDK } from 'nominatim'
 
-const client = new NominatimSDK({})
+const client = new NominatimSDK({
+  apikey: process.env.NOMINATIM_APIKEY,
+})
 
 // List all addresslookups
 const addresslookups = await client.AddressLookup().list()
+console.log(addresslookups.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -102,12 +90,12 @@ The API exposes 6 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **AddressLookup** | Fetch address details for one or more known OSM object IDs via `/lookup`. | `/lookup` |
-| **Administrative** | Administrative boundaries and related metadata exposed through the search and lookup endpoints. | `/polygons` |
-| **Debug** | Internal object details intended for debugging via `/details`. | `/details` |
-| **Reverse** | Reverse geocoding: find the OSM object closest to a given latitude/longitude via `/reverse`. | `/reverse` |
-| **Search** | Forward geocoding: find OSM places by free-form query or structured address fields via `/search`. | `/search` |
-| **ServerStatus** | Server health and data freshness via `/status`. | `/status` |
+| **AddressLookup** |  | `/lookup` |
+| **Administrative** |  | `/polygons` |
+| **Debug** |  | `/details` |
+| **Reverse** |  | `/reverse` |
+| **Search** |  | `/search` |
+| **ServerStatus** |  | `/status` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -117,12 +105,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from nominatim_sdk import NominatimSDK
 
-client = NominatimSDK({})
+client = NominatimSDK({
+    "apikey": os.environ.get("NOMINATIM_APIKEY"),
+})
 
 # List all addresslookups
-addresslookups, err = client.AddressLookup(None).list(None, None)
+addresslookups, err = client.AddressLookup().list()
+print(addresslookups)
 ```
 
 ### PHP
@@ -131,10 +123,13 @@ addresslookups, err = client.AddressLookup(None).list(None, None)
 <?php
 require_once 'nominatim_sdk.php';
 
-$client = new NominatimSDK([]);
+$client = new NominatimSDK([
+    "apikey" => getenv("NOMINATIM_APIKEY"),
+]);
 
 // List all addresslookups
-[$addresslookups, $err] = $client->AddressLookup(null)->list(null, null);
+[$addresslookups, $err] = $client->AddressLookup()->list();
+print_r($addresslookups);
 ```
 
 ### Golang
@@ -142,10 +137,13 @@ $client = new NominatimSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/nominatim-sdk/go"
 
-client := sdk.NewNominatimSDK(map[string]any{})
+client := sdk.NewNominatimSDK(map[string]any{
+    "apikey": os.Getenv("NOMINATIM_APIKEY"),
+})
 
 // List all addresslookups
 addresslookups, err := client.AddressLookup(nil).List(nil, nil)
+fmt.Println(addresslookups)
 ```
 
 ### Ruby
@@ -153,10 +151,13 @@ addresslookups, err := client.AddressLookup(nil).List(nil, nil)
 ```ruby
 require_relative "Nominatim_sdk"
 
-client = NominatimSDK.new({})
+client = NominatimSDK.new({
+  "apikey" => ENV["NOMINATIM_APIKEY"],
+})
 
 # List all addresslookups
-addresslookups, err = client.AddressLookup(nil).list(nil, nil)
+addresslookups, err = client.AddressLookup().list
+puts addresslookups
 ```
 
 ### Lua
@@ -164,10 +165,13 @@ addresslookups, err = client.AddressLookup(nil).list(nil, nil)
 ```lua
 local sdk = require("nominatim_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("NOMINATIM_APIKEY"),
+})
 
 -- List all addresslookups
-local addresslookups, err = client:AddressLookup(nil):list(nil, nil)
+local addresslookups, err = client:AddressLookup():list()
+print(addresslookups)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +190,21 @@ const result = await client.AddressLookup().load({ id: 'test01' })
 ### Python
 
 ```python
-client = NominatimSDK.test(None, None)
-result, err = client.AddressLookup(None).load(
-    {"id": "test01"}, None
-)
+client = NominatimSDK.test()
+result, err = client.AddressLookup().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = NominatimSDK::test(null, null);
-[$result, $err] = $client->AddressLookup(null)->load(
-    ["id" => "test01"], null
-);
+$client = NominatimSDK::test();
+[$result, $err] = $client->AddressLookup()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.AddressLookup(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +213,15 @@ result, err := client.AddressLookup(nil).Load(
 ### Ruby
 
 ```ruby
-client = NominatimSDK.test(nil, nil)
-result, err = client.AddressLookup(nil).load(
-  { "id" => "test01" }, nil
-)
+client = NominatimSDK.test
+result, err = client.AddressLookup().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:AddressLookup(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:AddressLookup():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,16 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Nominatim API
-
-- Upstream: [https://nominatim.openstreetmap.org](https://nominatim.openstreetmap.org)
-- API docs: [https://nominatim.org/release-docs/latest/api/Overview/](https://nominatim.org/release-docs/latest/api/Overview/)
-
-- Geocoding results are derived from OpenStreetMap data, licensed under the [Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/).
-- Attribution to OpenStreetMap contributors is required when displaying results.
-- The Nominatim software itself is licensed under the GPLv2.
-- The public instance at `nominatim.openstreetmap.org` is governed by the [OSM Foundation Nominatim Usage Policy](https://operations.osmfoundation.org/policies/nominatim/).
 
 ---
 

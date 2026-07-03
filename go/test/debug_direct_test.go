@@ -99,12 +99,14 @@ func debugDirectSetup(mockres any) *debugDirectSetupResult {
 	env := envOverride(map[string]any{
 		"NOMINATIM_TEST_DEBUG_ENTID": map[string]any{},
 		"NOMINATIM_TEST_LIVE":    "FALSE",
+		"NOMINATIM_APIKEY":       "NONE",
 	})
 
 	live := env["NOMINATIM_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["NOMINATIM_APIKEY"],
 		}
 		client := sdk.NewNominatimSDK(mergedOpts)
 

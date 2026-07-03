@@ -62,12 +62,14 @@ def administrative_direct_setup(mockres)
   env = Runner.env_override({
     "NOMINATIM_TEST_ADMINISTRATIVE_ENTID" => {},
     "NOMINATIM_TEST_LIVE" => "FALSE",
+    "NOMINATIM_APIKEY" => "NONE",
   })
 
   live = env["NOMINATIM_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["NOMINATIM_APIKEY"],
     }
     client = NominatimSDK.new(merged_opts)
     return {

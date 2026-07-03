@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -131,7 +131,7 @@ local address_lookup = client:AddressLookup(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:AddressLookup(nil):list(nil, nil)
+local results, err = client:AddressLookup():list()
 ```
 
 ### Common Methods
@@ -191,7 +191,7 @@ local administrative = client:Administrative(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Administrative(nil):list(nil, nil)
+local results, err = client:Administrative():list()
 ```
 
 ### Common Methods
@@ -265,7 +265,7 @@ local debug = client:Debug(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Debug(nil):load({ id = "debug_id" }, nil)
+local result, err = client:Debug():load({ id = "debug_id" })
 ```
 
 ### Common Methods
@@ -325,7 +325,7 @@ local reverse = client:Reverse(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Reverse(nil):list(nil, nil)
+local results, err = client:Reverse():list()
 ```
 
 ### Common Methods
@@ -389,7 +389,7 @@ local search = client:Search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Search(nil):list(nil, nil)
+local results, err = client:Search():list()
 ```
 
 ### Common Methods
@@ -445,7 +445,7 @@ local server_status = client:ServerStatus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ServerStatus(nil):load({ id = "server_status_id" }, nil)
+local result, err = client:ServerStatus():load({ id = "server_status_id" })
 ```
 
 ### Common Methods

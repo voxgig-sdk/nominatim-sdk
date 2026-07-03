@@ -117,6 +117,7 @@ func debugBasicSetup(extra map[string]any) *entityTestSetup {
 		"NOMINATIM_TEST_DEBUG_ENTID": idmap,
 		"NOMINATIM_TEST_LIVE":      "FALSE",
 		"NOMINATIM_TEST_EXPLAIN":   "FALSE",
+		"NOMINATIM_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["NOMINATIM_TEST_DEBUG_ENTID"])
@@ -127,6 +128,7 @@ func debugBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["NOMINATIM_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["NOMINATIM_APIKEY"],
 			},
 			extra,
 		})

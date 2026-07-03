@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'NOMINATIM_TEST_DEBUG_ENTID': idmap,
     'NOMINATIM_TEST_LIVE': 'FALSE',
     'NOMINATIM_TEST_EXPLAIN': 'FALSE',
+    'NOMINATIM_APIKEY': 'NONE',
   })
 
   idmap = env['NOMINATIM_TEST_DEBUG_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new NominatimSDK(merge([
       {
+        apikey: env.NOMINATIM_APIKEY,
       },
       extra
     ]))
