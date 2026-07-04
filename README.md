@@ -26,9 +26,11 @@ import { NominatimSDK } from '@voxgig-sdk/nominatim'
 
 const client = new NominatimSDK()
 
-// List all addresslookups
-const addresslookups = await client.addresslookup.list()
-console.log(addresslookups.data)
+// List all addresslookups (returns AddressLookup[])
+const addresslookups = await client.AddressLookup().list()
+for (const addresslookup of addresslookups) {
+  console.log(addresslookup)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -88,9 +90,10 @@ from nominatim_sdk import NominatimSDK
 
 client = NominatimSDK()
 
-# List all addresslookups
-addresslookups = client.addresslookup.list()
-print(addresslookups)
+# List all addresslookups (returns a list, raises on error)
+addresslookups = client.AddressLookup().list({})
+for addresslookup in addresslookups:
+    print(addresslookup)
 ```
 
 ### PHP
@@ -101,8 +104,8 @@ require_once 'nominatim_sdk.php';
 
 $client = new NominatimSDK();
 
-// List all addresslookups (throws on error)
-$addresslookups = $client->addresslookup()->list();
+// List all addresslookups (returns an array; throws on error)
+$addresslookups = $client->AddressLookup()->list();
 print_r($addresslookups);
 ```
 
@@ -125,8 +128,8 @@ require_relative "Nominatim_sdk"
 
 client = NominatimSDK.new
 
-# List all addresslookups
-addresslookups = client.addresslookup.list
+# List all addresslookups (returns an Array; raises on error)
+addresslookups = client.AddressLookup.list
 puts addresslookups
 ```
 
@@ -138,7 +141,7 @@ local sdk = require("nominatim_sdk")
 local client = sdk.new()
 
 -- List all addresslookups
-local addresslookups, err = client:addresslookup():list()
+local addresslookups, err = client:AddressLookup():list()
 print(addresslookups)
 ```
 
@@ -151,22 +154,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = NominatimSDK.test()
-const result = await client.addresslookup.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const addresslookup = await client.AddressLookup().load({ id: 'test01' })
+// addresslookup is a bare AddressLookup populated with mock data
+console.log(addresslookup)
 ```
 
 ### Python
 
 ```python
 client = NominatimSDK.test()
-result = client.addresslookup.load({"id": "test01"})
+addresslookup = client.AddressLookup().load({"id": "test01"})
+print(addresslookup)
 ```
 
 ### PHP
 
 ```php
-$client = NominatimSDK::test();
-$result = $client->addresslookup()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = NominatimSDK::test([
+    "entity" => ["addresslookup" => ["test01" => ["id" => "test01"]]],
+]);
+$addresslookup = $client->AddressLookup()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +189,18 @@ result, err := client.AddressLookup(nil).Load(
 ### Ruby
 
 ```ruby
-client = NominatimSDK.test
-result = client.addresslookup.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = NominatimSDK.test({
+  "entity" => { "addresslookup" => { "test01" => { "id" => "test01" } } },
+})
+addresslookup = client.AddressLookup.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:addresslookup():load({ id = "test01" })
+local result, err = client:AddressLookup():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +248,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

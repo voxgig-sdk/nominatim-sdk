@@ -28,16 +28,14 @@ require_relative "Nominatim_sdk"
 client = NominatimSDK.new
 ```
 
-### 2. List addresslookups
+### 2. List addresslookup records
 
 ```ruby
 begin
-  result = client.addresslookup.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of AddressLookup records — iterate directly.
+  addresslookups = client.AddressLookup.list
+  addresslookups.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = NominatimSDK.test
+client = NominatimSDK.test({
+  "entity" => { "addresslookup" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.addresslookup.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+addresslookup = client.AddressLookup.load({ "id" => "test01" })
+puts addresslookup
 ```
 
 ### Use a custom fetch function
@@ -167,8 +169,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `AddressLookup` | `(data) -> AddressLookupEntity` | Create a AddressLookup entity instance. |
-| `Administrative` | `(data) -> AdministrativeEntity` | Create a Administrative entity instance. |
+| `AddressLookup` | `(data) -> AddressLookupEntity` | Create an AddressLookup entity instance. |
+| `Administrative` | `(data) -> AdministrativeEntity` | Create an Administrative entity instance. |
 | `Debug` | `(data) -> DebugEntity` | Create a Debug entity instance. |
 | `Reverse` | `(data) -> ReverseEntity` | Create a Reverse entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -343,7 +345,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.address_lookup`
+Create an instance: `address_lookup = client.AddressLookup`
 
 #### Operations
 
@@ -370,14 +372,15 @@ Create an instance: `const address_lookup = client.address_lookup`
 
 #### Example: List
 
-```ts
-const address_lookups = await client.address_lookup.list()
+```ruby
+# list returns an Array of AddressLookup records (raises on error).
+address_lookups = client.AddressLookup.list
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.administrative`
+Create an instance: `administrative = client.Administrative`
 
 #### Operations
 
@@ -401,14 +404,15 @@ Create an instance: `const administrative = client.administrative`
 
 #### Example: List
 
-```ts
-const administratives = await client.administrative.list()
+```ruby
+# list returns an Array of Administrative records (raises on error).
+administratives = client.Administrative.list
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.debug`
+Create an instance: `debug = client.Debug`
 
 #### Operations
 
@@ -446,14 +450,15 @@ Create an instance: `const debug = client.debug`
 
 #### Example: Load
 
-```ts
-const debug = await client.debug.load({ id: 'debug_id' })
+```ruby
+# load returns the bare Debug record (raises on error).
+debug = client.Debug.load({ "id" => "debug_id" })
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.reverse`
+Create an instance: `reverse = client.Reverse`
 
 #### Operations
 
@@ -477,14 +482,15 @@ Create an instance: `const reverse = client.reverse`
 
 #### Example: List
 
-```ts
-const reverses = await client.reverse.list()
+```ruby
+# list returns an Array of Reverse records (raises on error).
+reverses = client.Reverse.list
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search`
 
 #### Operations
 
@@ -512,14 +518,15 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```ruby
+# list returns an Array of Search records (raises on error).
+searchs = client.Search.list
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.server_status`
+Create an instance: `server_status = client.ServerStatus`
 
 #### Operations
 
@@ -539,8 +546,9 @@ Create an instance: `const server_status = client.server_status`
 
 #### Example: Load
 
-```ts
-const server_status = await client.server_status.load({ id: 'server_status_id' })
+```ruby
+# load returns the bare ServerStatus record (raises on error).
+server_status = client.ServerStatus.load({ "id" => "server_status_id" })
 ```
 
 
@@ -615,7 +623,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-addresslookup = client.addresslookup
+addresslookup = client.AddressLookup
 addresslookup.load({ "id" => "example_id" })
 
 # addresslookup.data_get now returns the loaded addresslookup data

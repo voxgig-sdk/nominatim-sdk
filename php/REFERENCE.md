@@ -105,7 +105,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## AddressLookupEntity
 
 ```php
-$address_lookup = $client->address_lookup();
+$address_lookup = $client->AddressLookup();
 ```
 
 ### Fields
@@ -132,7 +132,7 @@ $address_lookup = $client->address_lookup();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->address_lookup()->list([]);
+$results = $client->AddressLookup()->list([]);
 ```
 
 ### Common Methods
@@ -168,7 +168,7 @@ Return the entity name.
 ## AdministrativeEntity
 
 ```php
-$administrative = $client->administrative();
+$administrative = $client->Administrative();
 ```
 
 ### Fields
@@ -192,7 +192,7 @@ $administrative = $client->administrative();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->administrative()->list([]);
+$results = $client->Administrative()->list([]);
 ```
 
 ### Common Methods
@@ -228,7 +228,7 @@ Return the entity name.
 ## DebugEntity
 
 ```php
-$debug = $client->debug();
+$debug = $client->Debug();
 ```
 
 ### Fields
@@ -266,7 +266,7 @@ $debug = $client->debug();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->debug()->load(["id" => "debug_id"]);
+$result = $client->Debug()->load(["id" => "debug_id"]);
 ```
 
 ### Common Methods
@@ -302,7 +302,7 @@ Return the entity name.
 ## ReverseEntity
 
 ```php
-$reverse = $client->reverse();
+$reverse = $client->Reverse();
 ```
 
 ### Fields
@@ -326,7 +326,7 @@ $reverse = $client->reverse();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->reverse()->list([]);
+$results = $client->Reverse()->list([]);
 ```
 
 ### Common Methods
@@ -362,7 +362,7 @@ Return the entity name.
 ## SearchEntity
 
 ```php
-$search = $client->search();
+$search = $client->Search();
 ```
 
 ### Fields
@@ -390,7 +390,7 @@ $search = $client->search();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->search()->list([]);
+$results = $client->Search()->list([]);
 ```
 
 ### Common Methods
@@ -426,7 +426,7 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```php
-$server_status = $client->server_status();
+$server_status = $client->ServerStatus();
 ```
 
 ### Fields
@@ -446,7 +446,7 @@ $server_status = $client->server_status();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->server_status()->load(["id" => "server_status_id"]);
+$result = $client->ServerStatus()->load(["id" => "server_status_id"]);
 ```
 
 ### Common Methods

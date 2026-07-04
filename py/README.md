@@ -31,14 +31,16 @@ from nominatim_sdk import NominatimSDK
 client = NominatimSDK()
 ```
 
-### 2. List addresslookups
+### 2. List addresslookup records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.addresslookup.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    addresslookups = client.AddressLookup().list({})
+    for addresslookup in addresslookups:
+        print(addresslookup)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NominatimSDK.test()
 
-result = client.addresslookup.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+addresslookup = client.AddressLookup().load({"id": "test01"})
+# addresslookup contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -163,8 +166,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `AddressLookup` | `(data) -> AddressLookupEntity` | Create a AddressLookup entity instance. |
-| `Administrative` | `(data) -> AdministrativeEntity` | Create a Administrative entity instance. |
+| `AddressLookup` | `(data) -> AddressLookupEntity` | Create an AddressLookup entity instance. |
+| `Administrative` | `(data) -> AdministrativeEntity` | Create an Administrative entity instance. |
 | `Debug` | `(data) -> DebugEntity` | Create a Debug entity instance. |
 | `Reverse` | `(data) -> ReverseEntity` | Create a Reverse entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -340,7 +343,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.address_lookup`
+Create an instance: `address_lookup = client.AddressLookup()`
 
 #### Operations
 
@@ -367,14 +370,14 @@ Create an instance: `const address_lookup = client.address_lookup`
 
 #### Example: List
 
-```ts
-const address_lookups = await client.address_lookup.list()
+```python
+address_lookups = client.AddressLookup().list({})
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.administrative`
+Create an instance: `administrative = client.Administrative()`
 
 #### Operations
 
@@ -398,14 +401,14 @@ Create an instance: `const administrative = client.administrative`
 
 #### Example: List
 
-```ts
-const administratives = await client.administrative.list()
+```python
+administratives = client.Administrative().list({})
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.debug`
+Create an instance: `debug = client.Debug()`
 
 #### Operations
 
@@ -443,14 +446,14 @@ Create an instance: `const debug = client.debug`
 
 #### Example: Load
 
-```ts
-const debug = await client.debug.load({ id: 'debug_id' })
+```python
+debug = client.Debug().load({"id": "debug_id"})
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.reverse`
+Create an instance: `reverse = client.Reverse()`
 
 #### Operations
 
@@ -474,14 +477,14 @@ Create an instance: `const reverse = client.reverse`
 
 #### Example: List
 
-```ts
-const reverses = await client.reverse.list()
+```python
+reverses = client.Reverse().list({})
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search()`
 
 #### Operations
 
@@ -509,14 +512,14 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```python
+searchs = client.Search().list({})
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.server_status`
+Create an instance: `server_status = client.ServerStatus()`
 
 #### Operations
 
@@ -536,8 +539,8 @@ Create an instance: `const server_status = client.server_status`
 
 #### Example: Load
 
-```ts
-const server_status = await client.server_status.load({ id: 'server_status_id' })
+```python
+server_status = client.ServerStatus().load({"id": "server_status_id"})
 ```
 
 
@@ -611,7 +614,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-addresslookup = client.addresslookup
+addresslookup = client.AddressLookup()
 addresslookup.load({"id": "example_id"})
 
 # addresslookup.data_get() now returns the loaded addresslookup data

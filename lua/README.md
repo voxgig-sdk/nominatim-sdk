@@ -31,17 +31,17 @@ local sdk = require("nominatim_sdk")
 local client = sdk.new()
 ```
 
-### 2. List addresslookups
+### 2. List addresslookup records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:addresslookup():list()
+local addresslookups, err = client:AddressLookup():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(addresslookups) do
+  print(item["id"], item["name"])
 end
 ```
 
@@ -88,8 +88,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:addresslookup():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:AddressLookup():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -167,8 +167,8 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `AddressLookup` | `(data) -> AddressLookupEntity` | Create a AddressLookup entity instance. |
-| `Administrative` | `(data) -> AdministrativeEntity` | Create a Administrative entity instance. |
+| `AddressLookup` | `(data) -> AddressLookupEntity` | Create an AddressLookup entity instance. |
+| `Administrative` | `(data) -> AdministrativeEntity` | Create an Administrative entity instance. |
 | `Debug` | `(data) -> DebugEntity` | Create a Debug entity instance. |
 | `Reverse` | `(data) -> ReverseEntity` | Create a Reverse entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
@@ -194,17 +194,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local address_lookup, err = client:AddressLookup():load({ id = "example_id" })
+    if err then error(err) end
+    -- address_lookup is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -340,7 +345,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.address_lookup`
+Create an instance: `local address_lookup = client:AddressLookup(nil)`
 
 #### Operations
 
@@ -367,14 +372,14 @@ Create an instance: `const address_lookup = client.address_lookup`
 
 #### Example: List
 
-```ts
-const address_lookups = await client.address_lookup.list()
+```lua
+local address_lookups, err = client:AddressLookup():list()
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.administrative`
+Create an instance: `local administrative = client:Administrative(nil)`
 
 #### Operations
 
@@ -398,14 +403,14 @@ Create an instance: `const administrative = client.administrative`
 
 #### Example: List
 
-```ts
-const administratives = await client.administrative.list()
+```lua
+local administratives, err = client:Administrative():list()
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.debug`
+Create an instance: `local debug = client:Debug(nil)`
 
 #### Operations
 
@@ -443,14 +448,14 @@ Create an instance: `const debug = client.debug`
 
 #### Example: Load
 
-```ts
-const debug = await client.debug.load({ id: 'debug_id' })
+```lua
+local debug, err = client:Debug():load({ id = "debug_id" })
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.reverse`
+Create an instance: `local reverse = client:Reverse(nil)`
 
 #### Operations
 
@@ -474,14 +479,14 @@ Create an instance: `const reverse = client.reverse`
 
 #### Example: List
 
-```ts
-const reverses = await client.reverse.list()
+```lua
+local reverses, err = client:Reverse():list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `local search = client:Search(nil)`
 
 #### Operations
 
@@ -509,14 +514,14 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```lua
+local searchs, err = client:Search():list()
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.server_status`
+Create an instance: `local server_status = client:ServerStatus(nil)`
 
 #### Operations
 
@@ -536,8 +541,8 @@ Create an instance: `const server_status = client.server_status`
 
 #### Example: Load
 
-```ts
-const server_status = await client.server_status.load({ id: 'server_status_id' })
+```lua
+local server_status, err = client:ServerStatus():load({ id = "server_status_id" })
 ```
 
 
@@ -612,7 +617,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local addresslookup = client:addresslookup()
+local addresslookup = client:AddressLookup()
 addresslookup:load({ id = "example_id" })
 
 -- addresslookup:data_get() now returns the loaded addresslookup data

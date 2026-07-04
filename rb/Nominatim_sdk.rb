@@ -208,78 +208,42 @@ class NominatimSDK
   end
 
 
-  # Idiomatic facade: client.address_lookup.list / client.address_lookup.load({ "id" => ... })
-  def address_lookup
-    require_relative 'entity/address_lookup_entity'
-    @address_lookup ||= AddressLookupEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.address_lookup instead.
+  # Canonical facade: client.AddressLookup.list / client.AddressLookup.load({ "id" => ... })
   def AddressLookup(data = nil)
     require_relative 'entity/address_lookup_entity'
     AddressLookupEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.administrative.list / client.administrative.load({ "id" => ... })
-  def administrative
-    require_relative 'entity/administrative_entity'
-    @administrative ||= AdministrativeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.administrative instead.
+  # Canonical facade: client.Administrative.list / client.Administrative.load({ "id" => ... })
   def Administrative(data = nil)
     require_relative 'entity/administrative_entity'
     AdministrativeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.debug.list / client.debug.load({ "id" => ... })
-  def debug
-    require_relative 'entity/debug_entity'
-    @debug ||= DebugEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.debug instead.
+  # Canonical facade: client.Debug.list / client.Debug.load({ "id" => ... })
   def Debug(data = nil)
     require_relative 'entity/debug_entity'
     DebugEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.reverse.list / client.reverse.load({ "id" => ... })
-  def reverse
-    require_relative 'entity/reverse_entity'
-    @reverse ||= ReverseEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.reverse instead.
+  # Canonical facade: client.Reverse.list / client.Reverse.load({ "id" => ... })
   def Reverse(data = nil)
     require_relative 'entity/reverse_entity'
     ReverseEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
-  def search
-    require_relative 'entity/search_entity'
-    @search ||= SearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.search instead.
+  # Canonical facade: client.Search.list / client.Search.load({ "id" => ... })
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.server_status.list / client.server_status.load({ "id" => ... })
-  def server_status
-    require_relative 'entity/server_status_entity'
-    @server_status ||= ServerStatusEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.server_status instead.
+  # Canonical facade: client.ServerStatus.list / client.ServerStatus.load({ "id" => ... })
   def ServerStatus(data = nil)
     require_relative 'entity/server_status_entity'
     ServerStatusEntity.new(self, data)

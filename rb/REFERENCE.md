@@ -106,7 +106,7 @@ same parameters as `direct()`. Raises on error.
 ## AddressLookupEntity
 
 ```ruby
-address_lookup = client.address_lookup
+address_lookup = client.AddressLookup
 ```
 
 ### Fields
@@ -133,7 +133,7 @@ address_lookup = client.address_lookup
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.address_lookup.list(nil)
+results = client.AddressLookup.list(nil)
 ```
 
 ### Common Methods
@@ -169,7 +169,7 @@ Return the entity name.
 ## AdministrativeEntity
 
 ```ruby
-administrative = client.administrative
+administrative = client.Administrative
 ```
 
 ### Fields
@@ -193,7 +193,7 @@ administrative = client.administrative
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.administrative.list(nil)
+results = client.Administrative.list(nil)
 ```
 
 ### Common Methods
@@ -229,7 +229,7 @@ Return the entity name.
 ## DebugEntity
 
 ```ruby
-debug = client.debug
+debug = client.Debug
 ```
 
 ### Fields
@@ -267,7 +267,7 @@ debug = client.debug
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.debug.load({ "id" => "debug_id" })
+result = client.Debug.load({ "id" => "debug_id" })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ Return the entity name.
 ## ReverseEntity
 
 ```ruby
-reverse = client.reverse
+reverse = client.Reverse
 ```
 
 ### Fields
@@ -327,7 +327,7 @@ reverse = client.reverse
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.reverse.list(nil)
+results = client.Reverse.list(nil)
 ```
 
 ### Common Methods
@@ -363,7 +363,7 @@ Return the entity name.
 ## SearchEntity
 
 ```ruby
-search = client.search
+search = client.Search
 ```
 
 ### Fields
@@ -391,7 +391,7 @@ search = client.search
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.search.list(nil)
+results = client.Search.list(nil)
 ```
 
 ### Common Methods
@@ -427,7 +427,7 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```ruby
-server_status = client.server_status
+server_status = client.ServerStatus
 ```
 
 ### Fields
@@ -447,7 +447,7 @@ server_status = client.server_status
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.server_status.load({ "id" => "server_status_id" })
+result = client.ServerStatus.load({ "id" => "server_status_id" })
 ```
 
 ### Common Methods

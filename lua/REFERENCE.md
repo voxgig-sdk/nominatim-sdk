@@ -103,7 +103,7 @@ same parameters as `direct()`.
 ## AddressLookupEntity
 
 ```lua
-local address_lookup = client:address_lookup(nil)
+local address_lookup = client:AddressLookup(nil)
 ```
 
 ### Fields
@@ -130,7 +130,7 @@ local address_lookup = client:address_lookup(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:address_lookup():list()
+local results, err = client:AddressLookup():list()
 ```
 
 ### Common Methods
@@ -166,7 +166,7 @@ Return the entity name.
 ## AdministrativeEntity
 
 ```lua
-local administrative = client:administrative(nil)
+local administrative = client:Administrative(nil)
 ```
 
 ### Fields
@@ -190,7 +190,7 @@ local administrative = client:administrative(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:administrative():list()
+local results, err = client:Administrative():list()
 ```
 
 ### Common Methods
@@ -226,7 +226,7 @@ Return the entity name.
 ## DebugEntity
 
 ```lua
-local debug = client:debug(nil)
+local debug = client:Debug(nil)
 ```
 
 ### Fields
@@ -264,7 +264,7 @@ local debug = client:debug(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:debug():load({ id = "debug_id" })
+local result, err = client:Debug():load({ id = "debug_id" })
 ```
 
 ### Common Methods
@@ -300,7 +300,7 @@ Return the entity name.
 ## ReverseEntity
 
 ```lua
-local reverse = client:reverse(nil)
+local reverse = client:Reverse(nil)
 ```
 
 ### Fields
@@ -324,7 +324,7 @@ local reverse = client:reverse(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:reverse():list()
+local results, err = client:Reverse():list()
 ```
 
 ### Common Methods
@@ -360,7 +360,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:search(nil)
+local search = client:Search(nil)
 ```
 
 ### Fields
@@ -388,7 +388,7 @@ local search = client:search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:search():list()
+local results, err = client:Search():list()
 ```
 
 ### Common Methods
@@ -424,7 +424,7 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```lua
-local server_status = client:server_status(nil)
+local server_status = client:ServerStatus(nil)
 ```
 
 ### Fields
@@ -444,7 +444,7 @@ local server_status = client:server_status(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:server_status():load({ id = "server_status_id" })
+local result, err = client:ServerStatus():load({ id = "server_status_id" })
 ```
 
 ### Common Methods

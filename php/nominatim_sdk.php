@@ -233,10 +233,10 @@ class NominatimSDK
 
     private $_address_lookup = null;
 
-    // Idiomatic facade: $client->address_lookup()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias AddressLookup() (PHP method
-    // names are case-insensitive).
-    public function address_lookup($data = null)
+    // Canonical facade: $client->AddressLookup()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->address_lookup()
+    // resolves here too.
+    public function AddressLookup($data = null)
     {
         require_once __DIR__ . '/entity/address_lookup_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class NominatimSDK
 
     private $_administrative = null;
 
-    // Idiomatic facade: $client->administrative()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Administrative() (PHP method
-    // names are case-insensitive).
-    public function administrative($data = null)
+    // Canonical facade: $client->Administrative()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->administrative()
+    // resolves here too.
+    public function Administrative($data = null)
     {
         require_once __DIR__ . '/entity/administrative_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class NominatimSDK
 
     private $_debug = null;
 
-    // Idiomatic facade: $client->debug()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Debug() (PHP method
-    // names are case-insensitive).
-    public function debug($data = null)
+    // Canonical facade: $client->Debug()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->debug()
+    // resolves here too.
+    public function Debug($data = null)
     {
         require_once __DIR__ . '/entity/debug_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class NominatimSDK
 
     private $_reverse = null;
 
-    // Idiomatic facade: $client->reverse()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Reverse() (PHP method
-    // names are case-insensitive).
-    public function reverse($data = null)
+    // Canonical facade: $client->Reverse()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->reverse()
+    // resolves here too.
+    public function Reverse($data = null)
     {
         require_once __DIR__ . '/entity/reverse_entity.php';
         if ($data === null) {
@@ -305,10 +305,10 @@ class NominatimSDK
 
     private $_search = null;
 
-    // Idiomatic facade: $client->search()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Search() (PHP method
-    // names are case-insensitive).
-    public function search($data = null)
+    // Canonical facade: $client->Search()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->search()
+    // resolves here too.
+    public function Search($data = null)
     {
         require_once __DIR__ . '/entity/search_entity.php';
         if ($data === null) {
@@ -323,10 +323,10 @@ class NominatimSDK
 
     private $_server_status = null;
 
-    // Idiomatic facade: $client->server_status()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias ServerStatus() (PHP method
-    // names are case-insensitive).
-    public function server_status($data = null)
+    // Canonical facade: $client->ServerStatus()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->server_status()
+    // resolves here too.
+    public function ServerStatus($data = null)
     {
         require_once __DIR__ . '/entity/server_status_entity.php';
         if ($data === null) {

@@ -100,7 +100,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## AddressLookupEntity
 
 ```python
-address_lookup = client.address_lookup
+address_lookup = client.AddressLookup()
 ```
 
 ### Fields
@@ -127,7 +127,9 @@ address_lookup = client.address_lookup
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.address_lookup.list({})
+results = client.AddressLookup().list({})
+for address_lookup in results:
+    print(address_lookup)
 ```
 
 ### Common Methods
@@ -162,7 +164,7 @@ Return the entity name.
 ## AdministrativeEntity
 
 ```python
-administrative = client.administrative
+administrative = client.Administrative()
 ```
 
 ### Fields
@@ -186,7 +188,9 @@ administrative = client.administrative
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.administrative.list({})
+results = client.Administrative().list({})
+for administrative in results:
+    print(administrative)
 ```
 
 ### Common Methods
@@ -221,7 +225,7 @@ Return the entity name.
 ## DebugEntity
 
 ```python
-debug = client.debug
+debug = client.Debug()
 ```
 
 ### Fields
@@ -259,7 +263,7 @@ debug = client.debug
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.debug.load({"id": "debug_id"})
+result = client.Debug().load({"id": "debug_id"})
 ```
 
 ### Common Methods
@@ -294,7 +298,7 @@ Return the entity name.
 ## ReverseEntity
 
 ```python
-reverse = client.reverse
+reverse = client.Reverse()
 ```
 
 ### Fields
@@ -318,7 +322,9 @@ reverse = client.reverse
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.reverse.list({})
+results = client.Reverse().list({})
+for reverse in results:
+    print(reverse)
 ```
 
 ### Common Methods
@@ -353,7 +359,7 @@ Return the entity name.
 ## SearchEntity
 
 ```python
-search = client.search
+search = client.Search()
 ```
 
 ### Fields
@@ -381,7 +387,9 @@ search = client.search
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.search.list({})
+results = client.Search().list({})
+for search in results:
+    print(search)
 ```
 
 ### Common Methods
@@ -416,7 +424,7 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```python
-server_status = client.server_status
+server_status = client.ServerStatus()
 ```
 
 ### Fields
@@ -436,7 +444,7 @@ server_status = client.server_status
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.server_status.load({"id": "server_status_id"})
+result = client.ServerStatus().load({"id": "server_status_id"})
 ```
 
 ### Common Methods

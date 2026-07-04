@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:address_lookup():list() / client:address_lookup():load({ id = ... })
-function NominatimSDK:address_lookup(data)
+-- Idiomatic facade: client:AddressLookup():list() / client:AddressLookup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:AddressLookup(data)
   local EntityMod = require("entity.address_lookup_entity")
   if data == nil then
     if self._address_lookup == nil then
@@ -256,15 +257,10 @@ function NominatimSDK:address_lookup(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:address_lookup() instead.
-function NominatimSDK:AddressLookup(data)
-  local EntityMod = require("entity.address_lookup_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:administrative():list() / client:administrative():load({ id = ... })
-function NominatimSDK:administrative(data)
+-- Idiomatic facade: client:Administrative():list() / client:Administrative():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:Administrative(data)
   local EntityMod = require("entity.administrative_entity")
   if data == nil then
     if self._administrative == nil then
@@ -275,15 +271,10 @@ function NominatimSDK:administrative(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:administrative() instead.
-function NominatimSDK:Administrative(data)
-  local EntityMod = require("entity.administrative_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:debug():list() / client:debug():load({ id = ... })
-function NominatimSDK:debug(data)
+-- Idiomatic facade: client:Debug():list() / client:Debug():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:Debug(data)
   local EntityMod = require("entity.debug_entity")
   if data == nil then
     if self._debug == nil then
@@ -294,15 +285,10 @@ function NominatimSDK:debug(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:debug() instead.
-function NominatimSDK:Debug(data)
-  local EntityMod = require("entity.debug_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:reverse():list() / client:reverse():load({ id = ... })
-function NominatimSDK:reverse(data)
+-- Idiomatic facade: client:Reverse():list() / client:Reverse():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:Reverse(data)
   local EntityMod = require("entity.reverse_entity")
   if data == nil then
     if self._reverse == nil then
@@ -313,15 +299,10 @@ function NominatimSDK:reverse(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:reverse() instead.
-function NominatimSDK:Reverse(data)
-  local EntityMod = require("entity.reverse_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function NominatimSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -332,15 +313,10 @@ function NominatimSDK:search(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:search() instead.
-function NominatimSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:server_status():list() / client:server_status():load({ id = ... })
-function NominatimSDK:server_status(data)
+-- Idiomatic facade: client:ServerStatus():list() / client:ServerStatus():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NominatimSDK:ServerStatus(data)
   local EntityMod = require("entity.server_status_entity")
   if data == nil then
     if self._server_status == nil then
@@ -348,12 +324,6 @@ function NominatimSDK:server_status(data)
     end
     return self._server_status
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:server_status() instead.
-function NominatimSDK:ServerStatus(data)
-  local EntityMod = require("entity.server_status_entity")
   return EntityMod.new(self, data)
 end
 

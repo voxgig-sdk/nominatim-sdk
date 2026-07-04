@@ -29,18 +29,16 @@ require_once 'nominatim_sdk.php';
 $client = new NominatimSDK();
 ```
 
-### 2. List addresslookups
+### 2. List addresslookup records
 
 ```php
 try {
-    $result = $client->addresslookup()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of AddressLookup records — iterate directly.
+    $addresslookups = $client->AddressLookup()->list();
+    foreach ($addresslookups as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = NominatimSDK::test();
+$client = NominatimSDK::test([
+    "entity" => ["addresslookup" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->addresslookup()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$addresslookup = $client->AddressLookup()->load(["id" => "test01"]);
+print_r($addresslookup);
 ```
 
 ### Use a custom fetch function
@@ -171,8 +173,8 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `AddressLookup` | `($data): AddressLookupEntity` | Create a AddressLookup entity instance. |
-| `Administrative` | `($data): AdministrativeEntity` | Create a Administrative entity instance. |
+| `AddressLookup` | `($data): AddressLookupEntity` | Create an AddressLookup entity instance. |
+| `Administrative` | `($data): AdministrativeEntity` | Create an Administrative entity instance. |
 | `Debug` | `($data): DebugEntity` | Create a Debug entity instance. |
 | `Reverse` | `($data): ReverseEntity` | Create a Reverse entity instance. |
 | `Search` | `($data): SearchEntity` | Create a Search entity instance. |
@@ -348,7 +350,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.address_lookup`
+Create an instance: `$address_lookup = $client->AddressLookup();`
 
 #### Operations
 
@@ -375,14 +377,15 @@ Create an instance: `const address_lookup = client.address_lookup`
 
 #### Example: List
 
-```ts
-const address_lookups = await client.address_lookup.list()
+```php
+// list() returns an array of AddressLookup records (throws on error).
+$address_lookups = $client->AddressLookup()->list();
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.administrative`
+Create an instance: `$administrative = $client->Administrative();`
 
 #### Operations
 
@@ -406,14 +409,15 @@ Create an instance: `const administrative = client.administrative`
 
 #### Example: List
 
-```ts
-const administratives = await client.administrative.list()
+```php
+// list() returns an array of Administrative records (throws on error).
+$administratives = $client->Administrative()->list();
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.debug`
+Create an instance: `$debug = $client->Debug();`
 
 #### Operations
 
@@ -451,14 +455,15 @@ Create an instance: `const debug = client.debug`
 
 #### Example: Load
 
-```ts
-const debug = await client.debug.load({ id: 'debug_id' })
+```php
+// load() returns the bare Debug record (throws on error).
+$debug = $client->Debug()->load(["id" => "debug_id"]);
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.reverse`
+Create an instance: `$reverse = $client->Reverse();`
 
 #### Operations
 
@@ -482,14 +487,15 @@ Create an instance: `const reverse = client.reverse`
 
 #### Example: List
 
-```ts
-const reverses = await client.reverse.list()
+```php
+// list() returns an array of Reverse records (throws on error).
+$reverses = $client->Reverse()->list();
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `$search = $client->Search();`
 
 #### Operations
 
@@ -517,14 +523,15 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```php
+// list() returns an array of Search records (throws on error).
+$searchs = $client->Search()->list();
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.server_status`
+Create an instance: `$server_status = $client->ServerStatus();`
 
 #### Operations
 
@@ -544,8 +551,9 @@ Create an instance: `const server_status = client.server_status`
 
 #### Example: Load
 
-```ts
-const server_status = await client.server_status.load({ id: 'server_status_id' })
+```php
+// load() returns the bare ServerStatus record (throws on error).
+$server_status = $client->ServerStatus()->load(["id" => "server_status_id"]);
 ```
 
 
@@ -620,7 +628,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$addresslookup = $client->addresslookup();
+$addresslookup = $client->AddressLookup();
 $addresslookup->load(["id" => "example_id"]);
 
 // $addresslookup->dataGet() now returns the loaded addresslookup data

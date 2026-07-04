@@ -28,15 +28,15 @@ import { NominatimSDK } from '@voxgig-sdk/nominatim'
 const client = new NominatimSDK()
 ```
 
-### 2. List addresslookups
+### 2. List addresslookup records
+
+`list()` resolves to an array of AddressLookup objects — iterate it directly:
 
 ```ts
-const result = await client.addresslookup.list()
+const addresslookups = await client.AddressLookup().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const addresslookup of addresslookups) {
+  console.log(addresslookup)
 }
 ```
 
@@ -54,6 +54,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -82,9 +85,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NominatimSDK.test()
 
-const result = await client.addresslookup.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const addresslookup = await client.AddressLookup().load({ id: 'test01' })
+// addresslookup is a bare entity populated with mock response data
+console.log(addresslookup)
 ```
 
 You can also use the instance method:
@@ -99,7 +102,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.addresslookup
+const entity = client.AddressLookup()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -177,8 +180,8 @@ new NominatimSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `AddressLookup(data?)` | `AddressLookupEntity` | Create a AddressLookup entity instance. |
-| `Administrative(data?)` | `AdministrativeEntity` | Create a Administrative entity instance. |
+| `AddressLookup(data?)` | `AddressLookupEntity` | Create an AddressLookup entity instance. |
+| `Administrative(data?)` | `AdministrativeEntity` | Create an Administrative entity instance. |
 | `Debug(data?)` | `DebugEntity` | Create a Debug entity instance. |
 | `Reverse(data?)` | `ReverseEntity` | Create a Reverse entity instance. |
 | `Search(data?)` | `SearchEntity` | Create a Search entity instance. |
@@ -199,29 +202,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): NominatimSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -385,7 +389,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.address_lookup`
+Create an instance: `const address_lookup = client.AddressLookup()`
 
 #### Operations
 
@@ -413,13 +417,13 @@ Create an instance: `const address_lookup = client.address_lookup`
 #### Example: List
 
 ```ts
-const address_lookups = await client.address_lookup.list()
+const address_lookups = await client.AddressLookup().list()
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.administrative`
+Create an instance: `const administrative = client.Administrative()`
 
 #### Operations
 
@@ -444,13 +448,13 @@ Create an instance: `const administrative = client.administrative`
 #### Example: List
 
 ```ts
-const administratives = await client.administrative.list()
+const administratives = await client.Administrative().list()
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.debug`
+Create an instance: `const debug = client.Debug()`
 
 #### Operations
 
@@ -489,13 +493,13 @@ Create an instance: `const debug = client.debug`
 #### Example: Load
 
 ```ts
-const debug = await client.debug.load({ id: 'debug_id' })
+const debug = await client.Debug().load({ id: 'debug_id' })
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.reverse`
+Create an instance: `const reverse = client.Reverse()`
 
 #### Operations
 
@@ -520,13 +524,13 @@ Create an instance: `const reverse = client.reverse`
 #### Example: List
 
 ```ts
-const reverses = await client.reverse.list()
+const reverses = await client.Reverse().list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `const search = client.Search()`
 
 #### Operations
 
@@ -555,13 +559,13 @@ Create an instance: `const search = client.search`
 #### Example: List
 
 ```ts
-const searchs = await client.search.list()
+const searchs = await client.Search().list()
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.server_status`
+Create an instance: `const server_status = client.ServerStatus()`
 
 #### Operations
 
@@ -582,7 +586,7 @@ Create an instance: `const server_status = client.server_status`
 #### Example: Load
 
 ```ts
-const server_status = await client.server_status.load({ id: 'server_status_id' })
+const server_status = await client.ServerStatus().load({ id: 'server_status_id' })
 ```
 
 
@@ -653,7 +657,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const addresslookup = client.addresslookup
+const addresslookup = client.AddressLookup()
 await addresslookup.load({ id: "example_id" })
 
 // addresslookup.data() now returns the loaded addresslookup data
