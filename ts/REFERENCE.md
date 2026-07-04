@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -170,7 +169,7 @@ Alias for `NominatimSDK.test()`.
 ## AddressLookupEntity
 
 ```ts
-const address_lookup = client.AddressLookup()
+const address_lookup = client.address_lookup
 ```
 
 ### Fields
@@ -197,7 +196,7 @@ const address_lookup = client.AddressLookup()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.AddressLookup().list()
+const results = await client.address_lookup.list()
 ```
 
 ### Common Methods
@@ -231,7 +230,7 @@ Return a copy of the entity options.
 ## AdministrativeEntity
 
 ```ts
-const administrative = client.Administrative()
+const administrative = client.administrative
 ```
 
 ### Fields
@@ -255,7 +254,7 @@ const administrative = client.Administrative()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Administrative().list()
+const results = await client.administrative.list()
 ```
 
 ### Common Methods
@@ -289,7 +288,7 @@ Return a copy of the entity options.
 ## DebugEntity
 
 ```ts
-const debug = client.Debug()
+const debug = client.debug
 ```
 
 ### Fields
@@ -327,7 +326,7 @@ const debug = client.Debug()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Debug().load({ id: 'debug_id' })
+const result = await client.debug.load({ id: 'debug_id' })
 ```
 
 ### Common Methods
@@ -361,7 +360,7 @@ Return a copy of the entity options.
 ## ReverseEntity
 
 ```ts
-const reverse = client.Reverse()
+const reverse = client.reverse
 ```
 
 ### Fields
@@ -385,7 +384,7 @@ const reverse = client.Reverse()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Reverse().list()
+const results = await client.reverse.list()
 ```
 
 ### Common Methods
@@ -419,7 +418,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.Search()
+const search = client.search
 ```
 
 ### Fields
@@ -447,7 +446,7 @@ const search = client.Search()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Search().list()
+const results = await client.search.list()
 ```
 
 ### Common Methods
@@ -481,7 +480,7 @@ Return a copy of the entity options.
 ## ServerStatusEntity
 
 ```ts
-const server_status = client.ServerStatus()
+const server_status = client.server_status
 ```
 
 ### Fields
@@ -501,7 +500,7 @@ const server_status = client.ServerStatus()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ServerStatus().load({ id: 'server_status_id' })
+const result = await client.server_status.load({ id: 'server_status_id' })
 ```
 
 ### Common Methods

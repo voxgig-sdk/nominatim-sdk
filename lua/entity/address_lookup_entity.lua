@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch AddressLookupListMatch
+---@param ctrl? table
+---@return AddressLookup[]
+---@return string? err
 function AddressLookupEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

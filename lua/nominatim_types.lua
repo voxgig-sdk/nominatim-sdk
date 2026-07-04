@@ -1,0 +1,106 @@
+-- Typed models for the Nominatim SDK (LuaLS annotations).
+--
+-- GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+-- params (op.<name>.points[].args.params[]). Field/param types come from the
+-- canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+-- @voxgig/apidef VALID_CANON). Annotations only — no runtime effect. Do not
+-- edit by hand.
+
+---@class AddressLookup
+---@field address? table
+---@field boundingbox? table
+---@field class? string
+---@field display_name? string
+---@field importance? number
+---@field lat? string
+---@field licence? string
+---@field lon? string
+---@field osm_id? number
+---@field osm_type? string
+---@field place_id? number
+---@field type? string
+
+---@class AddressLookupListMatch
+
+---@class Administrative
+---@field class? string
+---@field country_code? string
+---@field errormessage? string
+---@field name? string
+---@field osm_id? number
+---@field osm_type? string
+---@field place_id? number
+---@field type? string
+---@field updated? string
+
+---@class AdministrativeListMatch
+
+---@class Debug
+---@field addresstag? table
+---@field admin_level? number
+---@field calculated_importance? number
+---@field calculated_postcode? string
+---@field calculated_wikipedia? string
+---@field category? string
+---@field centroid? table
+---@field country_code? string
+---@field extratag? table
+---@field geometry? table
+---@field housenumber? string
+---@field importance? number
+---@field indexed_date? string
+---@field isarea? boolean
+---@field localname? string
+---@field name? table
+---@field osm_id? number
+---@field osm_type? string
+---@field parent_place_id? number
+---@field place_id? number
+---@field rank_address? number
+---@field rank_search? number
+---@field type? string
+
+---@class DebugLoadMatch
+
+---@class Reverse
+---@field address? table
+---@field boundingbox? table
+---@field display_name? string
+---@field lat? string
+---@field licence? string
+---@field lon? string
+---@field osm_id? number
+---@field osm_type? string
+---@field place_id? number
+
+---@class ReverseListMatch
+
+---@class Search
+---@field address? table
+---@field boundingbox? table
+---@field class? string
+---@field display_name? string
+---@field icon? string
+---@field importance? number
+---@field lat? string
+---@field licence? string
+---@field lon? string
+---@field osm_id? number
+---@field osm_type? string
+---@field place_id? number
+---@field type? string
+
+---@class SearchListMatch
+
+---@class ServerStatus
+---@field data_updated? string
+---@field database_version? string
+---@field message? string
+---@field software_version? string
+---@field status? number
+
+---@class ServerStatusLoadMatch
+
+local M = {}
+
+return M

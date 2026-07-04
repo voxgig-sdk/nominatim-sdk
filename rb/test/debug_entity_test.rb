@@ -42,8 +42,7 @@ class DebugEntityTest < Minitest::Test
     # LOAD
     debug_ref01_ent = client.Debug(nil)
     debug_ref01_match_dt0 = {}
-    debug_ref01_data_dt0_loaded, err = debug_ref01_ent.load(debug_ref01_match_dt0, nil)
-    assert_nil err
+    debug_ref01_data_dt0_loaded = debug_ref01_ent.load(debug_ref01_match_dt0, nil)
     assert !debug_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def debug_basic_setup(extra)
     "NOMINATIM_TEST_DEBUG_ENTID" => idmap,
     "NOMINATIM_TEST_LIVE" => "FALSE",
     "NOMINATIM_TEST_EXPLAIN" => "FALSE",
-    "NOMINATIM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def debug_basic_setup(extra)
   if env["NOMINATIM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NOMINATIM_APIKEY"],
       },
       extra || {},
     ])

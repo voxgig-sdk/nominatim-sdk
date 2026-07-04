@@ -9,9 +9,12 @@ The TypeScript SDK for the Nominatim API — a type-safe, entity-oriented client
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/nominatim
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/nominatim-sdk/releases](https://github.com/voxgig-sdk/nominatim-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NominatimSDK } from 'nominatim'
+import { NominatimSDK } from '@voxgig-sdk/nominatim'
 
-const client = new NominatimSDK({
-  apikey: process.env.NOMINATIM_APIKEY,
-})
+const client = new NominatimSDK()
 ```
 
 ### 2. List addresslookups
 
 ```ts
-const result = await client.AddressLookup().list()
+const result = await client.addresslookup.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NominatimSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.addresslookup.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NominatimSDK({ apikey: '...' })
+const client = new NominatimSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.addresslookup
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new NominatimSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -136,7 +136,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOMINATIM_TEST_LIVE=TRUE
-NOMINATIM_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new NominatimSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new NominatimSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -388,7 +385,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.AddressLookup()`
+Create an instance: `const address_lookup = client.address_lookup`
 
 #### Operations
 
@@ -416,13 +413,13 @@ Create an instance: `const address_lookup = client.AddressLookup()`
 #### Example: List
 
 ```ts
-const address_lookups = await client.AddressLookup().list()
+const address_lookups = await client.address_lookup.list()
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.Administrative()`
+Create an instance: `const administrative = client.administrative`
 
 #### Operations
 
@@ -447,13 +444,13 @@ Create an instance: `const administrative = client.Administrative()`
 #### Example: List
 
 ```ts
-const administratives = await client.Administrative().list()
+const administratives = await client.administrative.list()
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.Debug()`
+Create an instance: `const debug = client.debug`
 
 #### Operations
 
@@ -492,13 +489,13 @@ Create an instance: `const debug = client.Debug()`
 #### Example: Load
 
 ```ts
-const debug = await client.Debug().load({ id: 'debug_id' })
+const debug = await client.debug.load({ id: 'debug_id' })
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.Reverse()`
+Create an instance: `const reverse = client.reverse`
 
 #### Operations
 
@@ -523,13 +520,13 @@ Create an instance: `const reverse = client.Reverse()`
 #### Example: List
 
 ```ts
-const reverses = await client.Reverse().list()
+const reverses = await client.reverse.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -558,13 +555,13 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.ServerStatus()`
+Create an instance: `const server_status = client.server_status`
 
 #### Operations
 
@@ -585,7 +582,7 @@ Create an instance: `const server_status = client.ServerStatus()`
 #### Example: Load
 
 ```ts
-const server_status = await client.ServerStatus().load({ id: 'server_status_id' })
+const server_status = await client.server_status.load({ id: 'server_status_id' })
 ```
 
 
@@ -646,7 +643,7 @@ nominatim/
 Import the SDK from the package root:
 
 ```ts
-import { NominatimSDK } from 'nominatim'
+import { NominatimSDK } from '@voxgig-sdk/nominatim'
 ```
 
 ### Entity state
@@ -656,11 +653,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const addresslookup = client.addresslookup
+await addresslookup.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// addresslookup.data() now returns the loaded addresslookup data
+// addresslookup.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

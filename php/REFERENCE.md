@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `$options` | `array` | SDK configuration options. |
-| `$options["apikey"]` | `string` | API key for authentication. |
 | `$options["base"]` | `string` | Base URL for API requests. |
 | `$options["prefix"]` | `string` | URL prefix appended after base. |
 | `$options["suffix"]` | `string` | URL suffix appended after path. |
@@ -76,7 +75,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -90,11 +92,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -102,7 +105,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## AddressLookupEntity
 
 ```php
-$address_lookup = $client->AddressLookup();
+$address_lookup = $client->address_lookup();
 ```
 
 ### Fields
@@ -124,12 +127,12 @@ $address_lookup = $client->AddressLookup();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->AddressLookup()->list([]);
+$results = $client->address_lookup()->list([]);
 ```
 
 ### Common Methods
@@ -165,7 +168,7 @@ Return the entity name.
 ## AdministrativeEntity
 
 ```php
-$administrative = $client->Administrative();
+$administrative = $client->administrative();
 ```
 
 ### Fields
@@ -184,12 +187,12 @@ $administrative = $client->Administrative();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Administrative()->list([]);
+$results = $client->administrative()->list([]);
 ```
 
 ### Common Methods
@@ -225,7 +228,7 @@ Return the entity name.
 ## DebugEntity
 
 ```php
-$debug = $client->Debug();
+$debug = $client->debug();
 ```
 
 ### Fields
@@ -258,12 +261,12 @@ $debug = $client->Debug();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Debug()->load(["id" => "debug_id"]);
+$result = $client->debug()->load(["id" => "debug_id"]);
 ```
 
 ### Common Methods
@@ -299,7 +302,7 @@ Return the entity name.
 ## ReverseEntity
 
 ```php
-$reverse = $client->Reverse();
+$reverse = $client->reverse();
 ```
 
 ### Fields
@@ -318,12 +321,12 @@ $reverse = $client->Reverse();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Reverse()->list([]);
+$results = $client->reverse()->list([]);
 ```
 
 ### Common Methods
@@ -359,7 +362,7 @@ Return the entity name.
 ## SearchEntity
 
 ```php
-$search = $client->Search();
+$search = $client->search();
 ```
 
 ### Fields
@@ -382,12 +385,12 @@ $search = $client->Search();
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): array`
+#### `list(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-[$results, $err] = $client->Search()->list([]);
+$results = $client->search()->list([]);
 ```
 
 ### Common Methods
@@ -423,7 +426,7 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```php
-$server_status = $client->ServerStatus();
+$server_status = $client->server_status();
 ```
 
 ### Fields
@@ -438,12 +441,12 @@ $server_status = $client->ServerStatus();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->ServerStatus()->load(["id" => "server_status_id"]);
+$result = $client->server_status()->load(["id" => "server_status_id"]);
 ```
 
 ### Common Methods

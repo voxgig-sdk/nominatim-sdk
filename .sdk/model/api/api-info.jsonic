@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Nominatim Developer Community"
         url: "https://nominatim.org"

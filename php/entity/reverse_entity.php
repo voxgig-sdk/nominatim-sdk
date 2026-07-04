@@ -55,6 +55,9 @@ class ReverseEntity
         return new ReverseEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Reverse|array $args Reverse data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class ReverseEntity
         }
     }
 
+    /**
+     * @return Reverse|array The current Reverse data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Reverse fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class ReverseEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Reverse fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -86,7 +98,16 @@ class ReverseEntity
     
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Reverse items matching the given filter.
+     *
+     * @param ReverseListMatch|array|null $reqmatch Match filter (any subset
+     *   of Reverse fields) as an assoc-array; ReverseListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Reverse[]|array A list of Reverse items as assoc-arrays at
+     *   the SDK boundary; throws NominatimError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -114,7 +135,7 @@ class ReverseEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

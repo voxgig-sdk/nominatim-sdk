@@ -85,6 +85,27 @@ func (e *AdministrativeEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Administrative; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *AdministrativeEntity) DataTyped(data ...Administrative) Administrative {
+	if len(data) > 0 {
+		return typedFrom[Administrative](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Administrative](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Administrative (all fields
+// optional at the wire level).
+func (e *AdministrativeEntity) MatchTyped(match ...Administrative) Administrative {
+	if len(match) > 0 {
+		return typedFrom[Administrative](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Administrative](e.Match())
+}
+
 func (e *AdministrativeEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("load", e.name)
 }
@@ -108,6 +129,17 @@ func (e *AdministrativeEntity) List(reqmatch map[string]any, ctrl map[string]any
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// AdministrativeListMatch and returns []Administrative. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *AdministrativeEntity) ListTyped(reqmatch AdministrativeListMatch, ctrl map[string]any) ([]Administrative, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Administrative](res), nil
 }
 
 

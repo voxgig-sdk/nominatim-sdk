@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Debug,
+  DebugLoadMatch,
+} from '../NominatimTypes'
 
 // TODO: needs Entity superclass
-class DebugEntity extends NominatimEntityBase {
+class DebugEntity extends NominatimEntityBase<Debug> {
 
   constructor(client: NominatimSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class DebugEntity extends NominatimEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DebugLoadMatch, ctrl?: Control): Promise<Debug> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class DebugEntity extends NominatimEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Debug> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

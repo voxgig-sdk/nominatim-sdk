@@ -49,8 +49,7 @@ class TestServerStatusEntity:
         # LOAD
         server_status_ref01_ent = client.ServerStatus(None)
         server_status_ref01_match_dt0 = {}
-        server_status_ref01_data_dt0_loaded, err = server_status_ref01_ent.load(server_status_ref01_match_dt0, None)
-        assert err is None
+        server_status_ref01_data_dt0_loaded = server_status_ref01_ent.load(server_status_ref01_match_dt0, None)
         assert server_status_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _server_status_basic_setup(extra):
         "NOMINATIM_TEST_SERVER_STATUS_ENTID": idmap,
         "NOMINATIM_TEST_LIVE": "FALSE",
         "NOMINATIM_TEST_EXPLAIN": "FALSE",
-        "NOMINATIM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _server_status_basic_setup(extra):
     if env.get("NOMINATIM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOMINATIM_APIKEY"),
             },
             extra or {},
         ])

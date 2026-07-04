@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  AddressLookup,
+  AddressLookupListMatch,
+} from '../NominatimTypes'
 
 // TODO: needs Entity superclass
-class AddressLookupEntity extends NominatimEntityBase {
+class AddressLookupEntity extends NominatimEntityBase<AddressLookup> {
 
   constructor(client: NominatimSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class AddressLookupEntity extends NominatimEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: AddressLookupListMatch, ctrl?: Control): Promise<AddressLookup[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class AddressLookupEntity extends NominatimEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<AddressLookup[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

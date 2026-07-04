@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch DebugLoadMatch
+---@param ctrl? table
+---@return Debug
+---@return string? err
 function DebugEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

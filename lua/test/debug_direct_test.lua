@@ -62,14 +62,12 @@ function debug_direct_setup(mockres)
   local env = runner.env_override({
     ["NOMINATIM_TEST_DEBUG_ENTID"] = {},
     ["NOMINATIM_TEST_LIVE"] = "FALSE",
-    ["NOMINATIM_APIKEY"] = "NONE",
   })
 
   local live = env["NOMINATIM_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["NOMINATIM_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

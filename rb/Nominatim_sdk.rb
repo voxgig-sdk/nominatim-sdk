@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Nominatim_types'
+
 
 class NominatimSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class NominatimSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class NominatimSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue NominatimError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = NominatimHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class NominatimSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,46 +198,88 @@ class NominatimSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.address_lookup.list / client.address_lookup.load({ "id" => ... })
+  def address_lookup
+    require_relative 'entity/address_lookup_entity'
+    @address_lookup ||= AddressLookupEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.address_lookup instead.
   def AddressLookup(data = nil)
     require_relative 'entity/address_lookup_entity'
     AddressLookupEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.administrative.list / client.administrative.load({ "id" => ... })
+  def administrative
+    require_relative 'entity/administrative_entity'
+    @administrative ||= AdministrativeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.administrative instead.
   def Administrative(data = nil)
     require_relative 'entity/administrative_entity'
     AdministrativeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.debug.list / client.debug.load({ "id" => ... })
+  def debug
+    require_relative 'entity/debug_entity'
+    @debug ||= DebugEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.debug instead.
   def Debug(data = nil)
     require_relative 'entity/debug_entity'
     DebugEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.reverse.list / client.reverse.load({ "id" => ... })
+  def reverse
+    require_relative 'entity/reverse_entity'
+    @reverse ||= ReverseEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.reverse instead.
   def Reverse(data = nil)
     require_relative 'entity/reverse_entity'
     ReverseEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
+  def search
+    require_relative 'entity/search_entity'
+    @search ||= SearchEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.search instead.
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.server_status.list / client.server_status.load({ "id" => ... })
+  def server_status
+    require_relative 'entity/server_status_entity'
+    @server_status ||= ServerStatusEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.server_status instead.
   def ServerStatus(data = nil)
     require_relative 'entity/server_status_entity'
     ServerStatusEntity.new(self, data)

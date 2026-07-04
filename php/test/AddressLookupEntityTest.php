@@ -50,8 +50,7 @@ class AddressLookupEntityTest extends TestCase
         $address_lookup_ref01_ent = $client->AddressLookup(null);
         $address_lookup_ref01_match = [];
 
-        [$address_lookup_ref01_list_result, $err] = $address_lookup_ref01_ent->list($address_lookup_ref01_match, null);
-        $this->assertNull($err);
+        $address_lookup_ref01_list_result = $address_lookup_ref01_ent->list($address_lookup_ref01_match, null);
         $this->assertIsArray($address_lookup_ref01_list_result);
 
     }
@@ -86,7 +85,6 @@ function address_lookup_basic_setup($extra)
         "NOMINATIM_TEST_ADDRESS_LOOKUP_ENTID" => $idmap,
         "NOMINATIM_TEST_LIVE" => "FALSE",
         "NOMINATIM_TEST_EXPLAIN" => "FALSE",
-        "NOMINATIM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +96,6 @@ function address_lookup_basic_setup($extra)
     if ($env["NOMINATIM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["NOMINATIM_APIKEY"],
             ],
             $extra ?? [],
         ]);

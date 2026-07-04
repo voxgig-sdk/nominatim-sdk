@@ -45,6 +45,7 @@ class DebugEntity
     end
   end
 
+  # @return [Debug, Hash] the current Debug data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DebugEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Debug fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Debug.
+  #
+  # @param reqmatch [DebugLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Debug, Hash] the loaded Debug; raises NominatimError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

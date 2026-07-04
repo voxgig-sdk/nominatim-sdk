@@ -49,8 +49,7 @@ class TestDebugEntity:
         # LOAD
         debug_ref01_ent = client.Debug(None)
         debug_ref01_match_dt0 = {}
-        debug_ref01_data_dt0_loaded, err = debug_ref01_ent.load(debug_ref01_match_dt0, None)
-        assert err is None
+        debug_ref01_data_dt0_loaded = debug_ref01_ent.load(debug_ref01_match_dt0, None)
         assert debug_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _debug_basic_setup(extra):
         "NOMINATIM_TEST_DEBUG_ENTID": idmap,
         "NOMINATIM_TEST_LIVE": "FALSE",
         "NOMINATIM_TEST_EXPLAIN": "FALSE",
-        "NOMINATIM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _debug_basic_setup(extra):
     if env.get("NOMINATIM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOMINATIM_APIKEY"),
             },
             extra or {},
         ])

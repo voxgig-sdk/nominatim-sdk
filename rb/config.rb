@@ -15,9 +15,6 @@ module NominatimConfig
       },
       "options" => {
         "base" => "https://nominatim.openstreetmap.org",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Reverse,
+  ReverseListMatch,
+} from '../NominatimTypes'
 
 // TODO: needs Entity superclass
-class ReverseEntity extends NominatimEntityBase {
+class ReverseEntity extends NominatimEntityBase<Reverse> {
 
   constructor(client: NominatimSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ReverseEntity extends NominatimEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ReverseListMatch, ctrl?: Control): Promise<Reverse[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ReverseEntity extends NominatimEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Reverse[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

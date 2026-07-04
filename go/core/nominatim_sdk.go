@@ -245,31 +245,49 @@ func (sdk *NominatimSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// AddressLookup returns a AddressLookup entity bound to this client.
+// Idiomatic usage: client.AddressLookup(nil).List(nil, nil) or
+// client.AddressLookup(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) AddressLookup(data map[string]any) NominatimEntity {
 	return NewAddressLookupEntityFunc(sdk, data)
 }
 
 
+// Administrative returns a Administrative entity bound to this client.
+// Idiomatic usage: client.Administrative(nil).List(nil, nil) or
+// client.Administrative(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) Administrative(data map[string]any) NominatimEntity {
 	return NewAdministrativeEntityFunc(sdk, data)
 }
 
 
+// Debug returns a Debug entity bound to this client.
+// Idiomatic usage: client.Debug(nil).List(nil, nil) or
+// client.Debug(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) Debug(data map[string]any) NominatimEntity {
 	return NewDebugEntityFunc(sdk, data)
 }
 
 
+// Reverse returns a Reverse entity bound to this client.
+// Idiomatic usage: client.Reverse(nil).List(nil, nil) or
+// client.Reverse(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) Reverse(data map[string]any) NominatimEntity {
 	return NewReverseEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) Search(data map[string]any) NominatimEntity {
 	return NewSearchEntityFunc(sdk, data)
 }
 
 
+// ServerStatus returns a ServerStatus entity bound to this client.
+// Idiomatic usage: client.ServerStatus(nil).List(nil, nil) or
+// client.ServerStatus(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NominatimSDK) ServerStatus(data map[string]any) NominatimEntity {
 	return NewServerStatusEntityFunc(sdk, data)
 }

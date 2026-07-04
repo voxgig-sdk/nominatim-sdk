@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch ReverseListMatch
+---@param ctrl? table
+---@return Reverse[]
+---@return string? err
 function ReverseEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

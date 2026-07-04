@@ -103,7 +103,7 @@ class NominatimSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class NominatimSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class NominatimSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,59 +216,125 @@ class NominatimSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function AddressLookup($data = null)
+    private $_address_lookup = null;
+
+    // Idiomatic facade: $client->address_lookup()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias AddressLookup() (PHP method
+    // names are case-insensitive).
+    public function address_lookup($data = null)
     {
         require_once __DIR__ . '/entity/address_lookup_entity.php';
+        if ($data === null) {
+            if ($this->_address_lookup === null) {
+                $this->_address_lookup = new AddressLookupEntity($this, null);
+            }
+            return $this->_address_lookup;
+        }
         return new AddressLookupEntity($this, $data);
     }
 
 
-    public function Administrative($data = null)
+    private $_administrative = null;
+
+    // Idiomatic facade: $client->administrative()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Administrative() (PHP method
+    // names are case-insensitive).
+    public function administrative($data = null)
     {
         require_once __DIR__ . '/entity/administrative_entity.php';
+        if ($data === null) {
+            if ($this->_administrative === null) {
+                $this->_administrative = new AdministrativeEntity($this, null);
+            }
+            return $this->_administrative;
+        }
         return new AdministrativeEntity($this, $data);
     }
 
 
-    public function Debug($data = null)
+    private $_debug = null;
+
+    // Idiomatic facade: $client->debug()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Debug() (PHP method
+    // names are case-insensitive).
+    public function debug($data = null)
     {
         require_once __DIR__ . '/entity/debug_entity.php';
+        if ($data === null) {
+            if ($this->_debug === null) {
+                $this->_debug = new DebugEntity($this, null);
+            }
+            return $this->_debug;
+        }
         return new DebugEntity($this, $data);
     }
 
 
-    public function Reverse($data = null)
+    private $_reverse = null;
+
+    // Idiomatic facade: $client->reverse()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Reverse() (PHP method
+    // names are case-insensitive).
+    public function reverse($data = null)
     {
         require_once __DIR__ . '/entity/reverse_entity.php';
+        if ($data === null) {
+            if ($this->_reverse === null) {
+                $this->_reverse = new ReverseEntity($this, null);
+            }
+            return $this->_reverse;
+        }
         return new ReverseEntity($this, $data);
     }
 
 
-    public function Search($data = null)
+    private $_search = null;
+
+    // Idiomatic facade: $client->search()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Search() (PHP method
+    // names are case-insensitive).
+    public function search($data = null)
     {
         require_once __DIR__ . '/entity/search_entity.php';
+        if ($data === null) {
+            if ($this->_search === null) {
+                $this->_search = new SearchEntity($this, null);
+            }
+            return $this->_search;
+        }
         return new SearchEntity($this, $data);
     }
 
 
-    public function ServerStatus($data = null)
+    private $_server_status = null;
+
+    // Idiomatic facade: $client->server_status()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias ServerStatus() (PHP method
+    // names are case-insensitive).
+    public function server_status($data = null)
     {
         require_once __DIR__ . '/entity/server_status_entity.php';
+        if ($data === null) {
+            if ($this->_server_status === null) {
+                $this->_server_status = new ServerStatusEntity($this, null);
+            }
+            return $this->_server_status;
+        }
         return new ServerStatusEntity($this, $data);
     }
 

@@ -45,6 +45,7 @@ class AdministrativeEntity
     end
   end
 
+  # @return [Administrative, Hash] the current Administrative data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class AdministrativeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Administrative fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class AdministrativeEntity
   
 
   
+  # List Administrative items matching the given filter.
+  #
+  # @param reqmatch [AdministrativeListMatch, Hash, nil] match filter (any subset of Administrative fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Administrative>, Array] the matching Administrative items; raises NominatimError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

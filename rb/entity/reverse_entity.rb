@@ -45,6 +45,7 @@ class ReverseEntity
     end
   end
 
+  # @return [Reverse, Hash] the current Reverse data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ReverseEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Reverse fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ReverseEntity
   
 
   
+  # List Reverse items matching the given filter.
+  #
+  # @param reqmatch [ReverseListMatch, Hash, nil] match filter (any subset of Reverse fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Reverse>, Array] the matching Reverse items; raises NominatimError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

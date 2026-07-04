@@ -144,16 +144,23 @@ class NominatimSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class NominatimSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,40 +212,106 @@ class NominatimSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def address_lookup(self):
+        """Idiomatic facade: client.address_lookup.list() / client.address_lookup.load({"id": ...})."""
+        from entity.address_lookup_entity import AddressLookupEntity
+        cached = getattr(self, "_address_lookup", None)
+        if cached is None:
+            cached = AddressLookupEntity(self, None)
+            self._address_lookup = cached
+        return cached
 
     def AddressLookup(self, data=None):
+        # Deprecated: use client.address_lookup instead.
         from entity.address_lookup_entity import AddressLookupEntity
         return AddressLookupEntity(self, data)
 
 
+    @property
+    def administrative(self):
+        """Idiomatic facade: client.administrative.list() / client.administrative.load({"id": ...})."""
+        from entity.administrative_entity import AdministrativeEntity
+        cached = getattr(self, "_administrative", None)
+        if cached is None:
+            cached = AdministrativeEntity(self, None)
+            self._administrative = cached
+        return cached
+
     def Administrative(self, data=None):
+        # Deprecated: use client.administrative instead.
         from entity.administrative_entity import AdministrativeEntity
         return AdministrativeEntity(self, data)
 
 
+    @property
+    def debug(self):
+        """Idiomatic facade: client.debug.list() / client.debug.load({"id": ...})."""
+        from entity.debug_entity import DebugEntity
+        cached = getattr(self, "_debug", None)
+        if cached is None:
+            cached = DebugEntity(self, None)
+            self._debug = cached
+        return cached
+
     def Debug(self, data=None):
+        # Deprecated: use client.debug instead.
         from entity.debug_entity import DebugEntity
         return DebugEntity(self, data)
 
 
+    @property
+    def reverse(self):
+        """Idiomatic facade: client.reverse.list() / client.reverse.load({"id": ...})."""
+        from entity.reverse_entity import ReverseEntity
+        cached = getattr(self, "_reverse", None)
+        if cached is None:
+            cached = ReverseEntity(self, None)
+            self._reverse = cached
+        return cached
+
     def Reverse(self, data=None):
+        # Deprecated: use client.reverse instead.
         from entity.reverse_entity import ReverseEntity
         return ReverseEntity(self, data)
 
 
+    @property
+    def search(self):
+        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
+        from entity.search_entity import SearchEntity
+        cached = getattr(self, "_search", None)
+        if cached is None:
+            cached = SearchEntity(self, None)
+            self._search = cached
+        return cached
+
     def Search(self, data=None):
+        # Deprecated: use client.search instead.
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
+    @property
+    def server_status(self):
+        """Idiomatic facade: client.server_status.list() / client.server_status.load({"id": ...})."""
+        from entity.server_status_entity import ServerStatusEntity
+        cached = getattr(self, "_server_status", None)
+        if cached is None:
+            cached = ServerStatusEntity(self, None)
+            self._server_status = cached
+        return cached
+
     def ServerStatus(self, data=None):
+        # Deprecated: use client.server_status instead.
         from entity.server_status_entity import ServerStatusEntity
         return ServerStatusEntity(self, data)
 

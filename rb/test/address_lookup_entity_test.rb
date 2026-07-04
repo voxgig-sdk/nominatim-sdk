@@ -43,8 +43,7 @@ class AddressLookupEntityTest < Minitest::Test
     address_lookup_ref01_ent = client.AddressLookup(nil)
     address_lookup_ref01_match = {}
 
-    address_lookup_ref01_list_result, err = address_lookup_ref01_ent.list(address_lookup_ref01_match, nil)
-    assert_nil err
+    address_lookup_ref01_list_result = address_lookup_ref01_ent.list(address_lookup_ref01_match, nil)
     assert address_lookup_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def address_lookup_basic_setup(extra)
     "NOMINATIM_TEST_ADDRESS_LOOKUP_ENTID" => idmap,
     "NOMINATIM_TEST_LIVE" => "FALSE",
     "NOMINATIM_TEST_EXPLAIN" => "FALSE",
-    "NOMINATIM_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def address_lookup_basic_setup(extra)
   if env["NOMINATIM_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NOMINATIM_APIKEY"],
       },
       extra || {},
     ])

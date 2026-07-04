@@ -9,12 +9,9 @@ The Lua SDK for the Nominatim API — an entity-oriented client using Lua conven
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-nominatim
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/nominatim-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("nominatim_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("NOMINATIM_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List addresslookups
 
 ```lua
-local result, err = client:AddressLookup():list()
+local result, err = client:addresslookup():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Nominatim():load({ id = "test01" })
+local result, err = client:addresslookup():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -127,7 +122,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NOMINATIM_TEST_LIVE=TRUE
-NOMINATIM_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -347,7 +340,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `const address_lookup = client.AddressLookup()`
+Create an instance: `const address_lookup = client.address_lookup`
 
 #### Operations
 
@@ -375,13 +368,13 @@ Create an instance: `const address_lookup = client.AddressLookup()`
 #### Example: List
 
 ```ts
-const address_lookups = await client.AddressLookup().list()
+const address_lookups = await client.address_lookup.list()
 ```
 
 
 ### Administrative
 
-Create an instance: `const administrative = client.Administrative()`
+Create an instance: `const administrative = client.administrative`
 
 #### Operations
 
@@ -406,13 +399,13 @@ Create an instance: `const administrative = client.Administrative()`
 #### Example: List
 
 ```ts
-const administratives = await client.Administrative().list()
+const administratives = await client.administrative.list()
 ```
 
 
 ### Debug
 
-Create an instance: `const debug = client.Debug()`
+Create an instance: `const debug = client.debug`
 
 #### Operations
 
@@ -451,13 +444,13 @@ Create an instance: `const debug = client.Debug()`
 #### Example: Load
 
 ```ts
-const debug = await client.Debug().load({ id: 'debug_id' })
+const debug = await client.debug.load({ id: 'debug_id' })
 ```
 
 
 ### Reverse
 
-Create an instance: `const reverse = client.Reverse()`
+Create an instance: `const reverse = client.reverse`
 
 #### Operations
 
@@ -482,13 +475,13 @@ Create an instance: `const reverse = client.Reverse()`
 #### Example: List
 
 ```ts
-const reverses = await client.Reverse().list()
+const reverses = await client.reverse.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -517,13 +510,13 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
 ### ServerStatus
 
-Create an instance: `const server_status = client.ServerStatus()`
+Create an instance: `const server_status = client.server_status`
 
 #### Operations
 
@@ -544,7 +537,7 @@ Create an instance: `const server_status = client.ServerStatus()`
 #### Example: Load
 
 ```ts
-const server_status = await client.ServerStatus().load({ id: 'server_status_id' })
+const server_status = await client.server_status.load({ id: 'server_status_id' })
 ```
 
 
@@ -619,11 +612,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local addresslookup = client:addresslookup()
+addresslookup:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- addresslookup:data_get() now returns the loaded addresslookup data
+-- addresslookup:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

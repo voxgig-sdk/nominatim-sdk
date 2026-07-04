@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'NOMINATIM_TEST_REVERSE_ENTID': {},
     'NOMINATIM_TEST_LIVE': 'FALSE',
-    'NOMINATIM_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.NOMINATIM_TEST_LIVE
 
   if (live) {
     const client = new NominatimSDK({
-      apikey: env.NOMINATIM_APIKEY,
     })
 
     let idmap: any = env['NOMINATIM_TEST_REVERSE_ENTID']

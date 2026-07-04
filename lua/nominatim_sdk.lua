@@ -244,36 +244,114 @@ end
 
 
 
+-- Idiomatic facade: client:address_lookup():list() / client:address_lookup():load({ id = ... })
+function NominatimSDK:address_lookup(data)
+  local EntityMod = require("entity.address_lookup_entity")
+  if data == nil then
+    if self._address_lookup == nil then
+      self._address_lookup = EntityMod.new(self, nil)
+    end
+    return self._address_lookup
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:address_lookup() instead.
 function NominatimSDK:AddressLookup(data)
   local EntityMod = require("entity.address_lookup_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:administrative():list() / client:administrative():load({ id = ... })
+function NominatimSDK:administrative(data)
+  local EntityMod = require("entity.administrative_entity")
+  if data == nil then
+    if self._administrative == nil then
+      self._administrative = EntityMod.new(self, nil)
+    end
+    return self._administrative
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:administrative() instead.
 function NominatimSDK:Administrative(data)
   local EntityMod = require("entity.administrative_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:debug():list() / client:debug():load({ id = ... })
+function NominatimSDK:debug(data)
+  local EntityMod = require("entity.debug_entity")
+  if data == nil then
+    if self._debug == nil then
+      self._debug = EntityMod.new(self, nil)
+    end
+    return self._debug
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:debug() instead.
 function NominatimSDK:Debug(data)
   local EntityMod = require("entity.debug_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:reverse():list() / client:reverse():load({ id = ... })
+function NominatimSDK:reverse(data)
+  local EntityMod = require("entity.reverse_entity")
+  if data == nil then
+    if self._reverse == nil then
+      self._reverse = EntityMod.new(self, nil)
+    end
+    return self._reverse
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:reverse() instead.
 function NominatimSDK:Reverse(data)
   local EntityMod = require("entity.reverse_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function NominatimSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function NominatimSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:server_status():list() / client:server_status():load({ id = ... })
+function NominatimSDK:server_status(data)
+  local EntityMod = require("entity.server_status_entity")
+  if data == nil then
+    if self._server_status == nil then
+      self._server_status = EntityMod.new(self, nil)
+    end
+    return self._server_status
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:server_status() instead.
 function NominatimSDK:ServerStatus(data)
   local EntityMod = require("entity.server_status_entity")
   return EntityMod.new(self, data)

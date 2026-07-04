@@ -92,7 +92,6 @@ function address_lookup_basic_setup(extra)
     ["NOMINATIM_TEST_ADDRESS_LOOKUP_ENTID"] = idmap,
     ["NOMINATIM_TEST_LIVE"] = "FALSE",
     ["NOMINATIM_TEST_EXPLAIN"] = "FALSE",
-    ["NOMINATIM_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function address_lookup_basic_setup(extra)
   if env["NOMINATIM_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["NOMINATIM_APIKEY"],
       },
       extra or {},
     })

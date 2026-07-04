@@ -49,8 +49,7 @@ class ServerStatusEntityTest extends TestCase
         // LOAD
         $server_status_ref01_ent = $client->ServerStatus(null);
         $server_status_ref01_match_dt0 = [];
-        [$server_status_ref01_data_dt0_loaded, $err] = $server_status_ref01_ent->load($server_status_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $server_status_ref01_data_dt0_loaded = $server_status_ref01_ent->load($server_status_ref01_match_dt0, null);
         $this->assertNotNull($server_status_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function server_status_basic_setup($extra)
         "NOMINATIM_TEST_SERVER_STATUS_ENTID" => $idmap,
         "NOMINATIM_TEST_LIVE" => "FALSE",
         "NOMINATIM_TEST_EXPLAIN" => "FALSE",
-        "NOMINATIM_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function server_status_basic_setup($extra)
     if ($env["NOMINATIM_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["NOMINATIM_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch AdministrativeListMatch
+---@param ctrl? table
+---@return Administrative[]
+---@return string? err
 function AdministrativeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

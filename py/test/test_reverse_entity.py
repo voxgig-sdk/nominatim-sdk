@@ -50,8 +50,7 @@ class TestReverseEntity:
         reverse_ref01_ent = client.Reverse(None)
         reverse_ref01_match = {}
 
-        reverse_ref01_list_result, err = reverse_ref01_ent.list(reverse_ref01_match, None)
-        assert err is None
+        reverse_ref01_list_result = reverse_ref01_ent.list(reverse_ref01_match, None)
         assert isinstance(reverse_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _reverse_basic_setup(extra):
         "NOMINATIM_TEST_REVERSE_ENTID": idmap,
         "NOMINATIM_TEST_LIVE": "FALSE",
         "NOMINATIM_TEST_EXPLAIN": "FALSE",
-        "NOMINATIM_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _reverse_basic_setup(extra):
     if env.get("NOMINATIM_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOMINATIM_APIKEY"),
             },
             extra or {},
         ])

@@ -7,6 +7,8 @@ import { ReverseEntity } from './entity/ReverseEntity'
 import { SearchEntity } from './entity/SearchEntity'
 import { ServerStatusEntity } from './entity/ServerStatusEntity'
 
+export type * from './NominatimTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -207,36 +209,84 @@ class NominatimSDK {
 
 
 
+  _address_lookup?: AddressLookupEntity
+
+  // Idiomatic facade: `client.address_lookup.list()` / `client.address_lookup.load({ id })`.
+  get address_lookup(): AddressLookupEntity {
+    return (this._address_lookup ??= new AddressLookupEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.address_lookup` instead. */
   AddressLookup(data?: any) {
     const self = this
     return new AddressLookupEntity(self,data)
   }
 
 
+  _administrative?: AdministrativeEntity
+
+  // Idiomatic facade: `client.administrative.list()` / `client.administrative.load({ id })`.
+  get administrative(): AdministrativeEntity {
+    return (this._administrative ??= new AdministrativeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.administrative` instead. */
   Administrative(data?: any) {
     const self = this
     return new AdministrativeEntity(self,data)
   }
 
 
+  _debug?: DebugEntity
+
+  // Idiomatic facade: `client.debug.list()` / `client.debug.load({ id })`.
+  get debug(): DebugEntity {
+    return (this._debug ??= new DebugEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.debug` instead. */
   Debug(data?: any) {
     const self = this
     return new DebugEntity(self,data)
   }
 
 
+  _reverse?: ReverseEntity
+
+  // Idiomatic facade: `client.reverse.list()` / `client.reverse.load({ id })`.
+  get reverse(): ReverseEntity {
+    return (this._reverse ??= new ReverseEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.reverse` instead. */
   Reverse(data?: any) {
     const self = this
     return new ReverseEntity(self,data)
   }
 
 
+  _search?: SearchEntity
+
+  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
+  get search(): SearchEntity {
+    return (this._search ??= new SearchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.search` instead. */
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)
   }
 
 
+  _server_status?: ServerStatusEntity
+
+  // Idiomatic facade: `client.server_status.list()` / `client.server_status.load({ id })`.
+  get server_status(): ServerStatusEntity {
+    return (this._server_status ??= new ServerStatusEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.server_status` instead. */
   ServerStatus(data?: any) {
     const self = this
     return new ServerStatusEntity(self,data)
