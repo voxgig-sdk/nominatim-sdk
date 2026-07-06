@@ -61,7 +61,7 @@ AddressLookup = Struct.new(
   keyword_init: true
 )
 
-# Match filter for AddressLookup#list (any subset of AddressLookup fields).
+# Request payload for AddressLookup#list.
 #
 # @!attribute [rw] address
 #   @return [Hash, nil]
@@ -155,7 +155,7 @@ Administrative = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Administrative#list (any subset of Administrative fields).
+# Request payload for Administrative#list.
 #
 # @!attribute [rw] class
 #   @return [String, nil]
@@ -293,7 +293,7 @@ Debug = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Debug#load (any subset of Debug fields).
+# Request payload for Debug#load.
 #
 # @!attribute [rw] addresstag
 #   @return [Hash, nil]
@@ -431,7 +431,7 @@ Reverse = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Reverse#list (any subset of Reverse fields).
+# Request payload for Reverse#list.
 #
 # @!attribute [rw] address
 #   @return [Hash, nil]
@@ -529,7 +529,7 @@ Search = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Search#list (any subset of Search fields).
+# Request payload for Search#list.
 #
 # @!attribute [rw] address
 #   @return [Hash, nil]
@@ -611,7 +611,7 @@ ServerStatus = Struct.new(
   keyword_init: true
 )
 
-# Match filter for ServerStatus#load (any subset of ServerStatus fields).
+# Request payload for ServerStatus#load.
 #
 # @!attribute [rw] data_updated
 #   @return [String, nil]

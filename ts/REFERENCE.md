@@ -176,18 +176,18 @@ const address_lookup = client.AddressLookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `Record<string, any>` | No |  |
+| `boundingbox` | `any[]` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -237,15 +237,15 @@ const administrative = client.Administrative()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `errormessage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `updated` | ``$STRING`` | No |  |
+| `class` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `errormessage` | `string` | No |  |
+| `name` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
+| `updated` | `string` | No |  |
 
 ### Operations
 
@@ -295,29 +295,29 @@ const debug = client.Debug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | ``$OBJECT`` | No |  |
-| `admin_level` | ``$INTEGER`` | No |  |
-| `calculated_importance` | ``$NUMBER`` | No |  |
-| `calculated_postcode` | ``$STRING`` | No |  |
-| `calculated_wikipedia` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `extratag` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `housenumber` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `indexed_date` | ``$STRING`` | No |  |
-| `isarea` | ``$BOOLEAN`` | No |  |
-| `localname` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `parent_place_id` | ``$INTEGER`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `rank_address` | ``$INTEGER`` | No |  |
-| `rank_search` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `addresstag` | `Record<string, any>` | No |  |
+| `admin_level` | `number` | No |  |
+| `calculated_importance` | `number` | No |  |
+| `calculated_postcode` | `string` | No |  |
+| `calculated_wikipedia` | `string` | No |  |
+| `category` | `string` | No |  |
+| `centroid` | `Record<string, any>` | No |  |
+| `country_code` | `string` | No |  |
+| `extratag` | `Record<string, any>` | No |  |
+| `geometry` | `Record<string, any>` | No |  |
+| `housenumber` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `indexed_date` | `string` | No |  |
+| `isarea` | `boolean` | No |  |
+| `localname` | `string` | No |  |
+| `name` | `Record<string, any>` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `parent_place_id` | `number` | No |  |
+| `place_id` | `number` | No |  |
+| `rank_address` | `number` | No |  |
+| `rank_search` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -326,7 +326,7 @@ const debug = client.Debug()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Debug().load({ id: 'debug_id' })
+const result = await client.Debug().load()
 ```
 
 ### Common Methods
@@ -367,15 +367,15 @@ const reverse = client.Reverse()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
+| `address` | `Record<string, any>` | No |  |
+| `boundingbox` | `any[]` | No |  |
+| `display_name` | `string` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
 
 ### Operations
 
@@ -425,19 +425,19 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `Record<string, any>` | No |  |
+| `boundingbox` | `any[]` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -487,11 +487,11 @@ const server_status = client.ServerStatus()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | ``$STRING`` | No |  |
-| `database_version` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `software_version` | ``$STRING`` | No |  |
-| `status` | ``$INTEGER`` | No |  |
+| `data_updated` | `string` | No |  |
+| `database_version` | `string` | No |  |
+| `message` | `string` | No |  |
+| `software_version` | `string` | No |  |
+| `status` | `number` | No |  |
 
 ### Operations
 
@@ -500,7 +500,7 @@ const server_status = client.ServerStatus()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.ServerStatus().load({ id: 'server_status_id' })
+const result = await client.ServerStatus().load()
 ```
 
 ### Common Methods

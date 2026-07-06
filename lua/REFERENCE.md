@@ -110,18 +110,18 @@ local address_lookup = client:AddressLookup(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `table` | No |  |
+| `boundingbox` | `table` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -173,15 +173,15 @@ local administrative = client:Administrative(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `errormessage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `updated` | ``$STRING`` | No |  |
+| `class` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `errormessage` | `string` | No |  |
+| `name` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
+| `updated` | `string` | No |  |
 
 ### Operations
 
@@ -233,29 +233,29 @@ local debug = client:Debug(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | ``$OBJECT`` | No |  |
-| `admin_level` | ``$INTEGER`` | No |  |
-| `calculated_importance` | ``$NUMBER`` | No |  |
-| `calculated_postcode` | ``$STRING`` | No |  |
-| `calculated_wikipedia` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `extratag` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `housenumber` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `indexed_date` | ``$STRING`` | No |  |
-| `isarea` | ``$BOOLEAN`` | No |  |
-| `localname` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `parent_place_id` | ``$INTEGER`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `rank_address` | ``$INTEGER`` | No |  |
-| `rank_search` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `addresstag` | `table` | No |  |
+| `admin_level` | `number` | No |  |
+| `calculated_importance` | `number` | No |  |
+| `calculated_postcode` | `string` | No |  |
+| `calculated_wikipedia` | `string` | No |  |
+| `category` | `string` | No |  |
+| `centroid` | `table` | No |  |
+| `country_code` | `string` | No |  |
+| `extratag` | `table` | No |  |
+| `geometry` | `table` | No |  |
+| `housenumber` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `indexed_date` | `string` | No |  |
+| `isarea` | `boolean` | No |  |
+| `localname` | `string` | No |  |
+| `name` | `table` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `parent_place_id` | `number` | No |  |
+| `place_id` | `number` | No |  |
+| `rank_address` | `number` | No |  |
+| `rank_search` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -264,7 +264,7 @@ local debug = client:Debug(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Debug():load({ id = "debug_id" })
+local result, err = client:Debug():load()
 ```
 
 ### Common Methods
@@ -307,15 +307,15 @@ local reverse = client:Reverse(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
+| `address` | `table` | No |  |
+| `boundingbox` | `table` | No |  |
+| `display_name` | `string` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
 
 ### Operations
 
@@ -367,19 +367,19 @@ local search = client:Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `table` | No |  |
+| `boundingbox` | `table` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `importance` | `number` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `number` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `number` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -431,11 +431,11 @@ local server_status = client:ServerStatus(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | ``$STRING`` | No |  |
-| `database_version` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `software_version` | ``$STRING`` | No |  |
-| `status` | ``$INTEGER`` | No |  |
+| `data_updated` | `string` | No |  |
+| `database_version` | `string` | No |  |
+| `message` | `string` | No |  |
+| `software_version` | `string` | No |  |
+| `status` | `number` | No |  |
 
 ### Operations
 
@@ -444,7 +444,7 @@ local server_status = client:ServerStatus(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:ServerStatus():load({ id = "server_status_id" })
+local result, err = client:ServerStatus():load()
 ```
 
 ### Common Methods

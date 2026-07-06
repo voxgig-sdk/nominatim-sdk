@@ -65,11 +65,11 @@ Create a new `SearchEntity` instance. Pass `null` for no initial data.
 
 Create a new `ServerStatusEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): NominatimUtility`
 
 Return a copy of the SDK utility object.
 
@@ -112,44 +112,44 @@ $address_lookup = $client->AddressLookup();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `array` | No |  |
+| `boundingbox` | `array` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `importance` | `float` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->AddressLookup()->list([]);
+$results = $client->AddressLookup()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -158,7 +158,7 @@ Set the entity match criteria.
 Create a new `AddressLookupEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -175,41 +175,41 @@ $administrative = $client->Administrative();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `errormessage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `updated` | ``$STRING`` | No |  |
+| `class` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `errormessage` | `string` | No |  |
+| `name` | `string` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `string` | No |  |
+| `updated` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Administrative()->list([]);
+$results = $client->Administrative()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -218,7 +218,7 @@ Set the entity match criteria.
 Create a new `AdministrativeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -235,29 +235,29 @@ $debug = $client->Debug();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | ``$OBJECT`` | No |  |
-| `admin_level` | ``$INTEGER`` | No |  |
-| `calculated_importance` | ``$NUMBER`` | No |  |
-| `calculated_postcode` | ``$STRING`` | No |  |
-| `calculated_wikipedia` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `extratag` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `housenumber` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `indexed_date` | ``$STRING`` | No |  |
-| `isarea` | ``$BOOLEAN`` | No |  |
-| `localname` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `parent_place_id` | ``$INTEGER`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `rank_address` | ``$INTEGER`` | No |  |
-| `rank_search` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `addresstag` | `array` | No |  |
+| `admin_level` | `int` | No |  |
+| `calculated_importance` | `float` | No |  |
+| `calculated_postcode` | `string` | No |  |
+| `calculated_wikipedia` | `string` | No |  |
+| `category` | `string` | No |  |
+| `centroid` | `array` | No |  |
+| `country_code` | `string` | No |  |
+| `extratag` | `array` | No |  |
+| `geometry` | `array` | No |  |
+| `housenumber` | `string` | No |  |
+| `importance` | `float` | No |  |
+| `indexed_date` | `string` | No |  |
+| `isarea` | `bool` | No |  |
+| `localname` | `string` | No |  |
+| `name` | `array` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `string` | No |  |
+| `parent_place_id` | `int` | No |  |
+| `place_id` | `int` | No |  |
+| `rank_address` | `int` | No |  |
+| `rank_search` | `int` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
@@ -266,24 +266,24 @@ $debug = $client->Debug();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Debug()->load(["id" => "debug_id"]);
+$result = $client->Debug()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -292,7 +292,7 @@ Set the entity match criteria.
 Create a new `DebugEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -309,41 +309,41 @@ $reverse = $client->Reverse();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
+| `address` | `array` | No |  |
+| `boundingbox` | `array` | No |  |
+| `display_name` | `string` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Reverse()->list([]);
+$results = $client->Reverse()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -352,7 +352,7 @@ Set the entity match criteria.
 Create a new `ReverseEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -369,45 +369,45 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `array` | No |  |
+| `boundingbox` | `array` | No |  |
+| `class` | `string` | No |  |
+| `display_name` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `importance` | `float` | No |  |
+| `lat` | `string` | No |  |
+| `licence` | `string` | No |  |
+| `lon` | `string` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `string` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Search()->list([]);
+$results = $client->Search()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -416,7 +416,7 @@ Set the entity match criteria.
 Create a new `SearchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -433,11 +433,11 @@ $server_status = $client->ServerStatus();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | ``$STRING`` | No |  |
-| `database_version` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `software_version` | ``$STRING`` | No |  |
-| `status` | ``$INTEGER`` | No |  |
+| `data_updated` | `string` | No |  |
+| `database_version` | `string` | No |  |
+| `message` | `string` | No |  |
+| `software_version` | `string` | No |  |
+| `status` | `int` | No |  |
 
 ### Operations
 
@@ -446,24 +446,24 @@ $server_status = $client->ServerStatus();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->ServerStatus()->load(["id" => "server_status_id"]);
+$result = $client->ServerStatus()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -472,7 +472,7 @@ Set the entity match criteria.
 Create a new `ServerStatusEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

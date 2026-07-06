@@ -107,27 +107,27 @@ address_lookup = client.AddressLookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `dict` | No |  |
+| `boundingbox` | `list` | No |  |
+| `class` | `str` | No |  |
+| `display_name` | `str` | No |  |
+| `importance` | `float` | No |  |
+| `lat` | `str` | No |  |
+| `licence` | `str` | No |  |
+| `lon` | `str` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `str` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.AddressLookup().list({})
+results = client.AddressLookup().list()
 for address_lookup in results:
     print(address_lookup)
 ```
@@ -171,24 +171,24 @@ administrative = client.Administrative()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `errormessage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `updated` | ``$STRING`` | No |  |
+| `class` | `str` | No |  |
+| `country_code` | `str` | No |  |
+| `errormessage` | `str` | No |  |
+| `name` | `str` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `str` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `str` | No |  |
+| `updated` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Administrative().list({})
+results = client.Administrative().list()
 for administrative in results:
     print(administrative)
 ```
@@ -232,29 +232,29 @@ debug = client.Debug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | ``$OBJECT`` | No |  |
-| `admin_level` | ``$INTEGER`` | No |  |
-| `calculated_importance` | ``$NUMBER`` | No |  |
-| `calculated_postcode` | ``$STRING`` | No |  |
-| `calculated_wikipedia` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `extratag` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `housenumber` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `indexed_date` | ``$STRING`` | No |  |
-| `isarea` | ``$BOOLEAN`` | No |  |
-| `localname` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `parent_place_id` | ``$INTEGER`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `rank_address` | ``$INTEGER`` | No |  |
-| `rank_search` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `addresstag` | `dict` | No |  |
+| `admin_level` | `int` | No |  |
+| `calculated_importance` | `float` | No |  |
+| `calculated_postcode` | `str` | No |  |
+| `calculated_wikipedia` | `str` | No |  |
+| `category` | `str` | No |  |
+| `centroid` | `dict` | No |  |
+| `country_code` | `str` | No |  |
+| `extratag` | `dict` | No |  |
+| `geometry` | `dict` | No |  |
+| `housenumber` | `str` | No |  |
+| `importance` | `float` | No |  |
+| `indexed_date` | `str` | No |  |
+| `isarea` | `bool` | No |  |
+| `localname` | `str` | No |  |
+| `name` | `dict` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `str` | No |  |
+| `parent_place_id` | `int` | No |  |
+| `place_id` | `int` | No |  |
+| `rank_address` | `int` | No |  |
+| `rank_search` | `int` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
@@ -263,7 +263,7 @@ debug = client.Debug()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Debug().load({"id": "debug_id"})
+result = client.Debug().load()
 ```
 
 ### Common Methods
@@ -305,24 +305,24 @@ reverse = client.Reverse()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
+| `address` | `dict` | No |  |
+| `boundingbox` | `list` | No |  |
+| `display_name` | `str` | No |  |
+| `lat` | `str` | No |  |
+| `licence` | `str` | No |  |
+| `lon` | `str` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `str` | No |  |
+| `place_id` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Reverse().list({})
+results = client.Reverse().list()
 for reverse in results:
     print(reverse)
 ```
@@ -366,28 +366,28 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `dict` | No |  |
+| `boundingbox` | `list` | No |  |
+| `class` | `str` | No |  |
+| `display_name` | `str` | No |  |
+| `icon` | `str` | No |  |
+| `importance` | `float` | No |  |
+| `lat` | `str` | No |  |
+| `licence` | `str` | No |  |
+| `lon` | `str` | No |  |
+| `osm_id` | `int` | No |  |
+| `osm_type` | `str` | No |  |
+| `place_id` | `int` | No |  |
+| `type` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Search().list({})
+results = client.Search().list()
 for search in results:
     print(search)
 ```
@@ -431,11 +431,11 @@ server_status = client.ServerStatus()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | ``$STRING`` | No |  |
-| `database_version` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `software_version` | ``$STRING`` | No |  |
-| `status` | ``$INTEGER`` | No |  |
+| `data_updated` | `str` | No |  |
+| `database_version` | `str` | No |  |
+| `message` | `str` | No |  |
+| `software_version` | `str` | No |  |
+| `status` | `int` | No |  |
 
 ### Operations
 
@@ -444,7 +444,7 @@ server_status = client.ServerStatus()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.ServerStatus().load({"id": "server_status_id"})
+result = client.ServerStatus().load()
 ```
 
 ### Common Methods

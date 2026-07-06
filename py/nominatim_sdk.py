@@ -221,37 +221,37 @@ class NominatimSDK:
 
 
     def AddressLookup(self, data=None) -> "AddressLookupEntity":
-        """Entity factory: client.AddressLookup().list({}) / client.AddressLookup().load({"id": ...})."""
+        """Entity factory: client.AddressLookup().list() / client.AddressLookup().load({"id": ...})."""
         from entity.address_lookup_entity import AddressLookupEntity
         return AddressLookupEntity(self, data)
 
 
     def Administrative(self, data=None) -> "AdministrativeEntity":
-        """Entity factory: client.Administrative().list({}) / client.Administrative().load({"id": ...})."""
+        """Entity factory: client.Administrative().list() / client.Administrative().load({"id": ...})."""
         from entity.administrative_entity import AdministrativeEntity
         return AdministrativeEntity(self, data)
 
 
     def Debug(self, data=None) -> "DebugEntity":
-        """Entity factory: client.Debug().list({}) / client.Debug().load({"id": ...})."""
+        """Entity factory: client.Debug().list() / client.Debug().load({"id": ...})."""
         from entity.debug_entity import DebugEntity
         return DebugEntity(self, data)
 
 
     def Reverse(self, data=None) -> "ReverseEntity":
-        """Entity factory: client.Reverse().list({}) / client.Reverse().load({"id": ...})."""
+        """Entity factory: client.Reverse().list() / client.Reverse().load({"id": ...})."""
         from entity.reverse_entity import ReverseEntity
         return ReverseEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 
 
     def ServerStatus(self, data=None) -> "ServerStatusEntity":
-        """Entity factory: client.ServerStatus().list({}) / client.ServerStatus().load({"id": ...})."""
+        """Entity factory: client.ServerStatus().list() / client.ServerStatus().load({"id": ...})."""
         from entity.server_status_entity import ServerStatusEntity
         return ServerStatusEntity(self, data)
 

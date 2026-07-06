@@ -29,7 +29,7 @@ class AddressLookup
     public ?string $type = null;
 }
 
-/** Match filter for AddressLookup#list (any subset of AddressLookup fields). */
+/** Request payload for AddressLookup#list. */
 class AddressLookupListMatch
 {
     public ?array $address = null;
@@ -60,7 +60,7 @@ class Administrative
     public ?string $updated = null;
 }
 
-/** Match filter for Administrative#list (any subset of Administrative fields). */
+/** Request payload for Administrative#list. */
 class AdministrativeListMatch
 {
     public ?string $class = null;
@@ -102,7 +102,7 @@ class Debug
     public ?string $type = null;
 }
 
-/** Match filter for Debug#load (any subset of Debug fields). */
+/** Request payload for Debug#load. */
 class DebugLoadMatch
 {
     public ?array $addresstag = null;
@@ -144,7 +144,7 @@ class Reverse
     public ?int $place_id = null;
 }
 
-/** Match filter for Reverse#list (any subset of Reverse fields). */
+/** Request payload for Reverse#list. */
 class ReverseListMatch
 {
     public ?array $address = null;
@@ -176,7 +176,7 @@ class Search
     public ?string $type = null;
 }
 
-/** Match filter for Search#list (any subset of Search fields). */
+/** Request payload for Search#list. */
 class SearchListMatch
 {
     public ?array $address = null;
@@ -204,7 +204,7 @@ class ServerStatus
     public ?int $status = null;
 }
 
-/** Match filter for ServerStatus#load (any subset of ServerStatus fields). */
+/** Request payload for ServerStatus#load. */
 class ServerStatusLoadMatch
 {
     public ?string $data_updated = null;

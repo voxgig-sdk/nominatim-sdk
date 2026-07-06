@@ -24,8 +24,7 @@ type AddressLookup struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// AddressLookupListMatch mirrors the address_lookup fields as an all-optional match
-// filter (Go analog of Partial<AddressLookup>).
+// AddressLookupListMatch is the typed request payload for AddressLookup.ListTyped.
 type AddressLookupListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Boundingbox *[]any `json:"boundingbox,omitempty"`
@@ -54,8 +53,7 @@ type Administrative struct {
 	Updated *string `json:"updated,omitempty"`
 }
 
-// AdministrativeListMatch mirrors the administrative fields as an all-optional match
-// filter (Go analog of Partial<Administrative>).
+// AdministrativeListMatch is the typed request payload for Administrative.ListTyped.
 type AdministrativeListMatch struct {
 	Class *string `json:"class,omitempty"`
 	CountryCode *string `json:"country_code,omitempty"`
@@ -95,8 +93,7 @@ type Debug struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// DebugLoadMatch mirrors the debug fields as an all-optional match
-// filter (Go analog of Partial<Debug>).
+// DebugLoadMatch is the typed request payload for Debug.LoadTyped.
 type DebugLoadMatch struct {
 	Addresstag *map[string]any `json:"addresstag,omitempty"`
 	AdminLevel *int `json:"admin_level,omitempty"`
@@ -136,8 +133,7 @@ type Reverse struct {
 	PlaceId *int `json:"place_id,omitempty"`
 }
 
-// ReverseListMatch mirrors the reverse fields as an all-optional match
-// filter (Go analog of Partial<Reverse>).
+// ReverseListMatch is the typed request payload for Reverse.ListTyped.
 type ReverseListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Boundingbox *[]any `json:"boundingbox,omitempty"`
@@ -167,8 +163,7 @@ type Search struct {
 	Type *string `json:"type,omitempty"`
 }
 
-// SearchListMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
 	Address *map[string]any `json:"address,omitempty"`
 	Boundingbox *[]any `json:"boundingbox,omitempty"`
@@ -194,8 +189,7 @@ type ServerStatus struct {
 	Status *int `json:"status,omitempty"`
 }
 
-// ServerStatusLoadMatch mirrors the server_status fields as an all-optional match
-// filter (Go analog of Partial<ServerStatus>).
+// ServerStatusLoadMatch is the typed request payload for ServerStatus.LoadTyped.
 type ServerStatusLoadMatch struct {
 	DataUpdated *string `json:"data_updated,omitempty"`
 	DatabaseVersion *string `json:"database_version,omitempty"`

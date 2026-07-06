@@ -8,7 +8,7 @@ Complete API reference for the Nominatim Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'nominatim_sdk'
+require_relative 'Nominatim_sdk'
 
 client = NominatimSDK.new(options)
 ```
@@ -113,27 +113,27 @@ address_lookup = client.AddressLookup
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `Hash` | No |  |
+| `boundingbox` | `Array` | No |  |
+| `class` | `String` | No |  |
+| `display_name` | `String` | No |  |
+| `importance` | `Float` | No |  |
+| `lat` | `String` | No |  |
+| `licence` | `String` | No |  |
+| `lon` | `String` | No |  |
+| `osm_id` | `Integer` | No |  |
+| `osm_type` | `String` | No |  |
+| `place_id` | `Integer` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.AddressLookup.list(nil)
+results = client.AddressLookup.list
 ```
 
 ### Common Methods
@@ -176,24 +176,24 @@ administrative = client.Administrative
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | ``$STRING`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `errormessage` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `updated` | ``$STRING`` | No |  |
+| `class` | `String` | No |  |
+| `country_code` | `String` | No |  |
+| `errormessage` | `String` | No |  |
+| `name` | `String` | No |  |
+| `osm_id` | `Integer` | No |  |
+| `osm_type` | `String` | No |  |
+| `place_id` | `Integer` | No |  |
+| `type` | `String` | No |  |
+| `updated` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Administrative.list(nil)
+results = client.Administrative.list
 ```
 
 ### Common Methods
@@ -236,29 +236,29 @@ debug = client.Debug
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | ``$OBJECT`` | No |  |
-| `admin_level` | ``$INTEGER`` | No |  |
-| `calculated_importance` | ``$NUMBER`` | No |  |
-| `calculated_postcode` | ``$STRING`` | No |  |
-| `calculated_wikipedia` | ``$STRING`` | No |  |
-| `category` | ``$STRING`` | No |  |
-| `centroid` | ``$OBJECT`` | No |  |
-| `country_code` | ``$STRING`` | No |  |
-| `extratag` | ``$OBJECT`` | No |  |
-| `geometry` | ``$OBJECT`` | No |  |
-| `housenumber` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `indexed_date` | ``$STRING`` | No |  |
-| `isarea` | ``$BOOLEAN`` | No |  |
-| `localname` | ``$STRING`` | No |  |
-| `name` | ``$OBJECT`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `parent_place_id` | ``$INTEGER`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `rank_address` | ``$INTEGER`` | No |  |
-| `rank_search` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `addresstag` | `Hash` | No |  |
+| `admin_level` | `Integer` | No |  |
+| `calculated_importance` | `Float` | No |  |
+| `calculated_postcode` | `String` | No |  |
+| `calculated_wikipedia` | `String` | No |  |
+| `category` | `String` | No |  |
+| `centroid` | `Hash` | No |  |
+| `country_code` | `String` | No |  |
+| `extratag` | `Hash` | No |  |
+| `geometry` | `Hash` | No |  |
+| `housenumber` | `String` | No |  |
+| `importance` | `Float` | No |  |
+| `indexed_date` | `String` | No |  |
+| `isarea` | `Boolean` | No |  |
+| `localname` | `String` | No |  |
+| `name` | `Hash` | No |  |
+| `osm_id` | `Integer` | No |  |
+| `osm_type` | `String` | No |  |
+| `parent_place_id` | `Integer` | No |  |
+| `place_id` | `Integer` | No |  |
+| `rank_address` | `Integer` | No |  |
+| `rank_search` | `Integer` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
@@ -267,7 +267,7 @@ debug = client.Debug
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Debug.load({ "id" => "debug_id" })
+result = client.Debug.load()
 ```
 
 ### Common Methods
@@ -310,24 +310,24 @@ reverse = client.Reverse
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
+| `address` | `Hash` | No |  |
+| `boundingbox` | `Array` | No |  |
+| `display_name` | `String` | No |  |
+| `lat` | `String` | No |  |
+| `licence` | `String` | No |  |
+| `lon` | `String` | No |  |
+| `osm_id` | `Integer` | No |  |
+| `osm_type` | `String` | No |  |
+| `place_id` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Reverse.list(nil)
+results = client.Reverse.list
 ```
 
 ### Common Methods
@@ -370,28 +370,28 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | ``$OBJECT`` | No |  |
-| `boundingbox` | ``$ARRAY`` | No |  |
-| `class` | ``$STRING`` | No |  |
-| `display_name` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `importance` | ``$NUMBER`` | No |  |
-| `lat` | ``$STRING`` | No |  |
-| `licence` | ``$STRING`` | No |  |
-| `lon` | ``$STRING`` | No |  |
-| `osm_id` | ``$INTEGER`` | No |  |
-| `osm_type` | ``$STRING`` | No |  |
-| `place_id` | ``$INTEGER`` | No |  |
-| `type` | ``$STRING`` | No |  |
+| `address` | `Hash` | No |  |
+| `boundingbox` | `Array` | No |  |
+| `class` | `String` | No |  |
+| `display_name` | `String` | No |  |
+| `icon` | `String` | No |  |
+| `importance` | `Float` | No |  |
+| `lat` | `String` | No |  |
+| `licence` | `String` | No |  |
+| `lon` | `String` | No |  |
+| `osm_id` | `Integer` | No |  |
+| `osm_type` | `String` | No |  |
+| `place_id` | `Integer` | No |  |
+| `type` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Search.list(nil)
+results = client.Search.list
 ```
 
 ### Common Methods
@@ -434,11 +434,11 @@ server_status = client.ServerStatus
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | ``$STRING`` | No |  |
-| `database_version` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
-| `software_version` | ``$STRING`` | No |  |
-| `status` | ``$INTEGER`` | No |  |
+| `data_updated` | `String` | No |  |
+| `database_version` | `String` | No |  |
+| `message` | `String` | No |  |
+| `software_version` | `String` | No |  |
+| `status` | `Integer` | No |  |
 
 ### Operations
 
@@ -447,7 +447,7 @@ server_status = client.ServerStatus
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.ServerStatus.load({ "id" => "server_status_id" })
+result = client.ServerStatus.load()
 ```
 
 ### Common Methods
