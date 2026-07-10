@@ -20,9 +20,9 @@ main: {
           url: "https://nominatim.openstreetmap.org"
         }
       ]
+      summary: "The Nominatim API is a web service for searching OpenStreetMap (OSM) objects based on their name or type."
       title: "Nominatim API"
       version: "5.2.0"
+      website: "https://nominatim.org/release-docs/latest/api/Overview/"
     }
   }
-}
-

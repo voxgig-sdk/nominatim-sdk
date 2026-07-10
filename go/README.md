@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List addresslookup records — the value is the array of records itself.
-    addresslookups, err := client.AddressLookup(nil).List(nil, nil)
+    // List addressLookup records — the value is the array of records itself.
+    addressLookups, err := client.AddressLookup(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range addresslookups.([]any) {
+    for _, item := range addressLookups.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-addresslookup, err := client.AddressLookup(nil).List(
+addressLookup, err := client.AddressLookup(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(addresslookup) // the returned mock data
+fmt.Println(addressLookup) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -254,9 +254,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    addresslookup, err := client.AddressLookup(nil).List(map[string]any{/* fields */}, nil)
+    addressLookup, err := client.AddressLookup(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // addresslookup is the returned record
+    // addressLookup is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -395,7 +395,7 @@ API path: `/status`
 
 ### AddressLookup
 
-Create an instance: `address_lookup := client.AddressLookup(nil)`
+Create an instance: `addressLookup := client.AddressLookup(nil)`
 
 #### Operations
 
@@ -423,11 +423,11 @@ Create an instance: `address_lookup := client.AddressLookup(nil)`
 #### Example: List
 
 ```go
-address_lookups, err := client.AddressLookup(nil).List(nil, nil)
+addressLookups, err := client.AddressLookup(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(address_lookups) // the array of records
+fmt.Println(addressLookups) // the array of records
 ```
 
 
@@ -591,7 +591,7 @@ fmt.Println(searchs) // the array of records
 
 ### ServerStatus
 
-Create an instance: `server_status := client.ServerStatus(nil)`
+Create an instance: `serverStatus := client.ServerStatus(nil)`
 
 #### Operations
 
@@ -612,11 +612,11 @@ Create an instance: `server_status := client.ServerStatus(nil)`
 #### Example: Load
 
 ```go
-server_status, err := client.ServerStatus(nil).Load(nil, nil)
+serverStatus, err := client.ServerStatus(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(server_status) // the loaded record
+fmt.Println(serverStatus) // the loaded record
 ```
 
 

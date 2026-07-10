@@ -110,7 +110,8 @@ same parameters as `Direct()`.
 ## AddressLookupEntity
 
 ```go
-address_lookup := client.AddressLookup(nil)
+addressLookup := client.AddressLookup(nil)
+fmt.Println(addressLookup.GetName()) // "address_lookup"
 ```
 
 ### Fields
@@ -138,6 +139,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.AddressLookup(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -168,6 +173,7 @@ Return the entity name.
 
 ```go
 administrative := client.Administrative(nil)
+fmt.Println(administrative.GetName()) // "administrative"
 ```
 
 ### Fields
@@ -192,6 +198,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Administrative(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -222,6 +232,7 @@ Return the entity name.
 
 ```go
 debug := client.Debug(nil)
+fmt.Println(debug.GetName()) // "debug"
 ```
 
 ### Fields
@@ -260,6 +271,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Debug(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -290,6 +305,7 @@ Return the entity name.
 
 ```go
 reverse := client.Reverse(nil)
+fmt.Println(reverse.GetName()) // "reverse"
 ```
 
 ### Fields
@@ -314,6 +330,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Reverse(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -344,6 +364,7 @@ Return the entity name.
 
 ```go
 search := client.Search(nil)
+fmt.Println(search.GetName()) // "search"
 ```
 
 ### Fields
@@ -372,6 +393,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Search(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -401,7 +426,8 @@ Return the entity name.
 ## ServerStatusEntity
 
 ```go
-server_status := client.ServerStatus(nil)
+serverStatus := client.ServerStatus(nil)
+fmt.Println(serverStatus.GetName()) // "server_status"
 ```
 
 ### Fields
@@ -422,6 +448,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.ServerStatus(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1520,14 +1517,17 @@
           "name": "Nominatim License",
           "url": "https://nominatim.org"
         },
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://nominatim.openstreetmap.org"
           }
         ],
+        "summary": "The Nominatim API is a web service for searching OpenStreetMap (OSM) objects based on their name or type.",
         "title": "Nominatim API",
-        "version": "5.2.0"
+        "version": "5.2.0",
+        "website": "https://nominatim.org/release-docs/latest/api/Overview/"
       },
       "option": {},
       "target": {
@@ -1580,6 +1580,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1630,6 +1633,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
