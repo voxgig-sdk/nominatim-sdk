@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Nominatim SDK exists test
 
 local sdk = require("nominatim_sdk")
 
