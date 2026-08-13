@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import NominatimSDK
-from core.error import NominatimError
-from core.result import NominatimResult
-from core.response import NominatimResponse
-from core.spec import NominatimSpec
-from feature.base_feature import NominatimBaseFeature
+from projectname_sdk.core.error import NominatimError
+from projectname_sdk.core.result import NominatimResult
+from projectname_sdk.core.response import NominatimResponse
+from projectname_sdk.core.spec import NominatimSpec
+from projectname_sdk.feature.base_feature import NominatimBaseFeature
 
 
 def _client():

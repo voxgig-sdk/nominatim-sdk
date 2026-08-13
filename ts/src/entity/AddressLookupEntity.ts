@@ -37,7 +37,7 @@ class AddressLookupEntity extends NominatimEntityBase<AddressLookup> {
 
 
 
-  async list(this: any, reqmatch?: AddressLookupListMatch, ctrl?: Control): Promise<AddressLookup[]> {
+  async list(this: any, reqmatch?: AddressLookupListMatch, ctrl?: Control): Promise<AddressLookupEntity[]> {
 
     const utility = this._utility
 

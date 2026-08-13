@@ -63,7 +63,7 @@ describe('AdministrativeEntity', async () => {
     const administrative_ref01_ent = client.Administrative()
     const administrative_ref01_match: any = {}
 
-    const administrative_ref01_list = await administrative_ref01_ent.list(administrative_ref01_match)
+    const administrative_ref01_list = (await administrative_ref01_ent.list(administrative_ref01_match)).map((e: any) => e.data())
 
 
   })

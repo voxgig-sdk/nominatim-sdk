@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ NominatimUtility::setRegistrar(function (NominatimUtility $u): void {
     $u->prepare_params = [NominatimPrepareParams::class, 'call'];
     $u->prepare_path = [NominatimPreparePath::class, 'call'];
     $u->prepare_query = [NominatimPrepareQuery::class, 'call'];
+    $u->graphql_body = [NominatimGraphql::class, 'body'];
+    $u->graphql_errors = [NominatimGraphql::class, 'errors'];
     $u->result_basic = [NominatimResultBasic::class, 'call'];
     $u->result_body = [NominatimResultBody::class, 'call'];
     $u->result_headers = [NominatimResultHeaders::class, 'call'];

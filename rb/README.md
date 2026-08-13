@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  addresslookups = client.AddressLookup.list()
+  reverses = client.Reverse.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = NominatimSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-addresslookup = client.AddressLookup.list()
-puts addresslookup
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+reverse = client.Reverse.list()
+puts reverse
 ```
 
 ### Use a custom fetch function
@@ -281,7 +282,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstag` |  |
+| `addresstags` |  |
 | `admin_level` |  |
 | `calculated_importance` |  |
 | `calculated_postcode` |  |
@@ -289,14 +290,14 @@ API path: `/polygons`
 | `category` |  |
 | `centroid` |  |
 | `country_code` |  |
-| `extratag` |  |
+| `extratags` |  |
 | `geometry` |  |
 | `housenumber` |  |
 | `importance` |  |
 | `indexed_date` |  |
 | `isarea` |  |
 | `localname` |  |
-| `name` |  |
+| `names` |  |
 | `osm_id` |  |
 | `osm_type` |  |
 | `parent_place_id` |  |
@@ -449,7 +450,7 @@ Create an instance: `debug = client.Debug`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `Hash` |  |
+| `addresstags` | `Hash` |  |
 | `admin_level` | `Integer` |  |
 | `calculated_importance` | `Float` |  |
 | `calculated_postcode` | `String` |  |
@@ -457,14 +458,14 @@ Create an instance: `debug = client.Debug`
 | `category` | `String` |  |
 | `centroid` | `Hash` |  |
 | `country_code` | `String` |  |
-| `extratag` | `Hash` |  |
+| `extratags` | `Hash` |  |
 | `geometry` | `Hash` |  |
 | `housenumber` | `String` |  |
 | `importance` | `Float` |  |
 | `indexed_date` | `String` |  |
 | `isarea` | `Boolean` |  |
 | `localname` | `String` |  |
-| `name` | `Hash` |  |
+| `names` | `Hash` |  |
 | `osm_id` | `Integer` |  |
 | `osm_type` | `String` |  |
 | `parent_place_id` | `Integer` |  |
@@ -476,7 +477,7 @@ Create an instance: `debug = client.Debug`
 #### Example: Load
 
 ```ruby
-# load returns the bare Debug record (raises on error).
+# load returns the ENTITY — call data_get for the Debug record (raises on error).
 debug = client.Debug.load()
 ```
 
@@ -572,7 +573,7 @@ Create an instance: `server_status = client.ServerStatus`
 #### Example: Load
 
 ```ruby
-# load returns the bare ServerStatus record (raises on error).
+# load returns the ENTITY — call data_get for the ServerStatus record (raises on error).
 server_status = client.ServerStatus.load()
 ```
 
@@ -653,11 +654,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-addresslookup = client.AddressLookup
-addresslookup.list()
+reverse = client.Reverse
+reverse.list()
 
-# addresslookup.data_get now returns the addresslookup data from the last list
-# addresslookup.match_get returns the last match criteria
+# reverse.data_get now returns the reverse data from the last list
+# reverse.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

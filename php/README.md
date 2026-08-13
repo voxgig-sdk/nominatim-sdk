@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $addresslookups = $client->AddressLookup()->list();
+    $reverses = $client->Reverse()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = NominatimSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$addresslookup = $client->AddressLookup()->list();
-print_r($addresslookup);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$reverse = $client->Reverse()->list();
+print_r($reverse);
 ```
 
 ### Use a custom fetch function
@@ -230,7 +231,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -291,7 +292,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstag` |  |
+| `addresstags` |  |
 | `admin_level` |  |
 | `calculated_importance` |  |
 | `calculated_postcode` |  |
@@ -299,14 +300,14 @@ API path: `/polygons`
 | `category` |  |
 | `centroid` |  |
 | `country_code` |  |
-| `extratag` |  |
+| `extratags` |  |
 | `geometry` |  |
 | `housenumber` |  |
 | `importance` |  |
 | `indexed_date` |  |
 | `isarea` |  |
 | `localname` |  |
-| `name` |  |
+| `names` |  |
 | `osm_id` |  |
 | `osm_type` |  |
 | `parent_place_id` |  |
@@ -459,7 +460,7 @@ Create an instance: `$debug = $client->Debug();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `array` |  |
+| `addresstags` | `array` |  |
 | `admin_level` | `int` |  |
 | `calculated_importance` | `float` |  |
 | `calculated_postcode` | `string` |  |
@@ -467,14 +468,14 @@ Create an instance: `$debug = $client->Debug();`
 | `category` | `string` |  |
 | `centroid` | `array` |  |
 | `country_code` | `string` |  |
-| `extratag` | `array` |  |
+| `extratags` | `array` |  |
 | `geometry` | `array` |  |
 | `housenumber` | `string` |  |
 | `importance` | `float` |  |
 | `indexed_date` | `string` |  |
 | `isarea` | `bool` |  |
 | `localname` | `string` |  |
-| `name` | `array` |  |
+| `names` | `array` |  |
 | `osm_id` | `int` |  |
 | `osm_type` | `string` |  |
 | `parent_place_id` | `int` |  |
@@ -486,7 +487,7 @@ Create an instance: `$debug = $client->Debug();`
 #### Example: Load
 
 ```php
-// load() returns the bare Debug record (throws on error).
+// load() returns the ENTITY — call data_get() for the Debug record (throws on error).
 $debug = $client->Debug()->load();
 ```
 
@@ -582,7 +583,7 @@ Create an instance: `$server_status = $client->ServerStatus();`
 #### Example: Load
 
 ```php
-// load() returns the bare ServerStatus record (throws on error).
+// load() returns the ENTITY — call data_get() for the ServerStatus record (throws on error).
 $server_status = $client->ServerStatus()->load();
 ```
 
@@ -663,11 +664,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$addresslookup = $client->AddressLookup();
-$addresslookup->list();
+$reverse = $client->Reverse();
+$reverse->list();
 
-// $addresslookup->data_get() now returns the addresslookup data from the last list
-// $addresslookup->match_get() returns the last match criteria
+// $reverse->data_get() now returns the reverse data from the last list
+// $reverse->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

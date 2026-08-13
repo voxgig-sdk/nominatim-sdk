@@ -233,7 +233,7 @@ local debug = client:Debug(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `table` | No |  |
+| `addresstags` | `table` | No |  |
 | `admin_level` | `number` | No |  |
 | `calculated_importance` | `number` | No |  |
 | `calculated_postcode` | `string` | No |  |
@@ -241,14 +241,14 @@ local debug = client:Debug(nil)
 | `category` | `string` | No |  |
 | `centroid` | `table` | No |  |
 | `country_code` | `string` | No |  |
-| `extratag` | `table` | No |  |
+| `extratags` | `table` | No |  |
 | `geometry` | `table` | No |  |
 | `housenumber` | `string` | No |  |
 | `importance` | `number` | No |  |
 | `indexed_date` | `string` | No |  |
 | `isarea` | `boolean` | No |  |
 | `localname` | `string` | No |  |
-| `name` | `table` | No |  |
+| `names` | `table` | No |  |
 | `osm_id` | `number` | No |  |
 | `osm_type` | `string` | No |  |
 | `parent_place_id` | `number` | No |  |

@@ -232,7 +232,7 @@ debug = client.Debug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `dict` | No |  |
+| `addresstags` | `dict` | No |  |
 | `admin_level` | `int` | No |  |
 | `calculated_importance` | `float` | No |  |
 | `calculated_postcode` | `str` | No |  |
@@ -240,14 +240,14 @@ debug = client.Debug()
 | `category` | `str` | No |  |
 | `centroid` | `dict` | No |  |
 | `country_code` | `str` | No |  |
-| `extratag` | `dict` | No |  |
+| `extratags` | `dict` | No |  |
 | `geometry` | `dict` | No |  |
 | `housenumber` | `str` | No |  |
 | `importance` | `float` | No |  |
 | `indexed_date` | `str` | No |  |
 | `isarea` | `bool` | No |  |
 | `localname` | `str` | No |  |
-| `name` | `dict` | No |  |
+| `names` | `dict` | No |  |
 | `osm_id` | `int` | No |  |
 | `osm_type` | `str` | No |  |
 | `parent_place_id` | `int` | No |  |

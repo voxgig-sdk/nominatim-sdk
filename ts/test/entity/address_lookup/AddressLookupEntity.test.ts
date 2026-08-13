@@ -63,7 +63,7 @@ describe('AddressLookupEntity', async () => {
     const address_lookup_ref01_ent = client.AddressLookup()
     const address_lookup_ref01_match: any = {}
 
-    const address_lookup_ref01_list = await address_lookup_ref01_ent.list(address_lookup_ref01_match)
+    const address_lookup_ref01_list = (await address_lookup_ref01_ent.list(address_lookup_ref01_match)).map((e: any) => e.data())
 
 
   })

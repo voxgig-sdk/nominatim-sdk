@@ -215,6 +215,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/lookup",
                   "parts" => [
@@ -344,6 +345,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/polygons",
                   "parts" => [
@@ -376,6 +378,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/deletable",
                   "parts" => [
@@ -404,7 +407,7 @@ module NominatimConfig
           "fields" => [
             {
               "active" => true,
-              "name" => "addresstag",
+              "name" => "addresstags",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 0,
@@ -460,7 +463,7 @@ module NominatimConfig
             },
             {
               "active" => true,
-              "name" => "extratag",
+              "name" => "extratags",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 8,
@@ -509,7 +512,7 @@ module NominatimConfig
             },
             {
               "active" => true,
-              "name" => "name",
+              "name" => "names",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 15,
@@ -653,6 +656,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details",
                   "parts" => [
@@ -868,6 +872,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/reverse",
                   "parts" => [
@@ -1188,6 +1193,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
                   "parts" => [
@@ -1291,6 +1297,7 @@ module NominatimConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/status",
                   "parts" => [

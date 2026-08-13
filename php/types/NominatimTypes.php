@@ -77,7 +77,7 @@ class AdministrativeListMatch
 /** Debug entity data model. */
 class Debug
 {
-    public ?array $addresstag = null;
+    public ?array $addresstags = null;
     public ?int $admin_level = null;
     public ?float $calculated_importance = null;
     public ?string $calculated_postcode = null;
@@ -85,14 +85,14 @@ class Debug
     public ?string $category = null;
     public ?array $centroid = null;
     public ?string $country_code = null;
-    public ?array $extratag = null;
+    public ?array $extratags = null;
     public ?array $geometry = null;
     public ?string $housenumber = null;
     public ?float $importance = null;
     public ?string $indexed_date = null;
     public ?bool $isarea = null;
     public ?string $localname = null;
-    public ?array $name = null;
+    public ?array $names = null;
     public ?int $osm_id = null;
     public ?string $osm_type = null;
     public ?int $parent_place_id = null;
@@ -105,7 +105,7 @@ class Debug
 /** Request payload for Debug#load. */
 class DebugLoadMatch
 {
-    public ?array $addresstag = null;
+    public ?array $addresstags = null;
     public ?int $admin_level = null;
     public ?float $calculated_importance = null;
     public ?string $calculated_postcode = null;
@@ -113,14 +113,14 @@ class DebugLoadMatch
     public ?string $category = null;
     public ?array $centroid = null;
     public ?string $country_code = null;
-    public ?array $extratag = null;
+    public ?array $extratags = null;
     public ?array $geometry = null;
     public ?string $housenumber = null;
     public ?float $importance = null;
     public ?string $indexed_date = null;
     public ?bool $isarea = null;
     public ?string $localname = null;
-    public ?array $name = null;
+    public ?array $names = null;
     public ?int $osm_id = null;
     public ?string $osm_type = null;
     public ?int $parent_place_id = null;

@@ -60,7 +60,7 @@ export interface AdministrativeListMatch {
 }
 
 export interface Debug {
-  addresstag?: Record<string, any>
+  addresstags?: Record<string, any>
   admin_level?: number
   calculated_importance?: number
   calculated_postcode?: string
@@ -68,14 +68,14 @@ export interface Debug {
   category?: string
   centroid?: Record<string, any>
   country_code?: string
-  extratag?: Record<string, any>
+  extratags?: Record<string, any>
   geometry?: Record<string, any>
   housenumber?: string
   importance?: number
   indexed_date?: string
   isarea?: boolean
   localname?: string
-  name?: Record<string, any>
+  names?: Record<string, any>
   osm_id?: number
   osm_type?: string
   parent_place_id?: number
@@ -86,7 +86,7 @@ export interface Debug {
 }
 
 export interface DebugLoadMatch {
-  addresstag?: Record<string, any>
+  addresstags?: Record<string, any>
   admin_level?: number
   calculated_importance?: number
   calculated_postcode?: string
@@ -94,14 +94,14 @@ export interface DebugLoadMatch {
   category?: string
   centroid?: Record<string, any>
   country_code?: string
-  extratag?: Record<string, any>
+  extratags?: Record<string, any>
   geometry?: Record<string, any>
   housenumber?: string
   importance?: number
   indexed_date?: string
   isarea?: boolean
   localname?: string
-  name?: Record<string, any>
+  names?: Record<string, any>
   osm_id?: number
   osm_type?: string
   parent_place_id?: number

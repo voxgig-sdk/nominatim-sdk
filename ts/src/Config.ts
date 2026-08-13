@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Nominatim',
   }
 
 
@@ -254,6 +254,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/lookup",
               "parts": [
@@ -383,6 +384,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/polygons",
               "parts": [
@@ -415,6 +417,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/deletable",
               "parts": [
@@ -443,7 +446,7 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "addresstag",
+          "name": "addresstags",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 0
@@ -499,7 +502,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "extratag",
+          "name": "extratags",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 8
@@ -548,7 +551,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "name",
+          "name": "names",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 15
@@ -692,6 +695,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/details",
               "parts": [
@@ -907,6 +911,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/reverse",
               "parts": [
@@ -1227,6 +1232,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/search",
               "parts": [
@@ -1330,6 +1336,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/status",
               "parts": [

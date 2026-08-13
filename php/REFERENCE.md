@@ -235,7 +235,7 @@ $debug = $client->Debug();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `array` | No |  |
+| `addresstags` | `array` | No |  |
 | `admin_level` | `int` | No |  |
 | `calculated_importance` | `float` | No |  |
 | `calculated_postcode` | `string` | No |  |
@@ -243,14 +243,14 @@ $debug = $client->Debug();
 | `category` | `string` | No |  |
 | `centroid` | `array` | No |  |
 | `country_code` | `string` | No |  |
-| `extratag` | `array` | No |  |
+| `extratags` | `array` | No |  |
 | `geometry` | `array` | No |  |
 | `housenumber` | `string` | No |  |
 | `importance` | `float` | No |  |
 | `indexed_date` | `string` | No |  |
 | `isarea` | `bool` | No |  |
 | `localname` | `string` | No |  |
-| `name` | `array` | No |  |
+| `names` | `array` | No |  |
 | `osm_id` | `int` | No |  |
 | `osm_type` | `string` | No |  |
 | `parent_place_id` | `int` | No |  |

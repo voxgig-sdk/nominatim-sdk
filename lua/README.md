@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local addresslookups, err = client:AddressLookup():list()
+local reverses, err = client:Reverse():list()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AddressLookup():list()
+local result, err = client:Reverse():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -225,9 +225,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local address_lookup, err = client:AddressLookup():load()
+    local debug, err = client:Debug():load()
     if err then error(err) end
-    -- address_lookup is the loaded record
+    -- debug is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -277,7 +277,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstag` |  |
+| `addresstags` |  |
 | `admin_level` |  |
 | `calculated_importance` |  |
 | `calculated_postcode` |  |
@@ -285,14 +285,14 @@ API path: `/polygons`
 | `category` |  |
 | `centroid` |  |
 | `country_code` |  |
-| `extratag` |  |
+| `extratags` |  |
 | `geometry` |  |
 | `housenumber` |  |
 | `importance` |  |
 | `indexed_date` |  |
 | `isarea` |  |
 | `localname` |  |
-| `name` |  |
+| `names` |  |
 | `osm_id` |  |
 | `osm_type` |  |
 | `parent_place_id` |  |
@@ -443,7 +443,7 @@ Create an instance: `local debug = client:Debug(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `table` |  |
+| `addresstags` | `table` |  |
 | `admin_level` | `number` |  |
 | `calculated_importance` | `number` |  |
 | `calculated_postcode` | `string` |  |
@@ -451,14 +451,14 @@ Create an instance: `local debug = client:Debug(nil)`
 | `category` | `string` |  |
 | `centroid` | `table` |  |
 | `country_code` | `string` |  |
-| `extratag` | `table` |  |
+| `extratags` | `table` |  |
 | `geometry` | `table` |  |
 | `housenumber` | `string` |  |
 | `importance` | `number` |  |
 | `indexed_date` | `string` |  |
 | `isarea` | `boolean` |  |
 | `localname` | `string` |  |
-| `name` | `table` |  |
+| `names` | `table` |  |
 | `osm_id` | `number` |  |
 | `osm_type` | `string` |  |
 | `parent_place_id` | `number` |  |
@@ -643,11 +643,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local addresslookup = client:AddressLookup()
-addresslookup:list()
+local reverse = client:Reverse()
+reverse:list()
 
--- addresslookup:data_get() now returns the addresslookup data from the last list
--- addresslookup:match_get() returns the last match criteria
+-- reverse:data_get() now returns the reverse data from the last list
+-- reverse:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

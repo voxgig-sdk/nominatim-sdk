@@ -6,7 +6,7 @@ main: kit: entity: debug: {
 
   fields: [
     {
-      name: "addresstag"
+      name: "addresstags"
       req: false
       type: "`$OBJECT`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: debug: {
       type: "`$STRING`"
     }
     {
-      name: "extratag"
+      name: "extratags"
       req: false
       type: "`$OBJECT`"
     }
@@ -81,7 +81,7 @@ main: kit: entity: debug: {
       type: "`$STRING`"
     }
     {
-      name: "name"
+      name: "names"
       req: false
       type: "`$OBJECT`"
     }

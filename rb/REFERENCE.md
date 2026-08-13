@@ -236,7 +236,7 @@ debug = client.Debug
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `Hash` | No |  |
+| `addresstags` | `Hash` | No |  |
 | `admin_level` | `Integer` | No |  |
 | `calculated_importance` | `Float` | No |  |
 | `calculated_postcode` | `String` | No |  |
@@ -244,14 +244,14 @@ debug = client.Debug
 | `category` | `String` | No |  |
 | `centroid` | `Hash` | No |  |
 | `country_code` | `String` | No |  |
-| `extratag` | `Hash` | No |  |
+| `extratags` | `Hash` | No |  |
 | `geometry` | `Hash` | No |  |
 | `housenumber` | `String` | No |  |
 | `importance` | `Float` | No |  |
 | `indexed_date` | `String` | No |  |
 | `isarea` | `Boolean` | No |  |
 | `localname` | `String` | No |  |
-| `name` | `Hash` | No |  |
+| `names` | `Hash` | No |  |
 | `osm_id` | `Integer` | No |  |
 | `osm_type` | `String` | No |  |
 | `parent_place_id` | `Integer` | No |  |

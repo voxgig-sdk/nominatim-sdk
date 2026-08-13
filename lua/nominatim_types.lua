@@ -57,7 +57,7 @@
 ---@field updated? string
 
 ---@class Debug
----@field addresstag? table
+---@field addresstags? table
 ---@field admin_level? number
 ---@field calculated_importance? number
 ---@field calculated_postcode? string
@@ -65,14 +65,14 @@
 ---@field category? string
 ---@field centroid? table
 ---@field country_code? string
----@field extratag? table
+---@field extratags? table
 ---@field geometry? table
 ---@field housenumber? string
 ---@field importance? number
 ---@field indexed_date? string
 ---@field isarea? boolean
 ---@field localname? string
----@field name? table
+---@field names? table
 ---@field osm_id? number
 ---@field osm_type? string
 ---@field parent_place_id? number
@@ -82,7 +82,7 @@
 ---@field type? string
 
 ---@class DebugLoadMatch
----@field addresstag? table
+---@field addresstags? table
 ---@field admin_level? number
 ---@field calculated_importance? number
 ---@field calculated_postcode? string
@@ -90,14 +90,14 @@
 ---@field category? string
 ---@field centroid? table
 ---@field country_code? string
----@field extratag? table
+---@field extratags? table
 ---@field geometry? table
 ---@field housenumber? string
 ---@field importance? number
 ---@field indexed_date? string
 ---@field isarea? boolean
 ---@field localname? string
----@field name? table
+---@field names? table
 ---@field osm_id? number
 ---@field osm_type? string
 ---@field parent_place_id? number

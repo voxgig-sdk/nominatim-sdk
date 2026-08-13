@@ -62,7 +62,7 @@ describe('ServerStatusEntity', async () => {
     // LOAD
     const server_status_ref01_ent = client.ServerStatus()
     const server_status_ref01_match_dt0: any = {}
-    const server_status_ref01_data_dt0 = await server_status_ref01_ent.load(server_status_ref01_match_dt0)
+    const server_status_ref01_data_dt0 = (await server_status_ref01_ent.load(server_status_ref01_match_dt0)).data()
     assert(null != server_status_ref01_data_dt0)
 
 

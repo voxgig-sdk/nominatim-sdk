@@ -239,7 +239,7 @@ fmt.Println(debug.GetName()) // "debug"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `map[string]any` | No |  |
+| `addresstags` | `map[string]any` | No |  |
 | `admin_level` | `int` | No |  |
 | `calculated_importance` | `float64` | No |  |
 | `calculated_postcode` | `string` | No |  |
@@ -247,14 +247,14 @@ fmt.Println(debug.GetName()) // "debug"
 | `category` | `string` | No |  |
 | `centroid` | `map[string]any` | No |  |
 | `country_code` | `string` | No |  |
-| `extratag` | `map[string]any` | No |  |
+| `extratags` | `map[string]any` | No |  |
 | `geometry` | `map[string]any` | No |  |
 | `housenumber` | `string` | No |  |
 | `importance` | `float64` | No |  |
 | `indexed_date` | `string` | No |  |
 | `isarea` | `bool` | No |  |
 | `localname` | `string` | No |  |
-| `name` | `map[string]any` | No |  |
+| `names` | `map[string]any` | No |  |
 | `osm_id` | `int` | No |  |
 | `osm_type` | `string` | No |  |
 | `parent_place_id` | `int` | No |  |

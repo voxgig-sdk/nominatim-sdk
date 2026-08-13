@@ -35,7 +35,9 @@ const client = new NominatimSDK()
 
 ### 2. List addresslookup records
 
-`list()` resolves to an array of AddressLookup objects — iterate it directly:
+`list()` resolves to an array of AddressLookup ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const addresslookups = await client.AddressLookup().list()
@@ -52,8 +54,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const addresslookups = await client.AddressLookup().list()
-  console.log(addresslookups)
+  const reverses = await client.Reverse().list()
+  console.log(reverses)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NominatimSDK.test()
 
-const addresslookup = await client.AddressLookup().list()
-// addresslookup is a bare entity populated with mock response data
-console.log(addresslookup)
+const reverse = await client.Reverse().list()
+// reverse is the entity, populated with mock response data
+// — call reverse.data() for the record itself
+console.log(reverse)
 ```
 
 You can also use the instance method:
@@ -136,7 +139,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.AddressLookup()
+const entity = client.Reverse()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -330,7 +333,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstag` |  |
+| `addresstags` |  |
 | `admin_level` |  |
 | `calculated_importance` |  |
 | `calculated_postcode` |  |
@@ -338,14 +341,14 @@ API path: `/polygons`
 | `category` |  |
 | `centroid` |  |
 | `country_code` |  |
-| `extratag` |  |
+| `extratags` |  |
 | `geometry` |  |
 | `housenumber` |  |
 | `importance` |  |
 | `indexed_date` |  |
 | `isarea` |  |
 | `localname` |  |
-| `name` |  |
+| `names` |  |
 | `osm_id` |  |
 | `osm_type` |  |
 | `parent_place_id` |  |
@@ -496,7 +499,7 @@ Create an instance: `const debug = client.Debug()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `Record<string, any>` |  |
+| `addresstags` | `Record<string, any>` |  |
 | `admin_level` | `number` |  |
 | `calculated_importance` | `number` |  |
 | `calculated_postcode` | `string` |  |
@@ -504,14 +507,14 @@ Create an instance: `const debug = client.Debug()`
 | `category` | `string` |  |
 | `centroid` | `Record<string, any>` |  |
 | `country_code` | `string` |  |
-| `extratag` | `Record<string, any>` |  |
+| `extratags` | `Record<string, any>` |  |
 | `geometry` | `Record<string, any>` |  |
 | `housenumber` | `string` |  |
 | `importance` | `number` |  |
 | `indexed_date` | `string` |  |
 | `isarea` | `boolean` |  |
 | `localname` | `string` |  |
-| `name` | `Record<string, any>` |  |
+| `names` | `Record<string, any>` |  |
 | `osm_id` | `number` |  |
 | `osm_type` | `string` |  |
 | `parent_place_id` | `number` |  |
@@ -689,11 +692,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const addresslookup = client.AddressLookup()
-await addresslookup.list()
+const reverse = client.Reverse()
+await reverse.list()
 
-// addresslookup.data() now returns the addresslookup data from the last `list`
-// addresslookup.match() returns the last match criteria
+// reverse.data() now returns the reverse data from the last `list`
+// reverse.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

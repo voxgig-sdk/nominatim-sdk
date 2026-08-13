@@ -63,7 +63,7 @@ describe('ReverseEntity', async () => {
     const reverse_ref01_ent = client.Reverse()
     const reverse_ref01_match: any = {}
 
-    const reverse_ref01_list = await reverse_ref01_ent.list(reverse_ref01_match)
+    const reverse_ref01_list = (await reverse_ref01_ent.list(reverse_ref01_match)).map((e: any) => e.data())
 
 
   })

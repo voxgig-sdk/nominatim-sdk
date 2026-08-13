@@ -295,7 +295,7 @@ const debug = client.Debug()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstag` | `Record<string, any>` | No |  |
+| `addresstags` | `Record<string, any>` | No |  |
 | `admin_level` | `number` | No |  |
 | `calculated_importance` | `number` | No |  |
 | `calculated_postcode` | `string` | No |  |
@@ -303,14 +303,14 @@ const debug = client.Debug()
 | `category` | `string` | No |  |
 | `centroid` | `Record<string, any>` | No |  |
 | `country_code` | `string` | No |  |
-| `extratag` | `Record<string, any>` | No |  |
+| `extratags` | `Record<string, any>` | No |  |
 | `geometry` | `Record<string, any>` | No |  |
 | `housenumber` | `string` | No |  |
 | `importance` | `number` | No |  |
 | `indexed_date` | `string` | No |  |
 | `isarea` | `boolean` | No |  |
 | `localname` | `string` | No |  |
-| `name` | `Record<string, any>` | No |  |
+| `names` | `Record<string, any>` | No |  |
 | `osm_id` | `number` | No |  |
 | `osm_type` | `string` | No |  |
 | `parent_place_id` | `number` | No |  |

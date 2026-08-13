@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NominatimSDK.test()
-const addresslookups = await client.AddressLookup().list()
-// addresslookups is an array of bare AddressLookup records populated with mock data
-console.log(addresslookups)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NominatimSDK.test({
+  entity: {
+    reverse: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const reverses = await client.Reverse().list()
+// reverses is an array of Reverse entities, populated with mock data
+// — call reverses[0].data() for the record itself
+console.log(reverses)
 ```
 
 ### Python
 
 ```python
 client = NominatimSDK.test()
-addresslookups = client.AddressLookup().list()
-print(addresslookups)
+reverses = client.Reverse().list()
+print(reverses)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(addresslookups)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = NominatimSDK::test([
-    "entity" => ["addresslookup" => ["test01" => []]],
+    "entity" => ["reverse" => ["test01" => []]],
 ]);
-$addresslookups = $client->AddressLookup()->list();
+$reverses = $client->Reverse()->list();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.AddressLookup(nil).List(
+result, err := client.Reverse(nil).List(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.AddressLookup(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = NominatimSDK.test({
-  "entity" => { "addresslookup" => { "test01" => {} } },
+  "entity" => { "reverse" => { "test01" => {} } },
 })
-addresslookups = client.AddressLookup.list()
+reverses = client.Reverse.list()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:AddressLookup():list()
+local results, err = client:Reverse():list()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { NominatimSDK } from '@voxgig-sdk/nominatim'
 
 const client = new NominatimSDK()
 
-// List all addresslookups (returns AddressLookup[])
+// List all addresslookups (returns AddressLookupEntity[] — .data() for the record)
 const addresslookups = await client.AddressLookup().list()
 for (const addresslookup of addresslookups) {
   console.log(addresslookup)
@@ -348,6 +357,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://nominatim.org](https://nominatim.org)
 

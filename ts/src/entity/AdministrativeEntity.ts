@@ -37,7 +37,7 @@ class AdministrativeEntity extends NominatimEntityBase<Administrative> {
 
 
 
-  async list(this: any, reqmatch?: AdministrativeListMatch, ctrl?: Control): Promise<Administrative[]> {
+  async list(this: any, reqmatch?: AdministrativeListMatch, ctrl?: Control): Promise<AdministrativeEntity[]> {
 
     const utility = this._utility
 

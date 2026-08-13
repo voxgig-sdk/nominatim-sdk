@@ -214,6 +214,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/lookup",
                 ["parts"] = {
@@ -343,6 +344,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/polygons",
                 ["parts"] = {
@@ -375,6 +377,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deletable",
                 ["parts"] = {
@@ -403,7 +406,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "addresstag",
+            ["name"] = "addresstags",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
@@ -459,7 +462,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "extratag",
+            ["name"] = "extratags",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 8,
@@ -508,7 +511,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "name",
+            ["name"] = "names",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 15,
@@ -652,6 +655,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details",
                 ["parts"] = {
@@ -867,6 +871,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/reverse",
                 ["parts"] = {
@@ -1187,6 +1192,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/search",
                 ["parts"] = {
@@ -1290,6 +1296,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/status",
                 ["parts"] = {

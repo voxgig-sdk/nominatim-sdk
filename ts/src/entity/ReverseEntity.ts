@@ -37,7 +37,7 @@ class ReverseEntity extends NominatimEntityBase<Reverse> {
 
 
 
-  async list(this: any, reqmatch?: ReverseListMatch, ctrl?: Control): Promise<Reverse[]> {
+  async list(this: any, reqmatch?: ReverseListMatch, ctrl?: Control): Promise<ReverseEntity[]> {
 
     const utility = this._utility
 

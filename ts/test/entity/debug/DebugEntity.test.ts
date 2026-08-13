@@ -62,7 +62,7 @@ describe('DebugEntity', async () => {
     // LOAD
     const debug_ref01_ent = client.Debug()
     const debug_ref01_match_dt0: any = {}
-    const debug_ref01_data_dt0 = await debug_ref01_ent.load(debug_ref01_match_dt0)
+    const debug_ref01_data_dt0 = (await debug_ref01_ent.load(debug_ref01_match_dt0)).data()
     assert(null != debug_ref01_data_dt0)
 
 

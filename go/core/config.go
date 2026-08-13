@@ -214,6 +214,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/lookup",
 								"parts": []any{
@@ -240,7 +241,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -343,6 +343,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/polygons",
 								"parts": []any{
@@ -375,6 +376,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/deletable",
 								"parts": []any{
@@ -392,7 +394,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -403,7 +404,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"active": true,
-						"name": "addresstag",
+						"name": "addresstags",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 0,
@@ -459,7 +460,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "extratag",
+						"name": "extratags",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 8,
@@ -508,7 +509,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "name",
+						"name": "names",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 15,
@@ -652,6 +653,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/details",
 								"parts": []any{
@@ -677,7 +679,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -867,6 +868,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/reverse",
 								"parts": []any{
@@ -895,7 +897,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1187,6 +1188,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/search",
 								"parts": []any{
@@ -1224,7 +1226,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -1290,6 +1291,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/status",
 								"parts": []any{
@@ -1307,7 +1309,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{

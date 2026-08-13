@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ NominatimUtility.registrar = ->(u) {
   u.prepare_params = NominatimUtilities::PrepareParams
   u.prepare_path = NominatimUtilities::PreparePath
   u.prepare_query = NominatimUtilities::PrepareQuery
+  u.graphql_body = NominatimUtilities::GraphqlBody
+  u.graphql_errors = NominatimUtilities::GraphqlErrors
   u.result_basic = NominatimUtilities::ResultBasic
   u.result_body = NominatimUtilities::ResultBody
   u.result_headers = NominatimUtilities::ResultHeaders

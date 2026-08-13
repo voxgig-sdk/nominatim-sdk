@@ -26,3 +26,5 @@ main: {
       website: "https://nominatim.org/release-docs/latest/api/Overview/"
     }
   }
+}
+

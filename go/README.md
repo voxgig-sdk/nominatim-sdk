@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-addresslookups, err := client.AddressLookup(nil).List(nil, nil)
+reverses, err := client.Reverse(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = addresslookups
+_ = reverses
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-addressLookup, err := client.AddressLookup(nil).List(
+reverse, err := client.Reverse(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(addressLookup) // the returned mock data
+fmt.Println(reverse) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -306,7 +306,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `"addresstag"` |  |
+| `"addresstags"` |  |
 | `"admin_level"` |  |
 | `"calculated_importance"` |  |
 | `"calculated_postcode"` |  |
@@ -314,14 +314,14 @@ API path: `/polygons`
 | `"category"` |  |
 | `"centroid"` |  |
 | `"country_code"` |  |
-| `"extratag"` |  |
+| `"extratags"` |  |
 | `"geometry"` |  |
 | `"housenumber"` |  |
 | `"importance"` |  |
 | `"indexed_date"` |  |
 | `"isarea"` |  |
 | `"localname"` |  |
-| `"name"` |  |
+| `"names"` |  |
 | `"osm_id"` |  |
 | `"osm_type"` |  |
 | `"parent_place_id"` |  |
@@ -480,7 +480,7 @@ Create an instance: `debug := client.Debug(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `map[string]any` |  |
+| `addresstags` | `map[string]any` |  |
 | `admin_level` | `int` |  |
 | `calculated_importance` | `float64` |  |
 | `calculated_postcode` | `string` |  |
@@ -488,14 +488,14 @@ Create an instance: `debug := client.Debug(nil)`
 | `category` | `string` |  |
 | `centroid` | `map[string]any` |  |
 | `country_code` | `string` |  |
-| `extratag` | `map[string]any` |  |
+| `extratags` | `map[string]any` |  |
 | `geometry` | `map[string]any` |  |
 | `housenumber` | `string` |  |
 | `importance` | `float64` |  |
 | `indexed_date` | `string` |  |
 | `isarea` | `bool` |  |
 | `localname` | `string` |  |
-| `name` | `map[string]any` |  |
+| `names` | `map[string]any` |  |
 | `osm_id` | `int` |  |
 | `osm_type` | `string` |  |
 | `parent_place_id` | `int` |  |
@@ -693,11 +693,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-addresslookup := client.AddressLookup(nil)
-addresslookup.List(nil, nil)
+reverse := client.Reverse(nil)
+reverse.List(nil, nil)
 
-// addresslookup.Data() now returns the addresslookup data from the last list
-// addresslookup.Match() returns the last match criteria
+// reverse.Data() now returns the reverse data from the last list
+// reverse.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

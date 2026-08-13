@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Nominatim SDK exists test
 
 import pytest
 from nominatim_sdk import NominatimSDK

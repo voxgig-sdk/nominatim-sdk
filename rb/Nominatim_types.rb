@@ -198,7 +198,7 @@ AdministrativeListMatch = Struct.new(
 
 # Debug entity data model.
 #
-# @!attribute [rw] addresstag
+# @!attribute [rw] addresstags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] admin_level
@@ -222,7 +222,7 @@ AdministrativeListMatch = Struct.new(
 # @!attribute [rw] country_code
 #   @return [String, nil]
 #
-# @!attribute [rw] extratag
+# @!attribute [rw] extratags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] geometry
@@ -243,7 +243,7 @@ AdministrativeListMatch = Struct.new(
 # @!attribute [rw] localname
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Hash, nil]
 #
 # @!attribute [rw] osm_id
@@ -267,7 +267,7 @@ AdministrativeListMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 Debug = Struct.new(
-  :addresstag,
+  :addresstags,
   :admin_level,
   :calculated_importance,
   :calculated_postcode,
@@ -275,14 +275,14 @@ Debug = Struct.new(
   :category,
   :centroid,
   :country_code,
-  :extratag,
+  :extratags,
   :geometry,
   :housenumber,
   :importance,
   :indexed_date,
   :isarea,
   :localname,
-  :name,
+  :names,
   :osm_id,
   :osm_type,
   :parent_place_id,
@@ -295,7 +295,7 @@ Debug = Struct.new(
 
 # Request payload for Debug#load.
 #
-# @!attribute [rw] addresstag
+# @!attribute [rw] addresstags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] admin_level
@@ -319,7 +319,7 @@ Debug = Struct.new(
 # @!attribute [rw] country_code
 #   @return [String, nil]
 #
-# @!attribute [rw] extratag
+# @!attribute [rw] extratags
 #   @return [Hash, nil]
 #
 # @!attribute [rw] geometry
@@ -340,7 +340,7 @@ Debug = Struct.new(
 # @!attribute [rw] localname
 #   @return [String, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Hash, nil]
 #
 # @!attribute [rw] osm_id
@@ -364,7 +364,7 @@ Debug = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 DebugLoadMatch = Struct.new(
-  :addresstag,
+  :addresstags,
   :admin_level,
   :calculated_importance,
   :calculated_postcode,
@@ -372,14 +372,14 @@ DebugLoadMatch = Struct.new(
   :category,
   :centroid,
   :country_code,
-  :extratag,
+  :extratags,
   :geometry,
   :housenumber,
   :importance,
   :indexed_date,
   :isarea,
   :localname,
-  :name,
+  :names,
   :osm_id,
   :osm_type,
   :parent_place_id,

@@ -57,8 +57,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    addresslookups = client.AddressLookup().list()
-    print(addresslookups)
+    reverses = client.Reverse().list()
+    print(reverses)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -124,9 +124,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NominatimSDK.test()
 
-# Entity ops return the bare record and raise on error.
-addresslookup = client.AddressLookup().list()
-# addresslookup contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+reverse = client.Reverse().list()
+# reverse contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -287,7 +288,7 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstag` |  |
+| `addresstags` |  |
 | `admin_level` |  |
 | `calculated_importance` |  |
 | `calculated_postcode` |  |
@@ -295,14 +296,14 @@ API path: `/polygons`
 | `category` |  |
 | `centroid` |  |
 | `country_code` |  |
-| `extratag` |  |
+| `extratags` |  |
 | `geometry` |  |
 | `housenumber` |  |
 | `importance` |  |
 | `indexed_date` |  |
 | `isarea` |  |
 | `localname` |  |
-| `name` |  |
+| `names` |  |
 | `osm_id` |  |
 | `osm_type` |  |
 | `parent_place_id` |  |
@@ -453,7 +454,7 @@ Create an instance: `debug = client.Debug()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstag` | `dict` |  |
+| `addresstags` | `dict` |  |
 | `admin_level` | `int` |  |
 | `calculated_importance` | `float` |  |
 | `calculated_postcode` | `str` |  |
@@ -461,14 +462,14 @@ Create an instance: `debug = client.Debug()`
 | `category` | `str` |  |
 | `centroid` | `dict` |  |
 | `country_code` | `str` |  |
-| `extratag` | `dict` |  |
+| `extratags` | `dict` |  |
 | `geometry` | `dict` |  |
 | `housenumber` | `str` |  |
 | `importance` | `float` |  |
 | `indexed_date` | `str` |  |
 | `isarea` | `bool` |  |
 | `localname` | `str` |  |
-| `name` | `dict` |  |
+| `names` | `dict` |  |
 | `osm_id` | `int` |  |
 | `osm_type` | `str` |  |
 | `parent_place_id` | `int` |  |
@@ -652,11 +653,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-addresslookup = client.AddressLookup()
-addresslookup.list()
+reverse = client.Reverse()
+reverse.list()
 
-# addresslookup.data_get() now returns the addresslookup data from the last list
-# addresslookup.match_get() returns the last match criteria
+# reverse.data_get() now returns the reverse data from the last list
+# reverse.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
