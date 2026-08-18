@@ -28,7 +28,7 @@ class NominatimSDK
     utility = NominatimUtility.new
     @_utility = utility
 
-    config = NominatimConfig.make_config
+    config = NominatimConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

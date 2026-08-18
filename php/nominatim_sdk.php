@@ -40,7 +40,7 @@ class NominatimSDK
         $utility = new NominatimUtility();
         $this->_utility = $utility;
 
-        $config = NominatimConfig::make_config();
+        $config = NominatimConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
