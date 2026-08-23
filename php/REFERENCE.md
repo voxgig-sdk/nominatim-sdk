@@ -112,18 +112,18 @@ $address_lookup = $client->AddressLookup();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `array` | No |  |
-| `boundingbox` | `array` | No |  |
-| `class` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `importance` | `float` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `address` | `array` | No | Address breakdown |
+| `boundingbox` | `array` | No | Bounding box coordinates |
+| `class` | `string` | No | Main OSM tag key |
+| `display_name` | `string` | No | Full comma-separated address |
+| `importance` | `float` | No | Computed importance rank |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -175,15 +175,15 @@ $administrative = $client->Administrative();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | `string` | No |  |
-| `country_code` | `string` | No |  |
-| `errormessage` | `string` | No |  |
-| `name` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
-| `updated` | `string` | No |  |
+| `class` | `string` | No | Main OSM tag key |
+| `country_code` | `string` | No | Country code |
+| `errormessage` | `string` | No | Error message describing the polygon issue |
+| `name` | `string` | No | Name of the object |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
+| `updated` | `string` | No | Last update timestamp |
 
 ### Operations
 
@@ -235,29 +235,29 @@ $debug = $client->Debug();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstags` | `array` | No |  |
-| `admin_level` | `int` | No |  |
-| `calculated_importance` | `float` | No |  |
-| `calculated_postcode` | `string` | No |  |
-| `calculated_wikipedia` | `string` | No |  |
-| `category` | `string` | No |  |
-| `centroid` | `array` | No |  |
-| `country_code` | `string` | No |  |
-| `extratags` | `array` | No |  |
-| `geometry` | `array` | No |  |
-| `housenumber` | `string` | No |  |
-| `importance` | `float` | No |  |
-| `indexed_date` | `string` | No |  |
-| `isarea` | `bool` | No |  |
-| `localname` | `string` | No |  |
-| `names` | `array` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `parent_place_id` | `int` | No |  |
-| `place_id` | `int` | No |  |
-| `rank_address` | `int` | No |  |
-| `rank_search` | `int` | No |  |
-| `type` | `string` | No |  |
+| `addresstags` | `array` | No | Address tags |
+| `admin_level` | `int` | No | Administrative level |
+| `calculated_importance` | `float` | No | Calculated importance |
+| `calculated_postcode` | `string` | No | Calculated postcode |
+| `calculated_wikipedia` | `string` | No | Wikipedia reference |
+| `category` | `string` | No | Main OSM tag key |
+| `centroid` | `array` | No | Centroid coordinates |
+| `country_code` | `string` | No | Country code |
+| `extratags` | `array` | No | Extra OSM tags |
+| `geometry` | `array` | No | Geometry information |
+| `housenumber` | `string` | No | House number |
+| `importance` | `float` | No | Computed importance rank |
+| `indexed_date` | `string` | No | Date when the object was indexed |
+| `isarea` | `bool` | No | Whether the object is an area |
+| `localname` | `string` | No | Local name |
+| `names` | `array` | No | All available names |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `parent_place_id` | `int` | No | Parent place ID |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `rank_address` | `int` | No | Address rank |
+| `rank_search` | `int` | No | Search rank |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -309,15 +309,15 @@ $reverse = $client->Reverse();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `array` | No |  |
-| `boundingbox` | `array` | No |  |
-| `display_name` | `string` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
+| `address` | `array` | No | Address breakdown |
+| `boundingbox` | `array` | No | Bounding box coordinates |
+| `display_name` | `string` | No | Full comma-separated address |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
 
 ### Operations
 
@@ -369,19 +369,19 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `array` | No |  |
-| `boundingbox` | `array` | No |  |
-| `class` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `importance` | `float` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `address` | `array` | No | Address breakdown |
+| `boundingbox` | `array` | No | Bounding box coordinates |
+| `class` | `string` | No | Main OSM tag key |
+| `display_name` | `string` | No | Full comma-separated address |
+| `icon` | `string` | No | URL of icon representing the place |
+| `importance` | `float` | No | Computed importance rank |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -433,11 +433,11 @@ $server_status = $client->ServerStatus();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | `string` | No |  |
-| `database_version` | `string` | No |  |
-| `message` | `string` | No |  |
-| `software_version` | `string` | No |  |
-| `status` | `int` | No |  |
+| `data_updated` | `string` | No | Timestamp when the database was last updated |
+| `database_version` | `string` | No | Database version |
+| `message` | `string` | No | Status message |
+| `software_version` | `string` | No | Nominatim software version |
+| `status` | `int` | No | Status code (0 = OK) |
 
 ### Operations
 

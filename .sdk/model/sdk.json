@@ -36,72 +36,84 @@
               "active": true,
               "name": "address",
               "req": false,
+              "short": "Address breakdown",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "boundingbox",
               "req": false,
+              "short": "Bounding box coordinates",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "class",
               "req": false,
+              "short": "Main OSM tag key",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "display_name",
               "req": false,
+              "short": "Full comma-separated address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "importance",
               "req": false,
+              "short": "Computed importance rank",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "lat",
               "req": false,
+              "short": "Latitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "licence",
               "req": false,
+              "short": "License information",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lon",
               "req": false,
+              "short": "Longitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "osm_id",
               "req": false,
+              "short": "OSM object ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "osm_type",
               "req": false,
+              "short": "OSM type (node, way, relation)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "place_id",
               "req": false,
+              "short": "Unique identifier for the place",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Main OSM tag value",
               "type": "`$STRING`"
             }
           ],
@@ -247,54 +259,63 @@
               "active": true,
               "name": "class",
               "req": false,
+              "short": "Main OSM tag key",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "country_code",
               "req": false,
+              "short": "Country code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "errormessage",
               "req": false,
+              "short": "Error message describing the polygon issue",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the object",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "osm_id",
               "req": false,
+              "short": "OSM object ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "osm_type",
               "req": false,
+              "short": "OSM type (way, relation)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "place_id",
               "req": false,
+              "short": "Unique identifier for the place",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Main OSM tag value",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "updated",
               "req": false,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             }
           ],
@@ -393,138 +414,161 @@
               "active": true,
               "name": "addresstags",
               "req": false,
+              "short": "Address tags",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "admin_level",
               "req": false,
+              "short": "Administrative level",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "calculated_importance",
               "req": false,
+              "short": "Calculated importance",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "calculated_postcode",
               "req": false,
+              "short": "Calculated postcode",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "calculated_wikipedia",
               "req": false,
+              "short": "Wikipedia reference",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "category",
               "req": false,
+              "short": "Main OSM tag key",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "centroid",
               "req": false,
+              "short": "Centroid coordinates",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "country_code",
               "req": false,
+              "short": "Country code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "extratags",
               "req": false,
+              "short": "Extra OSM tags",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "geometry",
               "req": false,
+              "short": "Geometry information",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "housenumber",
               "req": false,
+              "short": "House number",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "importance",
               "req": false,
+              "short": "Computed importance rank",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "indexed_date",
               "req": false,
+              "short": "Date when the object was indexed",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "isarea",
               "req": false,
+              "short": "Whether the object is an area",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "localname",
               "req": false,
+              "short": "Local name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "names",
               "req": false,
+              "short": "All available names",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "osm_id",
               "req": false,
+              "short": "OSM object ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "osm_type",
               "req": false,
+              "short": "OSM type (node, way, relation)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "parent_place_id",
               "req": false,
+              "short": "Parent place ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "place_id",
               "req": false,
+              "short": "Unique identifier for the place",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "rank_address",
               "req": false,
+              "short": "Address rank",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "rank_search",
               "req": false,
+              "short": "Search rank",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Main OSM tag value",
               "type": "`$STRING`"
             }
           ],
@@ -658,54 +702,63 @@
               "active": true,
               "name": "address",
               "req": false,
+              "short": "Address breakdown",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "boundingbox",
               "req": false,
+              "short": "Bounding box coordinates",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "display_name",
               "req": false,
+              "short": "Full comma-separated address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lat",
               "req": false,
+              "short": "Latitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "licence",
               "req": false,
+              "short": "License information",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lon",
               "req": false,
+              "short": "Longitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "osm_id",
               "req": false,
+              "short": "OSM object ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "osm_type",
               "req": false,
+              "short": "OSM type (node, way, relation)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "place_id",
               "req": false,
+              "short": "Unique identifier for the place",
               "type": "`$INTEGER`"
             }
           ],
@@ -870,78 +923,91 @@
               "active": true,
               "name": "address",
               "req": false,
+              "short": "Address breakdown",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "boundingbox",
               "req": false,
+              "short": "Bounding box coordinates",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "class",
               "req": false,
+              "short": "Main OSM tag key",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "display_name",
               "req": false,
+              "short": "Full comma-separated address",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "URL of icon representing the place",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "importance",
               "req": false,
+              "short": "Computed importance rank",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "lat",
               "req": false,
+              "short": "Latitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "licence",
               "req": false,
+              "short": "License information",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "lon",
               "req": false,
+              "short": "Longitude",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "osm_id",
               "req": false,
+              "short": "OSM object ID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "osm_type",
               "req": false,
+              "short": "OSM type (node, way, relation)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "place_id",
               "req": false,
+              "short": "Unique identifier for the place",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Main OSM tag value",
               "type": "`$STRING`"
             }
           ],
@@ -1189,30 +1255,35 @@
               "active": true,
               "name": "data_updated",
               "req": false,
+              "short": "Timestamp when the database was last updated",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "database_version",
               "req": false,
+              "short": "Database version",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "message",
               "req": false,
+              "short": "Status message",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "software_version",
               "req": false,
+              "short": "Nominatim software version",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "status",
               "req": false,
+              "short": "Status code (0 = OK)",
               "type": "`$INTEGER`"
             }
           ],

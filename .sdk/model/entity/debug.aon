@@ -1,0 +1,255 @@
+# Entity: debug
+
+main: kit: entity: debug: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "addresstags"
+      req: false
+      short: "Address tags"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "admin_level"
+      req: false
+      short: "Administrative level"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "calculated_importance"
+      req: false
+      short: "Calculated importance"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "calculated_postcode"
+      req: false
+      short: "Calculated postcode"
+      type: "`$STRING`"
+    }
+    {
+      name: "calculated_wikipedia"
+      req: false
+      short: "Wikipedia reference"
+      type: "`$STRING`"
+    }
+    {
+      name: "category"
+      req: false
+      short: "Main OSM tag key"
+      type: "`$STRING`"
+    }
+    {
+      name: "centroid"
+      req: false
+      short: "Centroid coordinates"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "country_code"
+      req: false
+      short: "Country code"
+      type: "`$STRING`"
+    }
+    {
+      name: "extratags"
+      req: false
+      short: "Extra OSM tags"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "geometry"
+      req: false
+      short: "Geometry information"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "housenumber"
+      req: false
+      short: "House number"
+      type: "`$STRING`"
+    }
+    {
+      name: "importance"
+      req: false
+      short: "Computed importance rank"
+      type: "`$NUMBER`"
+    }
+    {
+      name: "indexed_date"
+      req: false
+      short: "Date when the object was indexed"
+      type: "`$STRING`"
+    }
+    {
+      name: "isarea"
+      req: false
+      short: "Whether the object is an area"
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "localname"
+      req: false
+      short: "Local name"
+      type: "`$STRING`"
+    }
+    {
+      name: "names"
+      req: false
+      short: "All available names"
+      type: "`$OBJECT`"
+    }
+    {
+      name: "osm_id"
+      req: false
+      short: "OSM object ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "osm_type"
+      req: false
+      short: "OSM type (node, way, relation)"
+      type: "`$STRING`"
+    }
+    {
+      name: "parent_place_id"
+      req: false
+      short: "Parent place ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "place_id"
+      req: false
+      short: "Unique identifier for the place"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank_address"
+      req: false
+      short: "Address rank"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "rank_search"
+      req: false
+      short: "Search rank"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Main OSM tag value"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "debug"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1
+                kind: "query"
+                name: "addressdetail"
+                orig: "addressdetail"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "class"
+                orig: "class"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "html"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "group_hierarchy"
+                orig: "group_hierarchy"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "keyword"
+                orig: "keyword"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "osmid"
+                orig: "osmid"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "osmtype"
+                orig: "osmtype"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "place_id"
+                orig: "place_id"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "polygon_geojson"
+                orig: "polygon_geojson"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/details"
+          parts: [
+            "details"
+          ]
+          select: {
+            exist: [
+              "addressdetail"
+              "class"
+              "format"
+              "group_hierarchy"
+              "keyword"
+              "osmid"
+              "osmtype"
+              "place_id"
+              "polygon_geojson"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

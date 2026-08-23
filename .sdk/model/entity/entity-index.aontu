@@ -1,8 +1,0 @@
-# Entity Models
-
-@"address_lookup.aontu"
-@"administrative.aontu"
-@"debug.aontu"
-@"reverse.aontu"
-@"search.aontu"
-@"server_status.aontu"

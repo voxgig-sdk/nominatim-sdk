@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Nominatim",
+			"slug": "nominatim",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -38,50 +41,62 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "address",
+						"short": "Address breakdown",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "boundingbox",
+						"short": "Bounding box coordinates",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "class",
+						"short": "Main OSM tag key",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "display_name",
+						"short": "Full comma-separated address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "importance",
+						"short": "Computed importance rank",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "lat",
+						"short": "Latitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "licence",
+						"short": "License information",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lon",
+						"short": "Longitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "osm_id",
+						"short": "OSM object ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "osm_type",
+						"short": "OSM type (node, way, relation)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "place_id",
+						"short": "Unique identifier for the place",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Main OSM tag value",
 						"type": "`$STRING`",
 					},
 				},
@@ -201,38 +216,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "class",
+						"short": "Main OSM tag key",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "country_code",
+						"short": "Country code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "errormessage",
+						"short": "Error message describing the polygon issue",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the object",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "osm_id",
+						"short": "OSM object ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "osm_type",
+						"short": "OSM type (way, relation)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "place_id",
+						"short": "Unique identifier for the place",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Main OSM tag value",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "updated",
+						"short": "Last update timestamp",
 						"type": "`$STRING`",
 					},
 				},
@@ -317,94 +341,117 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "addresstags",
+						"short": "Address tags",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "admin_level",
+						"short": "Administrative level",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "calculated_importance",
+						"short": "Calculated importance",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "calculated_postcode",
+						"short": "Calculated postcode",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "calculated_wikipedia",
+						"short": "Wikipedia reference",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "category",
+						"short": "Main OSM tag key",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "centroid",
+						"short": "Centroid coordinates",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "country_code",
+						"short": "Country code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "extratags",
+						"short": "Extra OSM tags",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "geometry",
+						"short": "Geometry information",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "housenumber",
+						"short": "House number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "importance",
+						"short": "Computed importance rank",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "indexed_date",
+						"short": "Date when the object was indexed",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "isarea",
+						"short": "Whether the object is an area",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "localname",
+						"short": "Local name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "names",
+						"short": "All available names",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "osm_id",
+						"short": "OSM object ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "osm_type",
+						"short": "OSM type (node, way, relation)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "parent_place_id",
+						"short": "Parent place ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "place_id",
+						"short": "Unique identifier for the place",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank_address",
+						"short": "Address rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "rank_search",
+						"short": "Search rank",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Main OSM tag value",
 						"type": "`$STRING`",
 					},
 				},
@@ -513,38 +560,47 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "address",
+						"short": "Address breakdown",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "boundingbox",
+						"short": "Bounding box coordinates",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "display_name",
+						"short": "Full comma-separated address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lat",
+						"short": "Latitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "licence",
+						"short": "License information",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lon",
+						"short": "Longitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "osm_id",
+						"short": "OSM object ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "osm_type",
+						"short": "OSM type (node, way, relation)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "place_id",
+						"short": "Unique identifier for the place",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -680,54 +736,67 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "address",
+						"short": "Address breakdown",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "boundingbox",
+						"short": "Bounding box coordinates",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "class",
+						"short": "Main OSM tag key",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "display_name",
+						"short": "Full comma-separated address",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "URL of icon representing the place",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "importance",
+						"short": "Computed importance rank",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "lat",
+						"short": "Latitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "licence",
+						"short": "License information",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "lon",
+						"short": "Longitude",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "osm_id",
+						"short": "OSM object ID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "osm_type",
+						"short": "OSM type (node, way, relation)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "place_id",
+						"short": "Unique identifier for the place",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Main OSM tag value",
 						"type": "`$STRING`",
 					},
 				},
@@ -926,22 +995,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "data_updated",
+						"short": "Timestamp when the database was last updated",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "database_version",
+						"short": "Database version",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
+						"short": "Status message",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "software_version",
+						"short": "Nominatim software version",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "status",
+						"short": "Status code (0 = OK)",
 						"type": "`$INTEGER`",
 					},
 				},

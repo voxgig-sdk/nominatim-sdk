@@ -1,0 +1,140 @@
+# Entity: administrative
+
+main: kit: entity: administrative: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "class"
+      req: false
+      short: "Main OSM tag key"
+      type: "`$STRING`"
+    }
+    {
+      name: "country_code"
+      req: false
+      short: "Country code"
+      type: "`$STRING`"
+    }
+    {
+      name: "errormessage"
+      req: false
+      short: "Error message describing the polygon issue"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      short: "Name of the object"
+      type: "`$STRING`"
+    }
+    {
+      name: "osm_id"
+      req: false
+      short: "OSM object ID"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "osm_type"
+      req: false
+      short: "OSM type (way, relation)"
+      type: "`$STRING`"
+    }
+    {
+      name: "place_id"
+      req: false
+      short: "Unique identifier for the place"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Main OSM tag value"
+      type: "`$STRING`"
+    }
+    {
+      name: "updated"
+      req: false
+      short: "Last update timestamp"
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "administrative"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 7
+                kind: "query"
+                name: "day"
+                orig: "day"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "json"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/polygons"
+          parts: [
+            "polygons"
+          ]
+          select: {
+            exist: [
+              "day"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "json"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/deletable"
+          parts: [
+            "deletable"
+          ]
+          select: {
+            exist: [
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

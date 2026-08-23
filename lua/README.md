@@ -238,18 +238,18 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `boundingbox` |  |
-| `class` |  |
-| `display_name` |  |
-| `importance` |  |
-| `lat` |  |
-| `licence` |  |
-| `lon` |  |
-| `osm_id` |  |
-| `osm_type` |  |
-| `place_id` |  |
-| `type` |  |
+| `address` | Address breakdown |
+| `boundingbox` | Bounding box coordinates |
+| `class` | Main OSM tag key |
+| `display_name` | Full comma-separated address |
+| `importance` | Computed importance rank |
+| `lat` | Latitude |
+| `licence` | License information |
+| `lon` | Longitude |
+| `osm_id` | OSM object ID |
+| `osm_type` | OSM type (node, way, relation) |
+| `place_id` | Unique identifier for the place |
+| `type` | Main OSM tag value |
 
 Operations: List.
 
@@ -259,15 +259,15 @@ API path: `/lookup`
 
 | Field | Description |
 | --- | --- |
-| `class` |  |
-| `country_code` |  |
-| `errormessage` |  |
-| `name` |  |
-| `osm_id` |  |
-| `osm_type` |  |
-| `place_id` |  |
-| `type` |  |
-| `updated` |  |
+| `class` | Main OSM tag key |
+| `country_code` | Country code |
+| `errormessage` | Error message describing the polygon issue |
+| `name` | Name of the object |
+| `osm_id` | OSM object ID |
+| `osm_type` | OSM type (way, relation) |
+| `place_id` | Unique identifier for the place |
+| `type` | Main OSM tag value |
+| `updated` | Last update timestamp |
 
 Operations: List.
 
@@ -277,29 +277,29 @@ API path: `/polygons`
 
 | Field | Description |
 | --- | --- |
-| `addresstags` |  |
-| `admin_level` |  |
-| `calculated_importance` |  |
-| `calculated_postcode` |  |
-| `calculated_wikipedia` |  |
-| `category` |  |
-| `centroid` |  |
-| `country_code` |  |
-| `extratags` |  |
-| `geometry` |  |
-| `housenumber` |  |
-| `importance` |  |
-| `indexed_date` |  |
-| `isarea` |  |
-| `localname` |  |
-| `names` |  |
-| `osm_id` |  |
-| `osm_type` |  |
-| `parent_place_id` |  |
-| `place_id` |  |
-| `rank_address` |  |
-| `rank_search` |  |
-| `type` |  |
+| `addresstags` | Address tags |
+| `admin_level` | Administrative level |
+| `calculated_importance` | Calculated importance |
+| `calculated_postcode` | Calculated postcode |
+| `calculated_wikipedia` | Wikipedia reference |
+| `category` | Main OSM tag key |
+| `centroid` | Centroid coordinates |
+| `country_code` | Country code |
+| `extratags` | Extra OSM tags |
+| `geometry` | Geometry information |
+| `housenumber` | House number |
+| `importance` | Computed importance rank |
+| `indexed_date` | Date when the object was indexed |
+| `isarea` | Whether the object is an area |
+| `localname` | Local name |
+| `names` | All available names |
+| `osm_id` | OSM object ID |
+| `osm_type` | OSM type (node, way, relation) |
+| `parent_place_id` | Parent place ID |
+| `place_id` | Unique identifier for the place |
+| `rank_address` | Address rank |
+| `rank_search` | Search rank |
+| `type` | Main OSM tag value |
 
 Operations: Load.
 
@@ -309,15 +309,15 @@ API path: `/details`
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `boundingbox` |  |
-| `display_name` |  |
-| `lat` |  |
-| `licence` |  |
-| `lon` |  |
-| `osm_id` |  |
-| `osm_type` |  |
-| `place_id` |  |
+| `address` | Address breakdown |
+| `boundingbox` | Bounding box coordinates |
+| `display_name` | Full comma-separated address |
+| `lat` | Latitude |
+| `licence` | License information |
+| `lon` | Longitude |
+| `osm_id` | OSM object ID |
+| `osm_type` | OSM type (node, way, relation) |
+| `place_id` | Unique identifier for the place |
 
 Operations: List.
 
@@ -327,19 +327,19 @@ API path: `/reverse`
 
 | Field | Description |
 | --- | --- |
-| `address` |  |
-| `boundingbox` |  |
-| `class` |  |
-| `display_name` |  |
-| `icon` |  |
-| `importance` |  |
-| `lat` |  |
-| `licence` |  |
-| `lon` |  |
-| `osm_id` |  |
-| `osm_type` |  |
-| `place_id` |  |
-| `type` |  |
+| `address` | Address breakdown |
+| `boundingbox` | Bounding box coordinates |
+| `class` | Main OSM tag key |
+| `display_name` | Full comma-separated address |
+| `icon` | URL of icon representing the place |
+| `importance` | Computed importance rank |
+| `lat` | Latitude |
+| `licence` | License information |
+| `lon` | Longitude |
+| `osm_id` | OSM object ID |
+| `osm_type` | OSM type (node, way, relation) |
+| `place_id` | Unique identifier for the place |
+| `type` | Main OSM tag value |
 
 Operations: List.
 
@@ -349,11 +349,11 @@ API path: `/search`
 
 | Field | Description |
 | --- | --- |
-| `data_updated` |  |
-| `database_version` |  |
-| `message` |  |
-| `software_version` |  |
-| `status` |  |
+| `data_updated` | Timestamp when the database was last updated |
+| `database_version` | Database version |
+| `message` | Status message |
+| `software_version` | Nominatim software version |
+| `status` | Status code (0 = OK) |
 
 Operations: Load.
 
@@ -378,18 +378,18 @@ Create an instance: `local address_lookup = client:AddressLookup(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `table` |  |
-| `boundingbox` | `table` |  |
-| `class` | `string` |  |
-| `display_name` | `string` |  |
-| `importance` | `number` |  |
-| `lat` | `string` |  |
-| `licence` | `string` |  |
-| `lon` | `string` |  |
-| `osm_id` | `number` |  |
-| `osm_type` | `string` |  |
-| `place_id` | `number` |  |
-| `type` | `string` |  |
+| `address` | `table` | Address breakdown |
+| `boundingbox` | `table` | Bounding box coordinates |
+| `class` | `string` | Main OSM tag key |
+| `display_name` | `string` | Full comma-separated address |
+| `importance` | `number` | Computed importance rank |
+| `lat` | `string` | Latitude |
+| `licence` | `string` | License information |
+| `lon` | `string` | Longitude |
+| `osm_id` | `number` | OSM object ID |
+| `osm_type` | `string` | OSM type (node, way, relation) |
+| `place_id` | `number` | Unique identifier for the place |
+| `type` | `string` | Main OSM tag value |
 
 #### Example: List
 
@@ -412,15 +412,15 @@ Create an instance: `local administrative = client:Administrative(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `class` | `string` |  |
-| `country_code` | `string` |  |
-| `errormessage` | `string` |  |
-| `name` | `string` |  |
-| `osm_id` | `number` |  |
-| `osm_type` | `string` |  |
-| `place_id` | `number` |  |
-| `type` | `string` |  |
-| `updated` | `string` |  |
+| `class` | `string` | Main OSM tag key |
+| `country_code` | `string` | Country code |
+| `errormessage` | `string` | Error message describing the polygon issue |
+| `name` | `string` | Name of the object |
+| `osm_id` | `number` | OSM object ID |
+| `osm_type` | `string` | OSM type (way, relation) |
+| `place_id` | `number` | Unique identifier for the place |
+| `type` | `string` | Main OSM tag value |
+| `updated` | `string` | Last update timestamp |
 
 #### Example: List
 
@@ -443,29 +443,29 @@ Create an instance: `local debug = client:Debug(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addresstags` | `table` |  |
-| `admin_level` | `number` |  |
-| `calculated_importance` | `number` |  |
-| `calculated_postcode` | `string` |  |
-| `calculated_wikipedia` | `string` |  |
-| `category` | `string` |  |
-| `centroid` | `table` |  |
-| `country_code` | `string` |  |
-| `extratags` | `table` |  |
-| `geometry` | `table` |  |
-| `housenumber` | `string` |  |
-| `importance` | `number` |  |
-| `indexed_date` | `string` |  |
-| `isarea` | `boolean` |  |
-| `localname` | `string` |  |
-| `names` | `table` |  |
-| `osm_id` | `number` |  |
-| `osm_type` | `string` |  |
-| `parent_place_id` | `number` |  |
-| `place_id` | `number` |  |
-| `rank_address` | `number` |  |
-| `rank_search` | `number` |  |
-| `type` | `string` |  |
+| `addresstags` | `table` | Address tags |
+| `admin_level` | `number` | Administrative level |
+| `calculated_importance` | `number` | Calculated importance |
+| `calculated_postcode` | `string` | Calculated postcode |
+| `calculated_wikipedia` | `string` | Wikipedia reference |
+| `category` | `string` | Main OSM tag key |
+| `centroid` | `table` | Centroid coordinates |
+| `country_code` | `string` | Country code |
+| `extratags` | `table` | Extra OSM tags |
+| `geometry` | `table` | Geometry information |
+| `housenumber` | `string` | House number |
+| `importance` | `number` | Computed importance rank |
+| `indexed_date` | `string` | Date when the object was indexed |
+| `isarea` | `boolean` | Whether the object is an area |
+| `localname` | `string` | Local name |
+| `names` | `table` | All available names |
+| `osm_id` | `number` | OSM object ID |
+| `osm_type` | `string` | OSM type (node, way, relation) |
+| `parent_place_id` | `number` | Parent place ID |
+| `place_id` | `number` | Unique identifier for the place |
+| `rank_address` | `number` | Address rank |
+| `rank_search` | `number` | Search rank |
+| `type` | `string` | Main OSM tag value |
 
 #### Example: Load
 
@@ -488,15 +488,15 @@ Create an instance: `local reverse = client:Reverse(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `table` |  |
-| `boundingbox` | `table` |  |
-| `display_name` | `string` |  |
-| `lat` | `string` |  |
-| `licence` | `string` |  |
-| `lon` | `string` |  |
-| `osm_id` | `number` |  |
-| `osm_type` | `string` |  |
-| `place_id` | `number` |  |
+| `address` | `table` | Address breakdown |
+| `boundingbox` | `table` | Bounding box coordinates |
+| `display_name` | `string` | Full comma-separated address |
+| `lat` | `string` | Latitude |
+| `licence` | `string` | License information |
+| `lon` | `string` | Longitude |
+| `osm_id` | `number` | OSM object ID |
+| `osm_type` | `string` | OSM type (node, way, relation) |
+| `place_id` | `number` | Unique identifier for the place |
 
 #### Example: List
 
@@ -519,19 +519,19 @@ Create an instance: `local search = client:Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `address` | `table` |  |
-| `boundingbox` | `table` |  |
-| `class` | `string` |  |
-| `display_name` | `string` |  |
-| `icon` | `string` |  |
-| `importance` | `number` |  |
-| `lat` | `string` |  |
-| `licence` | `string` |  |
-| `lon` | `string` |  |
-| `osm_id` | `number` |  |
-| `osm_type` | `string` |  |
-| `place_id` | `number` |  |
-| `type` | `string` |  |
+| `address` | `table` | Address breakdown |
+| `boundingbox` | `table` | Bounding box coordinates |
+| `class` | `string` | Main OSM tag key |
+| `display_name` | `string` | Full comma-separated address |
+| `icon` | `string` | URL of icon representing the place |
+| `importance` | `number` | Computed importance rank |
+| `lat` | `string` | Latitude |
+| `licence` | `string` | License information |
+| `lon` | `string` | Longitude |
+| `osm_id` | `number` | OSM object ID |
+| `osm_type` | `string` | OSM type (node, way, relation) |
+| `place_id` | `number` | Unique identifier for the place |
+| `type` | `string` | Main OSM tag value |
 
 #### Example: List
 
@@ -554,11 +554,11 @@ Create an instance: `local server_status = client:ServerStatus(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data_updated` | `string` |  |
-| `database_version` | `string` |  |
-| `message` | `string` |  |
-| `software_version` | `string` |  |
-| `status` | `number` |  |
+| `data_updated` | `string` | Timestamp when the database was last updated |
+| `database_version` | `string` | Database version |
+| `message` | `string` | Status message |
+| `software_version` | `string` | Nominatim software version |
+| `status` | `number` | Status code (0 = OK) |
 
 #### Example: Load
 

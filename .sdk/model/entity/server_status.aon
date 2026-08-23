@@ -1,0 +1,79 @@
+# Entity: server_status
+
+main: kit: entity: server_status: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data_updated"
+      req: false
+      short: "Timestamp when the database was last updated"
+      type: "`$STRING`"
+    }
+    {
+      name: "database_version"
+      req: false
+      short: "Database version"
+      type: "`$STRING`"
+    }
+    {
+      name: "message"
+      req: false
+      short: "Status message"
+      type: "`$STRING`"
+    }
+    {
+      name: "software_version"
+      req: false
+      short: "Nominatim software version"
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      short: "Status code (0 = OK)"
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "server_status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "text"
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/status"
+          parts: [
+            "status"
+          ]
+          select: {
+            exist: [
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

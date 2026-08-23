@@ -113,18 +113,18 @@ address_lookup = client.AddressLookup
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `Hash` | No |  |
-| `boundingbox` | `Array` | No |  |
-| `class` | `String` | No |  |
-| `display_name` | `String` | No |  |
-| `importance` | `Float` | No |  |
-| `lat` | `String` | No |  |
-| `licence` | `String` | No |  |
-| `lon` | `String` | No |  |
-| `osm_id` | `Integer` | No |  |
-| `osm_type` | `String` | No |  |
-| `place_id` | `Integer` | No |  |
-| `type` | `String` | No |  |
+| `address` | `Hash` | No | Address breakdown |
+| `boundingbox` | `Array` | No | Bounding box coordinates |
+| `class` | `String` | No | Main OSM tag key |
+| `display_name` | `String` | No | Full comma-separated address |
+| `importance` | `Float` | No | Computed importance rank |
+| `lat` | `String` | No | Latitude |
+| `licence` | `String` | No | License information |
+| `lon` | `String` | No | Longitude |
+| `osm_id` | `Integer` | No | OSM object ID |
+| `osm_type` | `String` | No | OSM type (node, way, relation) |
+| `place_id` | `Integer` | No | Unique identifier for the place |
+| `type` | `String` | No | Main OSM tag value |
 
 ### Operations
 
@@ -176,15 +176,15 @@ administrative = client.Administrative
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | `String` | No |  |
-| `country_code` | `String` | No |  |
-| `errormessage` | `String` | No |  |
-| `name` | `String` | No |  |
-| `osm_id` | `Integer` | No |  |
-| `osm_type` | `String` | No |  |
-| `place_id` | `Integer` | No |  |
-| `type` | `String` | No |  |
-| `updated` | `String` | No |  |
+| `class` | `String` | No | Main OSM tag key |
+| `country_code` | `String` | No | Country code |
+| `errormessage` | `String` | No | Error message describing the polygon issue |
+| `name` | `String` | No | Name of the object |
+| `osm_id` | `Integer` | No | OSM object ID |
+| `osm_type` | `String` | No | OSM type (way, relation) |
+| `place_id` | `Integer` | No | Unique identifier for the place |
+| `type` | `String` | No | Main OSM tag value |
+| `updated` | `String` | No | Last update timestamp |
 
 ### Operations
 
@@ -236,29 +236,29 @@ debug = client.Debug
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstags` | `Hash` | No |  |
-| `admin_level` | `Integer` | No |  |
-| `calculated_importance` | `Float` | No |  |
-| `calculated_postcode` | `String` | No |  |
-| `calculated_wikipedia` | `String` | No |  |
-| `category` | `String` | No |  |
-| `centroid` | `Hash` | No |  |
-| `country_code` | `String` | No |  |
-| `extratags` | `Hash` | No |  |
-| `geometry` | `Hash` | No |  |
-| `housenumber` | `String` | No |  |
-| `importance` | `Float` | No |  |
-| `indexed_date` | `String` | No |  |
-| `isarea` | `Boolean` | No |  |
-| `localname` | `String` | No |  |
-| `names` | `Hash` | No |  |
-| `osm_id` | `Integer` | No |  |
-| `osm_type` | `String` | No |  |
-| `parent_place_id` | `Integer` | No |  |
-| `place_id` | `Integer` | No |  |
-| `rank_address` | `Integer` | No |  |
-| `rank_search` | `Integer` | No |  |
-| `type` | `String` | No |  |
+| `addresstags` | `Hash` | No | Address tags |
+| `admin_level` | `Integer` | No | Administrative level |
+| `calculated_importance` | `Float` | No | Calculated importance |
+| `calculated_postcode` | `String` | No | Calculated postcode |
+| `calculated_wikipedia` | `String` | No | Wikipedia reference |
+| `category` | `String` | No | Main OSM tag key |
+| `centroid` | `Hash` | No | Centroid coordinates |
+| `country_code` | `String` | No | Country code |
+| `extratags` | `Hash` | No | Extra OSM tags |
+| `geometry` | `Hash` | No | Geometry information |
+| `housenumber` | `String` | No | House number |
+| `importance` | `Float` | No | Computed importance rank |
+| `indexed_date` | `String` | No | Date when the object was indexed |
+| `isarea` | `Boolean` | No | Whether the object is an area |
+| `localname` | `String` | No | Local name |
+| `names` | `Hash` | No | All available names |
+| `osm_id` | `Integer` | No | OSM object ID |
+| `osm_type` | `String` | No | OSM type (node, way, relation) |
+| `parent_place_id` | `Integer` | No | Parent place ID |
+| `place_id` | `Integer` | No | Unique identifier for the place |
+| `rank_address` | `Integer` | No | Address rank |
+| `rank_search` | `Integer` | No | Search rank |
+| `type` | `String` | No | Main OSM tag value |
 
 ### Operations
 
@@ -310,15 +310,15 @@ reverse = client.Reverse
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `Hash` | No |  |
-| `boundingbox` | `Array` | No |  |
-| `display_name` | `String` | No |  |
-| `lat` | `String` | No |  |
-| `licence` | `String` | No |  |
-| `lon` | `String` | No |  |
-| `osm_id` | `Integer` | No |  |
-| `osm_type` | `String` | No |  |
-| `place_id` | `Integer` | No |  |
+| `address` | `Hash` | No | Address breakdown |
+| `boundingbox` | `Array` | No | Bounding box coordinates |
+| `display_name` | `String` | No | Full comma-separated address |
+| `lat` | `String` | No | Latitude |
+| `licence` | `String` | No | License information |
+| `lon` | `String` | No | Longitude |
+| `osm_id` | `Integer` | No | OSM object ID |
+| `osm_type` | `String` | No | OSM type (node, way, relation) |
+| `place_id` | `Integer` | No | Unique identifier for the place |
 
 ### Operations
 
@@ -370,19 +370,19 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `Hash` | No |  |
-| `boundingbox` | `Array` | No |  |
-| `class` | `String` | No |  |
-| `display_name` | `String` | No |  |
-| `icon` | `String` | No |  |
-| `importance` | `Float` | No |  |
-| `lat` | `String` | No |  |
-| `licence` | `String` | No |  |
-| `lon` | `String` | No |  |
-| `osm_id` | `Integer` | No |  |
-| `osm_type` | `String` | No |  |
-| `place_id` | `Integer` | No |  |
-| `type` | `String` | No |  |
+| `address` | `Hash` | No | Address breakdown |
+| `boundingbox` | `Array` | No | Bounding box coordinates |
+| `class` | `String` | No | Main OSM tag key |
+| `display_name` | `String` | No | Full comma-separated address |
+| `icon` | `String` | No | URL of icon representing the place |
+| `importance` | `Float` | No | Computed importance rank |
+| `lat` | `String` | No | Latitude |
+| `licence` | `String` | No | License information |
+| `lon` | `String` | No | Longitude |
+| `osm_id` | `Integer` | No | OSM object ID |
+| `osm_type` | `String` | No | OSM type (node, way, relation) |
+| `place_id` | `Integer` | No | Unique identifier for the place |
+| `type` | `String` | No | Main OSM tag value |
 
 ### Operations
 
@@ -434,11 +434,11 @@ server_status = client.ServerStatus
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | `String` | No |  |
-| `database_version` | `String` | No |  |
-| `message` | `String` | No |  |
-| `software_version` | `String` | No |  |
-| `status` | `Integer` | No |  |
+| `data_updated` | `String` | No | Timestamp when the database was last updated |
+| `database_version` | `String` | No | Database version |
+| `message` | `String` | No | Status message |
+| `software_version` | `String` | No | Nominatim software version |
+| `status` | `Integer` | No | Status code (0 = OK) |
 
 ### Operations
 

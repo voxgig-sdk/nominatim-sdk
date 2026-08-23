@@ -33,6 +33,9 @@ class NominatimConfig
         return [
             "main" => [
                 "name" => "Nominatim",
+                "slug" => "nominatim",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -60,50 +63,62 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'address',
+              'short' => 'Address breakdown',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'boundingbox',
+              'short' => 'Bounding box coordinates',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'class',
+              'short' => 'Main OSM tag key',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'display_name',
+              'short' => 'Full comma-separated address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'importance',
+              'short' => 'Computed importance rank',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'lat',
+              'short' => 'Latitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'licence',
+              'short' => 'License information',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'lon',
+              'short' => 'Longitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'osm_id',
+              'short' => 'OSM object ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'osm_type',
+              'short' => 'OSM type (node, way, relation)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'place_id',
+              'short' => 'Unique identifier for the place',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'type',
+              'short' => 'Main OSM tag value',
               'type' => '`$STRING`',
             ],
           ],
@@ -223,38 +238,47 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'class',
+              'short' => 'Main OSM tag key',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'country_code',
+              'short' => 'Country code',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'errormessage',
+              'short' => 'Error message describing the polygon issue',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'name',
+              'short' => 'Name of the object',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'osm_id',
+              'short' => 'OSM object ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'osm_type',
+              'short' => 'OSM type (way, relation)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'place_id',
+              'short' => 'Unique identifier for the place',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'type',
+              'short' => 'Main OSM tag value',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'updated',
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
           ],
@@ -339,94 +363,117 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'addresstags',
+              'short' => 'Address tags',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'admin_level',
+              'short' => 'Administrative level',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'calculated_importance',
+              'short' => 'Calculated importance',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'calculated_postcode',
+              'short' => 'Calculated postcode',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'calculated_wikipedia',
+              'short' => 'Wikipedia reference',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'category',
+              'short' => 'Main OSM tag key',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'centroid',
+              'short' => 'Centroid coordinates',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'country_code',
+              'short' => 'Country code',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'extratags',
+              'short' => 'Extra OSM tags',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'geometry',
+              'short' => 'Geometry information',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'housenumber',
+              'short' => 'House number',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'importance',
+              'short' => 'Computed importance rank',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'indexed_date',
+              'short' => 'Date when the object was indexed',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'isarea',
+              'short' => 'Whether the object is an area',
               'type' => '`$BOOLEAN`',
             ],
             [
               'name' => 'localname',
+              'short' => 'Local name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'names',
+              'short' => 'All available names',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'osm_id',
+              'short' => 'OSM object ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'osm_type',
+              'short' => 'OSM type (node, way, relation)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'parent_place_id',
+              'short' => 'Parent place ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'place_id',
+              'short' => 'Unique identifier for the place',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'rank_address',
+              'short' => 'Address rank',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'rank_search',
+              'short' => 'Search rank',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'type',
+              'short' => 'Main OSM tag value',
               'type' => '`$STRING`',
             ],
           ],
@@ -535,38 +582,47 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'address',
+              'short' => 'Address breakdown',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'boundingbox',
+              'short' => 'Bounding box coordinates',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'display_name',
+              'short' => 'Full comma-separated address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'lat',
+              'short' => 'Latitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'licence',
+              'short' => 'License information',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'lon',
+              'short' => 'Longitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'osm_id',
+              'short' => 'OSM object ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'osm_type',
+              'short' => 'OSM type (node, way, relation)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'place_id',
+              'short' => 'Unique identifier for the place',
               'type' => '`$INTEGER`',
             ],
           ],
@@ -702,54 +758,67 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'address',
+              'short' => 'Address breakdown',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'boundingbox',
+              'short' => 'Bounding box coordinates',
               'type' => '`$ARRAY`',
             ],
             [
               'name' => 'class',
+              'short' => 'Main OSM tag key',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'display_name',
+              'short' => 'Full comma-separated address',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'icon',
+              'short' => 'URL of icon representing the place',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'importance',
+              'short' => 'Computed importance rank',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'lat',
+              'short' => 'Latitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'licence',
+              'short' => 'License information',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'lon',
+              'short' => 'Longitude',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'osm_id',
+              'short' => 'OSM object ID',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'osm_type',
+              'short' => 'OSM type (node, way, relation)',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'place_id',
+              'short' => 'Unique identifier for the place',
               'type' => '`$INTEGER`',
             ],
             [
               'name' => 'type',
+              'short' => 'Main OSM tag value',
               'type' => '`$STRING`',
             ],
           ],
@@ -948,22 +1017,27 @@ class NominatimConfig
           'fields' => [
             [
               'name' => 'data_updated',
+              'short' => 'Timestamp when the database was last updated',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'database_version',
+              'short' => 'Database version',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'message',
+              'short' => 'Status message',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'software_version',
+              'short' => 'Nominatim software version',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'status',
+              'short' => 'Status code (0 = OK)',
               'type' => '`$INTEGER`',
             ],
           ],

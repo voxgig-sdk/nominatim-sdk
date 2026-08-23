@@ -118,18 +118,18 @@ fmt.Println(addressLookup.GetName()) // "address_lookup"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `map[string]any` | No |  |
-| `boundingbox` | `[]any` | No |  |
-| `class` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `importance` | `float64` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `address` | `map[string]any` | No | Address breakdown |
+| `boundingbox` | `[]any` | No | Bounding box coordinates |
+| `class` | `string` | No | Main OSM tag key |
+| `display_name` | `string` | No | Full comma-separated address |
+| `importance` | `float64` | No | Computed importance rank |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -180,15 +180,15 @@ fmt.Println(administrative.GetName()) // "administrative"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `class` | `string` | No |  |
-| `country_code` | `string` | No |  |
-| `errormessage` | `string` | No |  |
-| `name` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
-| `updated` | `string` | No |  |
+| `class` | `string` | No | Main OSM tag key |
+| `country_code` | `string` | No | Country code |
+| `errormessage` | `string` | No | Error message describing the polygon issue |
+| `name` | `string` | No | Name of the object |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
+| `updated` | `string` | No | Last update timestamp |
 
 ### Operations
 
@@ -239,29 +239,29 @@ fmt.Println(debug.GetName()) // "debug"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addresstags` | `map[string]any` | No |  |
-| `admin_level` | `int` | No |  |
-| `calculated_importance` | `float64` | No |  |
-| `calculated_postcode` | `string` | No |  |
-| `calculated_wikipedia` | `string` | No |  |
-| `category` | `string` | No |  |
-| `centroid` | `map[string]any` | No |  |
-| `country_code` | `string` | No |  |
-| `extratags` | `map[string]any` | No |  |
-| `geometry` | `map[string]any` | No |  |
-| `housenumber` | `string` | No |  |
-| `importance` | `float64` | No |  |
-| `indexed_date` | `string` | No |  |
-| `isarea` | `bool` | No |  |
-| `localname` | `string` | No |  |
-| `names` | `map[string]any` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `parent_place_id` | `int` | No |  |
-| `place_id` | `int` | No |  |
-| `rank_address` | `int` | No |  |
-| `rank_search` | `int` | No |  |
-| `type` | `string` | No |  |
+| `addresstags` | `map[string]any` | No | Address tags |
+| `admin_level` | `int` | No | Administrative level |
+| `calculated_importance` | `float64` | No | Calculated importance |
+| `calculated_postcode` | `string` | No | Calculated postcode |
+| `calculated_wikipedia` | `string` | No | Wikipedia reference |
+| `category` | `string` | No | Main OSM tag key |
+| `centroid` | `map[string]any` | No | Centroid coordinates |
+| `country_code` | `string` | No | Country code |
+| `extratags` | `map[string]any` | No | Extra OSM tags |
+| `geometry` | `map[string]any` | No | Geometry information |
+| `housenumber` | `string` | No | House number |
+| `importance` | `float64` | No | Computed importance rank |
+| `indexed_date` | `string` | No | Date when the object was indexed |
+| `isarea` | `bool` | No | Whether the object is an area |
+| `localname` | `string` | No | Local name |
+| `names` | `map[string]any` | No | All available names |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `parent_place_id` | `int` | No | Parent place ID |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `rank_address` | `int` | No | Address rank |
+| `rank_search` | `int` | No | Search rank |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -312,15 +312,15 @@ fmt.Println(reverse.GetName()) // "reverse"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `map[string]any` | No |  |
-| `boundingbox` | `[]any` | No |  |
-| `display_name` | `string` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
+| `address` | `map[string]any` | No | Address breakdown |
+| `boundingbox` | `[]any` | No | Bounding box coordinates |
+| `display_name` | `string` | No | Full comma-separated address |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
 
 ### Operations
 
@@ -371,19 +371,19 @@ fmt.Println(search.GetName()) // "search"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `address` | `map[string]any` | No |  |
-| `boundingbox` | `[]any` | No |  |
-| `class` | `string` | No |  |
-| `display_name` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `importance` | `float64` | No |  |
-| `lat` | `string` | No |  |
-| `licence` | `string` | No |  |
-| `lon` | `string` | No |  |
-| `osm_id` | `int` | No |  |
-| `osm_type` | `string` | No |  |
-| `place_id` | `int` | No |  |
-| `type` | `string` | No |  |
+| `address` | `map[string]any` | No | Address breakdown |
+| `boundingbox` | `[]any` | No | Bounding box coordinates |
+| `class` | `string` | No | Main OSM tag key |
+| `display_name` | `string` | No | Full comma-separated address |
+| `icon` | `string` | No | URL of icon representing the place |
+| `importance` | `float64` | No | Computed importance rank |
+| `lat` | `string` | No | Latitude |
+| `licence` | `string` | No | License information |
+| `lon` | `string` | No | Longitude |
+| `osm_id` | `int` | No | OSM object ID |
+| `osm_type` | `string` | No | OSM type (node, way, relation) |
+| `place_id` | `int` | No | Unique identifier for the place |
+| `type` | `string` | No | Main OSM tag value |
 
 ### Operations
 
@@ -434,11 +434,11 @@ fmt.Println(serverStatus.GetName()) // "server_status"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data_updated` | `string` | No |  |
-| `database_version` | `string` | No |  |
-| `message` | `string` | No |  |
-| `software_version` | `string` | No |  |
-| `status` | `int` | No |  |
+| `data_updated` | `string` | No | Timestamp when the database was last updated |
+| `database_version` | `string` | No | Database version |
+| `message` | `string` | No | Status message |
+| `software_version` | `string` | No | Nominatim software version |
+| `status` | `int` | No | Status code (0 = OK) |
 
 ### Operations
 
