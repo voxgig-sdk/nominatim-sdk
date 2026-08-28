@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    addresslookups = client.AddressLookup().list()
+    addresslookups = client.AddressLookup().list({"osm_id": "example"})
     for addresslookup in addresslookups:
         print(addresslookup)
 except Exception as err:
@@ -405,7 +405,7 @@ Create an instance: `address_lookup = client.AddressLookup()`
 #### Example: List
 
 ```python
-address_lookups = client.AddressLookup().list()
+address_lookups = client.AddressLookup().list({"osm_id": "example"})
 ```
 
 
@@ -512,7 +512,7 @@ Create an instance: `reverse = client.Reverse()`
 #### Example: List
 
 ```python
-reverses = client.Reverse().list()
+reverses = client.Reverse().list({"lat": 1, "lon": 1})
 ```
 
 
@@ -576,6 +576,29 @@ Create an instance: `server_status = client.ServerStatus()`
 ```python
 server_status = client.ServerStatus().load()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

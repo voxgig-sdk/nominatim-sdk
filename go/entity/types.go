@@ -30,18 +30,16 @@ type AddressLookup struct {
 
 // AddressLookupListMatch is the typed request payload for AddressLookup.ListTyped.
 type AddressLookupListMatch struct {
-	Address *map[string]any `json:"address,omitempty"`
-	Boundingbox *[]any `json:"boundingbox,omitempty"`
-	Class *string `json:"class,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
-	Importance *float64 `json:"importance,omitempty"`
-	Lat *string `json:"lat,omitempty"`
-	Licence *string `json:"licence,omitempty"`
-	Lon *string `json:"lon,omitempty"`
-	OsmId *int `json:"osm_id,omitempty"`
-	OsmType *string `json:"osm_type,omitempty"`
-	PlaceId *int `json:"place_id,omitempty"`
-	Type *string `json:"type,omitempty"`
+	AcceptLanguage *string `json:"accept_language,omitempty"`
+	Addressdetail *int `json:"addressdetail,omitempty"`
+	Extratag *int `json:"extratag,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Namedetail *int `json:"namedetail,omitempty"`
+	OsmId string `json:"osm_id"`
+	PolygonGeojson *int `json:"polygon_geojson,omitempty"`
+	PolygonKml *int `json:"polygon_kml,omitempty"`
+	PolygonSvg *int `json:"polygon_svg,omitempty"`
+	PolygonText *int `json:"polygon_text,omitempty"`
 }
 
 // Administrative is the typed data model for the administrative entity.
@@ -59,15 +57,8 @@ type Administrative struct {
 
 // AdministrativeListMatch is the typed request payload for Administrative.ListTyped.
 type AdministrativeListMatch struct {
-	Class *string `json:"class,omitempty"`
-	CountryCode *string `json:"country_code,omitempty"`
-	Errormessage *string `json:"errormessage,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OsmId *int `json:"osm_id,omitempty"`
-	OsmType *string `json:"osm_type,omitempty"`
-	PlaceId *int `json:"place_id,omitempty"`
-	Type *string `json:"type,omitempty"`
-	Updated *string `json:"updated,omitempty"`
+	Day *int `json:"day,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // Debug is the typed data model for the debug entity.
@@ -99,29 +90,15 @@ type Debug struct {
 
 // DebugLoadMatch is the typed request payload for Debug.LoadTyped.
 type DebugLoadMatch struct {
-	Addresstags *map[string]any `json:"addresstags,omitempty"`
-	AdminLevel *int `json:"admin_level,omitempty"`
-	CalculatedImportance *float64 `json:"calculated_importance,omitempty"`
-	CalculatedPostcode *string `json:"calculated_postcode,omitempty"`
-	CalculatedWikipedia *string `json:"calculated_wikipedia,omitempty"`
-	Category *string `json:"category,omitempty"`
-	Centroid *map[string]any `json:"centroid,omitempty"`
-	CountryCode *string `json:"country_code,omitempty"`
-	Extratags *map[string]any `json:"extratags,omitempty"`
-	Geometry *map[string]any `json:"geometry,omitempty"`
-	Housenumber *string `json:"housenumber,omitempty"`
-	Importance *float64 `json:"importance,omitempty"`
-	IndexedDate *string `json:"indexed_date,omitempty"`
-	Isarea *bool `json:"isarea,omitempty"`
-	Localname *string `json:"localname,omitempty"`
-	Names *map[string]any `json:"names,omitempty"`
-	OsmId *int `json:"osm_id,omitempty"`
-	OsmType *string `json:"osm_type,omitempty"`
-	ParentPlaceId *int `json:"parent_place_id,omitempty"`
+	Addressdetail *int `json:"addressdetail,omitempty"`
+	Class *string `json:"class,omitempty"`
+	Format *string `json:"format,omitempty"`
+	GroupHierarchy *int `json:"group_hierarchy,omitempty"`
+	Keyword *int `json:"keyword,omitempty"`
+	Osmid *int `json:"osmid,omitempty"`
+	Osmtype *string `json:"osmtype,omitempty"`
 	PlaceId *int `json:"place_id,omitempty"`
-	RankAddress *int `json:"rank_address,omitempty"`
-	RankSearch *int `json:"rank_search,omitempty"`
-	Type *string `json:"type,omitempty"`
+	PolygonGeojson *int `json:"polygon_geojson,omitempty"`
 }
 
 // Reverse is the typed data model for the reverse entity.
@@ -139,15 +116,18 @@ type Reverse struct {
 
 // ReverseListMatch is the typed request payload for Reverse.ListTyped.
 type ReverseListMatch struct {
-	Address *map[string]any `json:"address,omitempty"`
-	Boundingbox *[]any `json:"boundingbox,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
-	Lat *string `json:"lat,omitempty"`
-	Licence *string `json:"licence,omitempty"`
-	Lon *string `json:"lon,omitempty"`
-	OsmId *int `json:"osm_id,omitempty"`
-	OsmType *string `json:"osm_type,omitempty"`
-	PlaceId *int `json:"place_id,omitempty"`
+	AcceptLanguage *string `json:"accept_language,omitempty"`
+	Addressdetail *int `json:"addressdetail,omitempty"`
+	Extratag *int `json:"extratag,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Lat float64 `json:"lat"`
+	Lon float64 `json:"lon"`
+	Namedetail *int `json:"namedetail,omitempty"`
+	PolygonGeojson *int `json:"polygon_geojson,omitempty"`
+	PolygonKml *int `json:"polygon_kml,omitempty"`
+	PolygonSvg *int `json:"polygon_svg,omitempty"`
+	PolygonText *int `json:"polygon_text,omitempty"`
+	Zoom *int `json:"zoom,omitempty"`
 }
 
 // Search is the typed data model for the search entity.
@@ -169,19 +149,27 @@ type Search struct {
 
 // SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
-	Address *map[string]any `json:"address,omitempty"`
-	Boundingbox *[]any `json:"boundingbox,omitempty"`
-	Class *string `json:"class,omitempty"`
-	DisplayName *string `json:"display_name,omitempty"`
-	Icon *string `json:"icon,omitempty"`
-	Importance *float64 `json:"importance,omitempty"`
-	Lat *string `json:"lat,omitempty"`
-	Licence *string `json:"licence,omitempty"`
-	Lon *string `json:"lon,omitempty"`
-	OsmId *int `json:"osm_id,omitempty"`
-	OsmType *string `json:"osm_type,omitempty"`
-	PlaceId *int `json:"place_id,omitempty"`
-	Type *string `json:"type,omitempty"`
+	AcceptLanguage *string `json:"accept_language,omitempty"`
+	Addressdetail *int `json:"addressdetail,omitempty"`
+	Bounded *int `json:"bounded,omitempty"`
+	City *string `json:"city,omitempty"`
+	Country *string `json:"country,omitempty"`
+	Countrycode *string `json:"countrycode,omitempty"`
+	County *string `json:"county,omitempty"`
+	Dedupe *int `json:"dedupe,omitempty"`
+	Extratag *int `json:"extratag,omitempty"`
+	Format *string `json:"format,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Namedetail *int `json:"namedetail,omitempty"`
+	PolygonGeojson *int `json:"polygon_geojson,omitempty"`
+	PolygonKml *int `json:"polygon_kml,omitempty"`
+	PolygonSvg *int `json:"polygon_svg,omitempty"`
+	PolygonText *int `json:"polygon_text,omitempty"`
+	Postalcode *string `json:"postalcode,omitempty"`
+	Q *string `json:"q,omitempty"`
+	State *string `json:"state,omitempty"`
+	Street *string `json:"street,omitempty"`
+	Viewbox *string `json:"viewbox,omitempty"`
 }
 
 // ServerStatus is the typed data model for the server_status entity.
@@ -195,11 +183,7 @@ type ServerStatus struct {
 
 // ServerStatusLoadMatch is the typed request payload for ServerStatus.LoadTyped.
 type ServerStatusLoadMatch struct {
-	DataUpdated *string `json:"data_updated,omitempty"`
-	DatabaseVersion *string `json:"database_version,omitempty"`
-	Message *string `json:"message,omitempty"`
-	SoftwareVersion *string `json:"software_version,omitempty"`
-	Status *int `json:"status,omitempty"`
+	Format *string `json:"format,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

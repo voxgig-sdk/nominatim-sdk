@@ -40,7 +40,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const addresslookups = await client.AddressLookup().list()
+const addresslookups = await client.AddressLookup().list({ osm_id: "example" })
 
 for (const addresslookup of addresslookups) {
   console.log(addresslookup)
@@ -450,7 +450,7 @@ Create an instance: `const address_lookup = client.AddressLookup()`
 #### Example: List
 
 ```ts
-const address_lookups = await client.AddressLookup().list()
+const address_lookups = await client.AddressLookup().list({ osm_id: "example" })
 ```
 
 
@@ -557,7 +557,7 @@ Create an instance: `const reverse = client.Reverse()`
 #### Example: List
 
 ```ts
-const reverses = await client.Reverse().list()
+const reverses = await client.Reverse().list({ lat: 1, lon: 1 })
 ```
 
 
@@ -621,6 +621,29 @@ Create an instance: `const server_status = client.ServerStatus()`
 ```ts
 const server_status = await client.ServerStatus().load()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

@@ -21,18 +21,16 @@
 ---@field type? string
 
 ---@class AddressLookupListMatch
----@field address? table
----@field boundingbox? table
----@field class? string
----@field display_name? string
----@field importance? number
----@field lat? string
----@field licence? string
----@field lon? string
----@field osm_id? number
----@field osm_type? string
----@field place_id? number
----@field type? string
+---@field accept_language? string
+---@field addressdetail? number
+---@field extratag? number
+---@field format? string
+---@field namedetail? number
+---@field osm_id string
+---@field polygon_geojson? number
+---@field polygon_kml? number
+---@field polygon_svg? number
+---@field polygon_text? number
 
 ---@class Administrative
 ---@field class? string
@@ -46,15 +44,8 @@
 ---@field updated? string
 
 ---@class AdministrativeListMatch
----@field class? string
----@field country_code? string
----@field errormessage? string
----@field name? string
----@field osm_id? number
----@field osm_type? string
----@field place_id? number
----@field type? string
----@field updated? string
+---@field day? number
+---@field format? string
 
 ---@class Debug
 ---@field addresstags? table
@@ -82,29 +73,15 @@
 ---@field type? string
 
 ---@class DebugLoadMatch
----@field addresstags? table
----@field admin_level? number
----@field calculated_importance? number
----@field calculated_postcode? string
----@field calculated_wikipedia? string
----@field category? string
----@field centroid? table
----@field country_code? string
----@field extratags? table
----@field geometry? table
----@field housenumber? string
----@field importance? number
----@field indexed_date? string
----@field isarea? boolean
----@field localname? string
----@field names? table
----@field osm_id? number
----@field osm_type? string
----@field parent_place_id? number
+---@field addressdetail? number
+---@field class? string
+---@field format? string
+---@field group_hierarchy? number
+---@field keyword? number
+---@field osmid? number
+---@field osmtype? string
 ---@field place_id? number
----@field rank_address? number
----@field rank_search? number
----@field type? string
+---@field polygon_geojson? number
 
 ---@class Reverse
 ---@field address? table
@@ -118,15 +95,18 @@
 ---@field place_id? number
 
 ---@class ReverseListMatch
----@field address? table
----@field boundingbox? table
----@field display_name? string
----@field lat? string
----@field licence? string
----@field lon? string
----@field osm_id? number
----@field osm_type? string
----@field place_id? number
+---@field accept_language? string
+---@field addressdetail? number
+---@field extratag? number
+---@field format? string
+---@field lat number
+---@field lon number
+---@field namedetail? number
+---@field polygon_geojson? number
+---@field polygon_kml? number
+---@field polygon_svg? number
+---@field polygon_text? number
+---@field zoom? number
 
 ---@class Search
 ---@field address? table
@@ -144,19 +124,27 @@
 ---@field type? string
 
 ---@class SearchListMatch
----@field address? table
----@field boundingbox? table
----@field class? string
----@field display_name? string
----@field icon? string
----@field importance? number
----@field lat? string
----@field licence? string
----@field lon? string
----@field osm_id? number
----@field osm_type? string
----@field place_id? number
----@field type? string
+---@field accept_language? string
+---@field addressdetail? number
+---@field bounded? number
+---@field city? string
+---@field country? string
+---@field countrycode? string
+---@field county? string
+---@field dedupe? number
+---@field extratag? number
+---@field format? string
+---@field limit? number
+---@field namedetail? number
+---@field polygon_geojson? number
+---@field polygon_kml? number
+---@field polygon_svg? number
+---@field polygon_text? number
+---@field postalcode? string
+---@field q? string
+---@field state? string
+---@field street? string
+---@field viewbox? string
 
 ---@class ServerStatus
 ---@field data_updated? string
@@ -166,11 +154,7 @@
 ---@field status? number
 
 ---@class ServerStatusLoadMatch
----@field data_updated? string
----@field database_version? string
----@field message? string
----@field software_version? string
----@field status? number
+---@field format? string
 
 local M = {}
 
