@@ -184,8 +184,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/lookup",
-								"parts": []any{
-									"lookup",
+								"segments": []any{
+									map[string]any{
+										"lit": "lookup",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -204,6 +206,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"lookup",
 								},
 							},
 						},
@@ -256,6 +261,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "updated",
 						"short": "Last update timestamp",
 						"type": "`$STRING`",
@@ -289,8 +295,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/polygons",
-								"parts": []any{
-									"polygons",
+								"segments": []any{
+									map[string]any{
+										"lit": "polygons",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -301,6 +309,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"polygons",
 								},
 							},
 							map[string]any{
@@ -318,8 +329,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/deletable",
-								"parts": []any{
-									"deletable",
+								"segments": []any{
+									map[string]any{
+										"lit": "deletable",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -329,6 +342,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"deletable",
 								},
 							},
 						},
@@ -401,6 +417,7 @@ func MakeConfig() map[string]any {
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "indexed_date",
 						"short": "Date when the object was indexed",
 						"type": "`$STRING`",
@@ -529,8 +546,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/details",
-								"parts": []any{
-									"details",
+								"segments": []any{
+									map[string]any{
+										"lit": "details",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -548,6 +567,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"details",
 								},
 							},
 						},
@@ -702,8 +724,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/reverse",
-								"parts": []any{
-									"reverse",
+								"segments": []any{
+									map[string]any{
+										"lit": "reverse",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -724,6 +748,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"reverse",
 								},
 							},
 						},
@@ -952,8 +979,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/search",
-								"parts": []any{
-									"search",
+								"segments": []any{
+									map[string]any{
+										"lit": "search",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -984,6 +1013,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"search",
+								},
 							},
 						},
 					},
@@ -995,6 +1027,7 @@ func MakeConfig() map[string]any {
 			"server_status": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "date-time",
 						"name": "data_updated",
 						"short": "Timestamp when the database was last updated",
 						"type": "`$STRING`",
@@ -1041,8 +1074,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/status",
-								"parts": []any{
-									"status",
+								"segments": []any{
+									map[string]any{
+										"lit": "status",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1052,6 +1087,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"status",
 								},
 							},
 						},
@@ -1063,6 +1101,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

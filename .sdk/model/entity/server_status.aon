@@ -6,6 +6,7 @@ main: kit: entity: server_status: {
 
   fields: [
     {
+      format: "date-time"
       name: "data_updated"
       req: false
       short: "Timestamp when the database was last updated"
@@ -57,8 +58,10 @@ main: kit: entity: server_status: {
           }
           method: "GET"
           orig: "/status"
-          parts: [
-            "status"
+          segments: [
+            {
+              lit: "status"
+            }
           ]
           select: {
             exist: [

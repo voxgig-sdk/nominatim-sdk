@@ -54,6 +54,7 @@ main: kit: entity: administrative: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "updated"
       req: false
       short: "Last update timestamp"
@@ -89,8 +90,10 @@ main: kit: entity: administrative: {
           }
           method: "GET"
           orig: "/polygons"
-          parts: [
-            "polygons"
+          segments: [
+            {
+              lit: "polygons"
+            }
           ]
           select: {
             exist: [
@@ -118,8 +121,10 @@ main: kit: entity: administrative: {
           }
           method: "GET"
           orig: "/deletable"
-          parts: [
-            "deletable"
+          segments: [
+            {
+              lit: "deletable"
+            }
           ]
           select: {
             exist: [

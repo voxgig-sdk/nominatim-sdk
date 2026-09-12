@@ -180,8 +180,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/lookup",
-                ["parts"] = {
-                  "lookup",
+                ["segments"] = {
+                  {
+                    ["lit"] = "lookup",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -200,6 +202,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "lookup",
                 },
               },
             },
@@ -252,6 +257,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "updated",
             ["short"] = "Last update timestamp",
             ["type"] = "`$STRING`",
@@ -285,8 +291,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/polygons",
-                ["parts"] = {
-                  "polygons",
+                ["segments"] = {
+                  {
+                    ["lit"] = "polygons",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -297,6 +305,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "polygons",
                 },
               },
               {
@@ -314,8 +325,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deletable",
-                ["parts"] = {
-                  "deletable",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deletable",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -325,6 +338,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "deletable",
                 },
               },
             },
@@ -397,6 +413,7 @@ local function make_config()
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "indexed_date",
             ["short"] = "Date when the object was indexed",
             ["type"] = "`$STRING`",
@@ -525,8 +542,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/details",
-                ["parts"] = {
-                  "details",
+                ["segments"] = {
+                  {
+                    ["lit"] = "details",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -544,6 +563,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "details",
                 },
               },
             },
@@ -698,8 +720,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/reverse",
-                ["parts"] = {
-                  "reverse",
+                ["segments"] = {
+                  {
+                    ["lit"] = "reverse",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -720,6 +744,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "reverse",
                 },
               },
             },
@@ -948,8 +975,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/search",
-                ["parts"] = {
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -980,6 +1009,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "search",
+                },
               },
             },
           },
@@ -991,6 +1023,7 @@ local function make_config()
       ["server_status"] = {
         ["fields"] = {
           {
+            ["format"] = "date-time",
             ["name"] = "data_updated",
             ["short"] = "Timestamp when the database was last updated",
             ["type"] = "`$STRING`",
@@ -1037,8 +1070,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/status",
-                ["parts"] = {
-                  "status",
+                ["segments"] = {
+                  {
+                    ["lit"] = "status",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -1048,6 +1083,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "status",
                 },
               },
             },

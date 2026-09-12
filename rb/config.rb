@@ -192,8 +192,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/lookup",
-                  "parts" => [
-                    "lookup",
+                  "segments" => [
+                    {
+                      "lit" => "lookup",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -213,6 +215,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "lookup",
+                  ],
                 },
               ],
             },
@@ -264,6 +269,7 @@ module NominatimConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "updated",
               "short" => "Last update timestamp",
               "type" => "`$STRING`",
@@ -297,8 +303,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/polygons",
-                  "parts" => [
-                    "polygons",
+                  "segments" => [
+                    {
+                      "lit" => "polygons",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -310,6 +318,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "polygons",
+                  ],
                 },
                 {
                   "args" => {
@@ -326,8 +337,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/deletable",
-                  "parts" => [
-                    "deletable",
+                  "segments" => [
+                    {
+                      "lit" => "deletable",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -338,6 +351,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "deletable",
+                  ],
                 },
               ],
             },
@@ -409,6 +425,7 @@ module NominatimConfig
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date-time",
               "name" => "indexed_date",
               "short" => "Date when the object was indexed",
               "type" => "`$STRING`",
@@ -537,8 +554,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/details",
-                  "parts" => [
-                    "details",
+                  "segments" => [
+                    {
+                      "lit" => "details",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -557,6 +576,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "details",
+                  ],
                 },
               ],
             },
@@ -710,8 +732,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/reverse",
-                  "parts" => [
-                    "reverse",
+                  "segments" => [
+                    {
+                      "lit" => "reverse",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -733,6 +757,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "reverse",
+                  ],
                 },
               ],
             },
@@ -960,8 +987,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/search",
-                  "parts" => [
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -992,6 +1021,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "search",
+                  ],
                 },
               ],
             },
@@ -1003,6 +1035,7 @@ module NominatimConfig
         "server_status" => {
           "fields" => [
             {
+              "format" => "date-time",
               "name" => "data_updated",
               "short" => "Timestamp when the database was last updated",
               "type" => "`$STRING`",
@@ -1049,8 +1082,10 @@ module NominatimConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/status",
-                  "parts" => [
-                    "status",
+                  "segments" => [
+                    {
+                      "lit" => "status",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1061,6 +1096,9 @@ module NominatimConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "status",
+                  ],
                 },
               ],
             },

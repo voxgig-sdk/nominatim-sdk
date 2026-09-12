@@ -206,8 +206,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/lookup',
-                  'parts' => [
-                    'lookup',
+                  'segments' => [
+                    [
+                      'lit' => 'lookup',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -226,6 +228,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'lookup',
                   ],
                 ],
               ],
@@ -278,6 +283,7 @@ class NominatimConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'updated',
               'short' => 'Last update timestamp',
               'type' => '`$STRING`',
@@ -311,8 +317,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/polygons',
-                  'parts' => [
-                    'polygons',
+                  'segments' => [
+                    [
+                      'lit' => 'polygons',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -323,6 +331,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'polygons',
                   ],
                 ],
                 [
@@ -340,8 +351,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/deletable',
-                  'parts' => [
-                    'deletable',
+                  'segments' => [
+                    [
+                      'lit' => 'deletable',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -351,6 +364,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'deletable',
                   ],
                 ],
               ],
@@ -423,6 +439,7 @@ class NominatimConfig
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'indexed_date',
               'short' => 'Date when the object was indexed',
               'type' => '`$STRING`',
@@ -551,8 +568,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/details',
-                  'parts' => [
-                    'details',
+                  'segments' => [
+                    [
+                      'lit' => 'details',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -570,6 +589,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'details',
                   ],
                 ],
               ],
@@ -724,8 +746,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/reverse',
-                  'parts' => [
-                    'reverse',
+                  'segments' => [
+                    [
+                      'lit' => 'reverse',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -746,6 +770,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'reverse',
                   ],
                 ],
               ],
@@ -974,8 +1001,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search',
-                  'parts' => [
-                    'search',
+                  'segments' => [
+                    [
+                      'lit' => 'search',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1006,6 +1035,9 @@ class NominatimConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'search',
+                  ],
                 ],
               ],
             ],
@@ -1017,6 +1049,7 @@ class NominatimConfig
         'server_status' => [
           'fields' => [
             [
+              'format' => 'date-time',
               'name' => 'data_updated',
               'short' => 'Timestamp when the database was last updated',
               'type' => '`$STRING`',
@@ -1063,8 +1096,10 @@ class NominatimConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/status',
-                  'parts' => [
-                    'status',
+                  'segments' => [
+                    [
+                      'lit' => 'status',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -1074,6 +1109,9 @@ class NominatimConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'status',
                   ],
                 ],
               ],

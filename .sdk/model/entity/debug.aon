@@ -78,6 +78,7 @@ main: kit: entity: debug: {
       type: "`$NUMBER`"
     }
     {
+      format: "date-time"
       name: "indexed_date"
       req: false
       short: "Date when the object was indexed"
@@ -225,8 +226,10 @@ main: kit: entity: debug: {
           }
           method: "GET"
           orig: "/details"
-          parts: [
-            "details"
+          segments: [
+            {
+              lit: "details"
+            }
           ]
           select: {
             exist: [

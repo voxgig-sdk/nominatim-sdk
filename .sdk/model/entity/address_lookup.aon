@@ -169,8 +169,10 @@ main: kit: entity: address_lookup: {
           }
           method: "GET"
           orig: "/lookup"
-          parts: [
-            "lookup"
+          segments: [
+            {
+              lit: "lookup"
+            }
           ]
           select: {
             exist: [

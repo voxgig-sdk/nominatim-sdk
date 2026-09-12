@@ -1,6 +1,14 @@
 # Nominatim SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -201,8 +209,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/lookup",
-                "parts": [
-                  "lookup",
+                "segments": [
+                  {
+                    "lit": "lookup",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -222,6 +232,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "lookup",
+                ],
               },
             ],
           },
@@ -273,6 +286,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "updated",
             "short": "Last update timestamp",
             "type": "`$STRING`",
@@ -306,8 +320,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/polygons",
-                "parts": [
-                  "polygons",
+                "segments": [
+                  {
+                    "lit": "polygons",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -319,6 +335,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "polygons",
+                ],
               },
               {
                 "args": {
@@ -335,8 +354,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/deletable",
-                "parts": [
-                  "deletable",
+                "segments": [
+                  {
+                    "lit": "deletable",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -347,6 +368,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "deletable",
+                ],
               },
             ],
           },
@@ -418,6 +442,7 @@ def make_config():
             "type": "`$NUMBER`",
           },
           {
+            "format": "date-time",
             "name": "indexed_date",
             "short": "Date when the object was indexed",
             "type": "`$STRING`",
@@ -546,8 +571,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/details",
-                "parts": [
-                  "details",
+                "segments": [
+                  {
+                    "lit": "details",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -566,6 +593,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "details",
+                ],
               },
             ],
           },
@@ -719,8 +749,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/reverse",
-                "parts": [
-                  "reverse",
+                "segments": [
+                  {
+                    "lit": "reverse",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -742,6 +774,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "reverse",
+                ],
               },
             ],
           },
@@ -969,8 +1004,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/search",
-                "parts": [
-                  "search",
+                "segments": [
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1001,6 +1038,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "search",
+                ],
               },
             ],
           },
@@ -1012,6 +1052,7 @@ def make_config():
       "server_status": {
         "fields": [
           {
+            "format": "date-time",
             "name": "data_updated",
             "short": "Timestamp when the database was last updated",
             "type": "`$STRING`",
@@ -1058,8 +1099,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/status",
-                "parts": [
-                  "status",
+                "segments": [
+                  {
+                    "lit": "status",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1070,6 +1113,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "status",
+                ],
               },
             ],
           },

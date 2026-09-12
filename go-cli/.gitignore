@@ -1,3 +1,4 @@
 /dist/
 /nominatim-cli
 /go-cli
+.jostraca/

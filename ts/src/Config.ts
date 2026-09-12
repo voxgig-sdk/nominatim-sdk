@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -225,8 +236,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/lookup",
-              "parts": [
-                "lookup"
+              "segments": [
+                {
+                  "lit": "lookup"
+                }
               ],
               "select": {
                 "exist": [
@@ -245,7 +258,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "lookup"
+              ]
             }
           ]
         }
@@ -297,6 +313,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "updated",
           "short": "Last update timestamp",
           "type": "`$STRING`"
@@ -330,8 +347,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/polygons",
-              "parts": [
-                "polygons"
+              "segments": [
+                {
+                  "lit": "polygons"
+                }
               ],
               "select": {
                 "exist": [
@@ -342,7 +361,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "polygons"
+              ]
             },
             {
               "args": {
@@ -359,8 +381,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/deletable",
-              "parts": [
-                "deletable"
+              "segments": [
+                {
+                  "lit": "deletable"
+                }
               ],
               "select": {
                 "exist": [
@@ -370,7 +394,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "deletable"
+              ]
             }
           ]
         }
@@ -442,6 +469,7 @@ class Config {
           "type": "`$NUMBER`"
         },
         {
+          "format": "date-time",
           "name": "indexed_date",
           "short": "Date when the object was indexed",
           "type": "`$STRING`"
@@ -570,8 +598,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/details",
-              "parts": [
-                "details"
+              "segments": [
+                {
+                  "lit": "details"
+                }
               ],
               "select": {
                 "exist": [
@@ -589,7 +619,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "details"
+              ]
             }
           ]
         }
@@ -743,8 +776,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/reverse",
-              "parts": [
-                "reverse"
+              "segments": [
+                {
+                  "lit": "reverse"
+                }
               ],
               "select": {
                 "exist": [
@@ -765,7 +800,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "reverse"
+              ]
             }
           ]
         }
@@ -993,8 +1031,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/search",
-              "parts": [
-                "search"
+              "segments": [
+                {
+                  "lit": "search"
+                }
               ],
               "select": {
                 "exist": [
@@ -1024,7 +1064,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "search"
+              ]
             }
           ]
         }
@@ -1036,6 +1079,7 @@ class Config {
     "server_status": {
       "fields": [
         {
+          "format": "date-time",
           "name": "data_updated",
           "short": "Timestamp when the database was last updated",
           "type": "`$STRING`"
@@ -1082,8 +1126,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/status",
-              "parts": [
-                "status"
+              "segments": [
+                {
+                  "lit": "status"
+                }
               ],
               "select": {
                 "exist": [
@@ -1093,7 +1139,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "status"
+              ]
             }
           ]
         }
@@ -1109,6 +1158,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
