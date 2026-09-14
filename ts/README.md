@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NominatimSDK } from '@voxgig-sdk/nominatim'
+import { NominatimSDK } from '@voxgig-sdk/nominatim-sdk'
 
 const client = new NominatimSDK()
 ```
@@ -705,7 +705,7 @@ nominatim/
 Import the SDK from the package root:
 
 ```ts
-import { NominatimSDK } from '@voxgig-sdk/nominatim'
+import { NominatimSDK } from '@voxgig-sdk/nominatim-sdk'
 ```
 
 ### Entity state

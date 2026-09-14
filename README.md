@@ -105,7 +105,7 @@ local results, err = client:Reverse():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/nominatim` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nominatim-sdk/releases) |
+| TypeScript | `@voxgig-sdk/nominatim-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nominatim-sdk/releases) |
 | Python | `voxgig-sdk-nominatim` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nominatim-sdk/releases) |
 | PHP | `voxgig-sdk/nominatim` | publish pending — [install from git tag](https://github.com/voxgig-sdk/nominatim-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/nominatim-sdk/go` | `go get github.com/voxgig-sdk/nominatim-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Reverse():list()
 ### TypeScript
 
 ```ts
-import { NominatimSDK } from '@voxgig-sdk/nominatim'
+import { NominatimSDK } from '@voxgig-sdk/nominatim-sdk'
 
 const client = new NominatimSDK()
 
